@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/apptheme.dart';
-import 'package:restaurant_mobile/view/pages/home/home_page.dart';
+import 'package:restaurant_mobile/view/onboarding/introduction_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.currentTheme,
-      home: const HomePage(),
+      home: const IntroductionPage(),
     );
   }
 }
