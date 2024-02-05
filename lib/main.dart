@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/apptheme.dart';
-import 'package:restaurant_mobile/view/onboarding/introduction_page.dart';
+import 'package:restaurant_mobile/routes.dart';
+import 'package:restaurant_mobile/view/authentication/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Restaurant Mobile',
       theme: AppTheme.currentTheme,
-      home: const IntroductionPage(),
+      home: const WelcomePage(),
+      getPages: AppRouter.routes,
     );
   }
 }

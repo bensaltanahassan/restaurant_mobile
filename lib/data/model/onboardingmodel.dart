@@ -1,7 +1,8 @@
 class OnboardingModel {
-  final String? title;
-  final String? image;
-  final String? body;
+  final String title;
+  final String body;
+  final String image;
 
-  OnboardingModel(this.title, this.image, this.body);
+  OnboardingModel(
+      {required this.title, required this.body, required this.image});
 }

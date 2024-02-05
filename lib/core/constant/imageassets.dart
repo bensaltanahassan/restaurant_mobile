@@ -12,6 +12,8 @@ class AppImageAsset {
   static const String chooseLanguageEn = "$rootImages/en.png";
   //Logo
   static const String logoAuth = "$rootImages/logo.png";
+  static const String logo = "$rootImages/logo.png";
+  static const String pizza = "$rootImages/pizza.jpg";
   //Lotties
   static const String nodata = "$rootLotties/nodata.json";
   static const String server = "$rootLotties/server.json";

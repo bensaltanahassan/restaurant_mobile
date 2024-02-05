@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_mobile/core/constant/colors.dart';
 
 class AppAlert {
   static void showAwesomeDialog({
@@ -20,10 +19,10 @@ class AppAlert {
             color: Colors.grey[700], fontFamily: 'Roboto', fontSize: 18),
       ),
       title: title!,
-      backgroundColor: AppColors.packetColor6,
+      // backgroundColor: AppColors.packetColor6,
       titlePadding: const EdgeInsets.all(8),
       titleStyle: const TextStyle(
-          color: AppColors.packetColor3,
+          // color: AppColors.packetColor3,
           fontFamily: 'Roboto',
           fontSize: 24,
           fontWeight: FontWeight.bold),
@@ -36,7 +35,7 @@ class AppAlert {
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             decoration: BoxDecoration(
-                color: AppColors.packetColor2,
+                // color: AppColors.packetColor2,
                 borderRadius: BorderRadius.circular(10)),
             child: Text(
               titleSecondButton!,
@@ -52,7 +51,7 @@ class AppAlert {
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             decoration: BoxDecoration(
-                color: AppColors.packetColor3,
+                // color: AppColors.packetColor3,
                 borderRadius: BorderRadius.circular(10)),
             child: Text(
               titleFirstButton!,

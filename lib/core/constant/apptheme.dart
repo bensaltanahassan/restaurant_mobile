@@ -4,6 +4,7 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 class AppTheme {
   static ThemeData currentTheme = themeEnglish;
   static ThemeData themeEnglish = ThemeData(
+    scaffoldBackgroundColor: AppColors.primaryColor,
     cardTheme: CardTheme(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -11,7 +12,9 @@ class AppTheme {
     ),
     primarySwatch: Colors.blue,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.packetColor4,
+      backgroundColor: AppColors.primaryColor,
+      elevation: 0,
+      shadowColor: Colors.transparent,
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontFamily: 'Cairo',
@@ -19,9 +22,8 @@ class AppTheme {
         fontSize: 24,
       ),
     ),
-    scaffoldBackgroundColor: AppColors.backGroundColor,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: AppColors.packetColor2),
+        backgroundColor: AppColors.secondColor),
     textTheme: TextTheme(
       displayLarge: const TextStyle(
           fontWeight: FontWeight.bold,
@@ -40,13 +42,11 @@ class AppTheme {
           fontFamily: "Roboto"),
       bodyLarge: const TextStyle(
         height: 2,
-        color: AppColors.grey,
         fontFamily: "Cairo",
         fontSize: 14,
       ),
       bodyMedium: const TextStyle(
         height: 2,
-        color: AppColors.grey,
         fontSize: 12,
         fontFamily: "Cairo",
       ),
@@ -68,13 +68,11 @@ class AppTheme {
           fontFamily: "PlayfairDisplay"),
       displaySmall: TextStyle(
         height: 2,
-        color: AppColors.grey,
         fontFamily: "Cairo",
         fontSize: 14,
       ),
       bodyMedium: TextStyle(
         height: 2,
-        color: AppColors.grey,
         fontSize: 12,
         fontFamily: "Cairo",
       ),

@@ -2,19 +2,28 @@ import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/data/model/chooselanguagemodel.dart';
 import 'package:restaurant_mobile/data/model/onboardingmodel.dart';
 
-List<OnboardingModel> onBoardingList = [
-  OnboardingModel("Choose Product", AppImageAsset.onBoardingImageOne,
-      "We Have a +100k Product, Choose\nYour product from our\nE-commerce shop."),
-  OnboardingModel("Easy & Safe Payment", AppImageAsset.onBoardingImageTwo,
-      "East Checkout & Safi Payment\nmethod. Trusted by our Customers\nfrom all over the world."),
-  OnboardingModel("Track Your Order", AppImageAsset.onBoardingImageThree,
-      "Besr Tracker has been Used For\nTrack your order. You'll know where\nyour product is at the moment."),
-  OnboardingModel("Fast Delivery", AppImageAsset.onBoardingImageFour,
-      "Reliable And Fast Delivery. We\nDeliver your product the fastest\nway possible."),
-];
+class StaticData {
+  static List<OnboardingModel> onBoardingList = [
+    OnboardingModel(
+        title: "Welcome to Restaurant Akhawayn",
+        body:
+            "Indulge in a delightful culinary experience where your cravings meet exceptional flavors. Explore our diverse menu and let us take you on a gastronomic journey that tantalizes your taste buds. Your satisfaction is our top priority at Restaurant Akhawayn.",
+        image: AppImageAsset.onBoardingImageOne),
+    OnboardingModel(
+        title: "Savor the Moment with Restaurant Akhawayn",
+        body:
+            "Step into a world of culinary excellence where every dish tells a story of passion and perfection. At Restaurant Akhawayn, we strive to create a dining experience that goes beyond just a meal. Join us as we craft memorable moments through exceptional food and impeccable service",
+        image: AppImageAsset.onBoardingImageTwo),
+    OnboardingModel(
+        title: "Experience the Best of Restaurant Akhawayn",
+        body:
+            "At Restaurant Akhawayn, we are committed to delivering an exceptional dining experience that exceeds your expectations. Our team of culinary experts and service professionals are dedicated to creating a memorable experience that leaves you craving for more.",
+        image: AppImageAsset.onBoardingImageThree),
+  ];
 
-List<ChooseLanguageModel> chooseLanguageList = [
-  ChooseLanguageModel(AppImageAsset.chooseLanguageAr, "العربية"),
-  ChooseLanguageModel(AppImageAsset.chooseLanguageFr, "Francais"),
-  ChooseLanguageModel(AppImageAsset.chooseLanguageEn, "English"),
-];
+  static List<ChooseLanguageModel> chooseLanguageList = [
+    ChooseLanguageModel(AppImageAsset.chooseLanguageAr, "العربية"),
+    ChooseLanguageModel(AppImageAsset.chooseLanguageFr, "Francais"),
+    ChooseLanguageModel(AppImageAsset.chooseLanguageEn, "English"),
+  ];
+}

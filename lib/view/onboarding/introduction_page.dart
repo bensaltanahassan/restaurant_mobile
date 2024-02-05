@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:restaurant_mobile/controllers/introduction/introduction_controller.dart';
+import 'package:restaurant_mobile/data/datasource/static/static.dart';
 
-class IntroductionPage extends StatefulWidget {
+class IntroductionPage extends StatelessWidget {
   const IntroductionPage({super.key});
 
   @override
-  State<IntroductionPage> createState() => _IntroductionPageState();
-}
-
-class _IntroductionPageState extends State<IntroductionPage> {
-  final introKey = GlobalKey<IntroductionScreenState>();
-  @override
   Widget build(BuildContext context) {
+    final IntroductionController controller = Get.put(IntroductionController());
     return IntroductionScreen(
-      key: introKey,
-      autoScrollDuration: 5000,
-      infiniteAutoScroll: true,
-      pages: [
-        PageViewModel(
-          title: "Title of introduction page",
-          body: "Welcome to the app! This is a description of how it works.",
-          image: const Center(
-            child: Icon(Icons.waving_hand, size: 50.0),
-          ),
-        )
-      ],
-    );
+        key: controller.introKey,
+        done: const Text("Done"),
+        next: const Text("Next"),
+        skip: const Text("Skip"),
+        onDone: controller.onDone,
+        onSkip: controller.onSkip,
+        showSkipButton: true,
+        showNextButton: true,
+        curve: Curves.fastLinearToSlowEaseIn,
+        pages: StaticData.onBoardingList
+            .map((e) => PageViewModel(
+                  title: e.title,
+                  body: e.body,
+                  image: Center(
+                      child: Image.asset(
+                    e.image,
+                    height: 200,
+                  )),
+                ))
+            .toList());
   }
 }

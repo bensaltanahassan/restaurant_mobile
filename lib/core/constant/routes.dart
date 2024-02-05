@@ -9,7 +9,7 @@ class AppRoutes {
   //forgetpassword
   static const String forgetPassword = "/forgetpassword";
   static const String verifyCodeForgetPassword = "/verifycodeforgetpassword";
-  static const String resetPassword = "/resetpassword";
+  static const String changePassword = "/resetpassword";
   static const String succesResetPassword = "/succesResetPassword";
 
   //home
