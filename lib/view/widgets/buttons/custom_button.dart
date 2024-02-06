@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.title,
-    required this.titleColor,
+    this.title,
+    this.titleColor,
     required this.buttonColor,
     this.width,
     this.height,
@@ -12,9 +12,10 @@ class CustomButton extends StatelessWidget {
     this.titleSize,
     this.onPressed,
     this.fontWeight,
+    this.widget,
   });
-  final String title;
-  final Color titleColor;
+  final String? title;
+  final Color? titleColor;
   final Color buttonColor;
   final double? width;
   final double? height;
@@ -22,6 +23,7 @@ class CustomButton extends StatelessWidget {
   final double? titleSize;
   final FontWeight? fontWeight;
   final void Function()? onPressed;
+  final Widget? widget;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +36,15 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius ?? 10),
         ),
       ),
-      child: Text(
-        title,
-        style: TextStyle(
-          color: titleColor,
-          fontSize: titleSize,
-          fontWeight: fontWeight ?? FontWeight.normal,
-        ),
-      ),
+      child: widget ??
+          Text(
+            title!,
+            style: TextStyle(
+              color: titleColor,
+              fontSize: titleSize,
+              fontWeight: fontWeight ?? FontWeight.normal,
+            ),
+          ),
     );
   }
 }

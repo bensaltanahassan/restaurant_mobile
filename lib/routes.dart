@@ -6,6 +6,7 @@ import 'package:restaurant_mobile/view/authentication/login_page.dart';
 import 'package:restaurant_mobile/view/authentication/register_page.dart';
 import 'package:restaurant_mobile/view/authentication/verify_code_page.dart';
 import 'package:restaurant_mobile/view/pages/home/home_page.dart';
+import 'package:restaurant_mobile/view/pages/products_category/products_category_page.dart';
 
 class AppRouter {
   static final List<GetPage<dynamic>> routes = [
@@ -23,5 +24,8 @@ class AppRouter {
         name: AppRoutes.changePassword, page: () => const ChangePasswordPage()),
     // ================== Home ==================
     GetPage(name: AppRoutes.home, page: () => const HomePage()),
+    GetPage(
+        name: AppRoutes.productsCategory,
+        page: () => const ProductsCategoryPage()),
   ];
 }

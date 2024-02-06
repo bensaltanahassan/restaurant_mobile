@@ -71,14 +71,14 @@ class LoginPage extends StatelessWidget {
                   titleColor: Colors.white,
                   buttonColor: AppColors.secondColor,
                   fontWeight: FontWeight.bold,
-                  onPressed: () {},
+                  onPressed: controller.login,
                   width: double.infinity,
                 ),
                 const SizedBox(height: 20),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: controller.goToForgetPasswordPage,
                     child: const Text(
                       'Forgot Password?',
                       style: TextStyle(
@@ -104,7 +104,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: controller.goToRegisterPage,
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(

@@ -6,7 +6,7 @@ class CustomTextFormFieldAuth extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.labelText,
-    required this.prefixIcon,
+    this.prefixIcon,
     this.controller,
     this.isPassword = false,
     this.suffixIcon,
@@ -14,7 +14,7 @@ class CustomTextFormFieldAuth extends StatelessWidget {
 
   final String hintText;
   final String labelText;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final TextEditingController? controller;
   final bool isPassword;
   final Widget? suffixIcon;

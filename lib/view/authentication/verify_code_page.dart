@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
+import 'package:restaurant_mobile/controllers/authentication/verify_code_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/stack_auth.dart';
@@ -10,6 +12,7 @@ class VerifyCodePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyCodeController());
     return Scaffold(
       body: StackAuth(
         child: Padding(
@@ -70,7 +73,7 @@ class VerifyCodePage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               TextButton(
-                  onPressed: () {},
+                  onPressed: controller.resendCode,
                   child: const Text('Resend Code',
                       style: TextStyle(
                         color: AppColors.secondColor,
@@ -83,8 +86,8 @@ class VerifyCodePage extends StatelessWidget {
                 titleColor: Colors.white,
                 buttonColor: AppColors.secondColor,
                 fontWeight: FontWeight.bold,
-                onPressed: () {},
                 width: double.infinity,
+                onPressed: controller.verifyCode,
               ),
               const SizedBox(height: 20),
             ],
