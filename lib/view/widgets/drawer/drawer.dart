@@ -32,7 +32,7 @@ class CustomDrawer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(AppImageAsset.pizza))),
+                            image: AssetImage(AppImageAsset.hassan))),
                   ),
                   const SizedBox(width: 10),
                   Expanded(

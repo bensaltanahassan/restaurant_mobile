@@ -43,10 +43,7 @@ class CustomProductCategory extends StatelessWidget {
                         color: AppColors.whiteColor,
                       ),
                     ),
-                    Icon(
-                      Icons.favorite_outline,
-                      color: AppColors.secondColor,
-                    ),
+                    Icon(Icons.favorite_outline, color: AppColors.secondColor),
                   ],
                 ),
                 Expanded(

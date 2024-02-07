@@ -25,4 +25,7 @@ class AppImageAsset {
   //static
   static const String item1 = "$rootImages/item1.png";
   static const String maps = "$rootImages/maps.png";
+
+  //test
+  static const String hassan = "$rootImages/hassan.jpg";
 }
