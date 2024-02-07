@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
@@ -13,14 +11,11 @@ class MyMiddleWare extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (myServices.sharedPreferences.getBool("location") == false) {
-      exit(0);
+    if (myServices.sharedPreferences.getBool("intro") ?? false) {
+      return const RouteSettings(name: AppRoutes.welcome);
     }
-    if (myServices.sharedPreferences.getString("step") == "2") {
+    if (myServices.sharedPreferences.getBool("login") ?? false) {
       return const RouteSettings(name: AppRoutes.containerPage);
-    }
-    if (myServices.sharedPreferences.getString("step") == "1") {
-      return const RouteSettings(name: AppRoutes.login);
     }
     return null;
   }
