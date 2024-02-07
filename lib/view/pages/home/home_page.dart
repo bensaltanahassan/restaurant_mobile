@@ -4,43 +4,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/home/home_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
-import 'package:restaurant_mobile/view/widgets/bottomnavbar/bottom_navbar_home.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
-import 'package:restaurant_mobile/view/widgets/drawer/drawer.dart';
-
-class ContainerPage extends StatelessWidget {
-  const ContainerPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        bottomNavigationBar: const BottomNavBarHome(),
-        appBar: AppBar(
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                iconSize: 30.0,
-                color: AppColors.whiteColor,
-              );
-            },
-          ),
-        ),
-        drawer: const CustomDrawer(),
-        body: PageView(
-          children: const [
-            HomePage(),
-            Center(child: Text('Orders')),
-            Center(child: Text('Search')),
-            Center(child: Text('Favoris')),
-            Center(child: Text('Profile')),
-          ],
-        ));
-  }
-}
 
 class HomePage extends StatelessWidget {
   const HomePage({

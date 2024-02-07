@@ -5,7 +5,7 @@ import 'package:restaurant_mobile/view/authentication/forget_password_page.dart'
 import 'package:restaurant_mobile/view/authentication/login_page.dart';
 import 'package:restaurant_mobile/view/authentication/register_page.dart';
 import 'package:restaurant_mobile/view/authentication/verify_code_page.dart';
-import 'package:restaurant_mobile/view/pages/home/home_page.dart';
+import 'package:restaurant_mobile/view/pages/container/container_page.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_page.dart';
 
 class AppRouter {
@@ -23,7 +23,7 @@ class AppRouter {
     GetPage(
         name: AppRoutes.changePassword, page: () => const ChangePasswordPage()),
     // ================== Home ==================
-    GetPage(name: AppRoutes.home, page: () => const ContainerPage()),
+    GetPage(name: AppRoutes.containerPage, page: () => const ContainerPage()),
     GetPage(
         name: AppRoutes.productsCategory,
         page: () => const ProductsCategoryPage()),

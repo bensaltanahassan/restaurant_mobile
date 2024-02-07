@@ -13,7 +13,7 @@ class AppRoutes {
   static const String succesResetPassword = "/succesResetPassword";
 
   //home
-  static const String home = "/home";
+  static const String containerPage = "/containerPage";
   //item
   static const String productsCategory = "/productsCategory";
   static const String itemdetail = "/itemdetails";

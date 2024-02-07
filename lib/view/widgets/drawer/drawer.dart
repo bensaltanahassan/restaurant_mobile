@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
@@ -10,106 +12,127 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(
-                border:
-                    Border(bottom: BorderSide(color: AppColors.secondColor))),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(AppImageAsset.pizza))),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "BENSALTANA HASSAN",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextButton(
-                          style: const ButtonStyle(
-                              padding:
-                                  MaterialStatePropertyAll(EdgeInsets.zero)),
-                          onPressed: () {},
-                          child: const Text(
-                            "View Profile",
-                            style: TextStyle(color: AppColors.secondColor),
-                          ))
-                    ],
+    Get.find<ContainerController>();
+    return GetBuilder<ContainerController>(builder: (controller) {
+      return Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                  border:
+                      Border(bottom: BorderSide(color: AppColors.secondColor))),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(AppImageAsset.pizza))),
                   ),
-                )
-              ],
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "BENSALTANA HASSAN",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextButton(
+                            style: const ButtonStyle(
+                                padding:
+                                    MaterialStatePropertyAll(EdgeInsets.zero)),
+                            onPressed: () {
+                              controller.onDrawerChanged(4);
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text(
+                              "View Profile",
+                              style: TextStyle(color: AppColors.secondColor),
+                            ))
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDrawetItem(
-                  title: "Home",
-                  icon: Icons.home_outlined,
-                  onPressed: () {},
-                  isSelected: true,
-                ),
-                const SizedBox(height: 10),
-                CustomDrawetItem(
-                  title: "Orders",
-                  icon: Icons.shopping_basket_outlined,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 10),
-                CustomDrawetItem(
-                  title: "Search",
-                  icon: Icons.search_outlined,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 10),
-                CustomDrawetItem(
-                  title: "Favoris",
-                  icon: Icons.favorite_outline,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 10),
-                CustomDrawetItem(
-                  title: "Contact Us",
-                  icon: Icons.phone_outlined,
-                  onPressed: () {},
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomDrawetItem(
+                    title: "Home",
+                    icon: Icons.home_outlined,
+                    onPressed: () {
+                      controller.onDrawerChanged(0);
+                      Navigator.of(context).pop();
+                    },
+                    isSelected: controller.currentIndex == 0,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomDrawetItem(
+                    title: "Cart",
+                    icon: Icons.shopping_basket_outlined,
+                    onPressed: () {
+                      controller.onDrawerChanged(1);
+                      Navigator.of(context).pop();
+                    },
+                    isSelected: controller.currentIndex == 1,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomDrawetItem(
+                    title: "Search",
+                    icon: Icons.search_outlined,
+                    onPressed: () {
+                      controller.onDrawerChanged(2);
+                      Navigator.of(context).pop();
+                    },
+                    isSelected: controller.currentIndex == 2,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomDrawetItem(
+                    title: "Favoris",
+                    icon: Icons.favorite_outline,
+                    onPressed: () {
+                      controller.onDrawerChanged(3);
+                      Navigator.of(context).pop();
+                    },
+                    isSelected: controller.currentIndex == 3,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomDrawetItem(
+                    title: "Contact Us",
+                    icon: Icons.phone_outlined,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
-          ),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: CustomButton(
-              radius: 30,
-              buttonColor: AppColors.secondColor,
-              title: "Log Out",
-              titleColor: AppColors.whiteColor,
-              onPressed: () {},
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: CustomButton(
+                radius: 30,
+                buttonColor: AppColors.secondColor,
+                title: "Log Out",
+                titleColor: AppColors.whiteColor,
+                onPressed: () {},
+              ),
             ),
-          ),
-          const SizedBox(height: 20)
-        ],
-      ),
-    );
+            const SizedBox(height: 20)
+          ],
+        ),
+      );
+    });
   }
 }
 

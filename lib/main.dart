@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/apptheme.dart';
 import 'package:restaurant_mobile/routes.dart';
-import 'package:restaurant_mobile/view/pages/home/home_page.dart';
+import 'package:restaurant_mobile/view/pages/container/container_page.dart';
 
 void main() {
   runApp(const MyApp());

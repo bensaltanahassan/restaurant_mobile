@@ -4,6 +4,9 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 class AppTheme {
   static ThemeData currentTheme = themeEnglish;
   static ThemeData themeEnglish = ThemeData(
+    dividerTheme: const DividerThemeData(
+      color: AppColors.secondColor,
+    ),
     drawerTheme: const DrawerThemeData(
       backgroundColor: AppColors.primaryColor,
     ),

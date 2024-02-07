@@ -13,7 +13,7 @@ class LoginController extends GetxController {
   }
 
   void login() {
-    Get.toNamed(AppRoutes.home);
+    Get.toNamed(AppRoutes.containerPage);
   }
 
   @override
