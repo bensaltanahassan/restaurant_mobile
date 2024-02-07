@@ -125,7 +125,7 @@ class CustomDrawer extends StatelessWidget {
                 buttonColor: AppColors.secondColor,
                 title: "Log Out",
                 titleColor: AppColors.whiteColor,
-                onPressed: () {},
+                onPressed: controller.logout,
               ),
             ),
             const SizedBox(height: 20)

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/profile/profile_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 
@@ -7,6 +9,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProfileController());
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Column(
@@ -32,40 +35,46 @@ class ProfilePage extends StatelessWidget {
             subtitle: const Text("Member since 2021"),
           ),
           const SizedBox(height: 40),
-          const ListTile(
-            title: Text("User Settings"),
-            leading: Icon(Icons.settings),
-            trailing: Icon(Icons.arrow_forward_ios_rounded),
+          ListTile(
+            title: const Text("User Settings"),
+            leading: const Icon(Icons.settings),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () => controller.goToUserSettings(),
           ),
           const SizedBox(height: 20),
-          const ListTile(
-            leading: Icon(Icons.lock),
-            title: Text("Change Password"),
-            trailing: Icon(Icons.arrow_forward_ios_rounded),
+          ListTile(
+            leading: const Icon(Icons.lock),
+            title: const Text("Change Password"),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () => controller.goToChangePassword(),
           ),
           const SizedBox(height: 20),
-          const ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text("Favorite"),
-            trailing: Icon(Icons.arrow_forward_ios_rounded),
+          ListTile(
+            leading: const Icon(Icons.favorite),
+            title: const Text("Favorite"),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () => controller.goToFavorite(),
           ),
           const SizedBox(height: 20),
-          const ListTile(
-            title: Text("Recent Orders"),
-            leading: Icon(Icons.shopping_cart),
-            trailing: Icon(Icons.arrow_forward_ios_rounded),
+          ListTile(
+            title: const Text("Recent Orders"),
+            leading: const Icon(Icons.shopping_cart),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () => controller.goToRecentOrders(),
           ),
           const SizedBox(height: 20),
-          const ListTile(
-            title: Text("Notifications"),
-            leading: Icon(Icons.notifications),
-            trailing: Icon(Icons.arrow_forward_ios_rounded),
+          ListTile(
+            title: const Text("Notifications"),
+            leading: const Icon(Icons.notifications),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () => controller.goToNotifications(),
           ),
           const SizedBox(height: 20),
-          const ListTile(
-            leading: Icon(Icons.logout),
-            title: Text("Logout"),
-            trailing: Icon(Icons.arrow_forward_ios_rounded),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text("Logout"),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: controller.logout,
           ),
         ],
       ),

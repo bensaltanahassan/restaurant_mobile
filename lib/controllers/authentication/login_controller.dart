@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
+import 'package:restaurant_mobile/core/services/services.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> formState = GlobalKey<FormState>();
+  final MyServices myServices = Get.find();
   void goToRegisterPage() {
     Get.offNamed(AppRoutes.signUp);
   }
@@ -12,13 +14,8 @@ class LoginController extends GetxController {
     Get.toNamed(AppRoutes.forgetPassword);
   }
 
-  void login() {
-    Get.toNamed(AppRoutes.containerPage);
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
+  void login() async {
+    await myServices.sharedPreferences.setBool("login", true);
+    Get.offAllNamed(AppRoutes.containerPage);
   }
 }

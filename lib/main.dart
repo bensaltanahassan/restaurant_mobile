@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_mobile/core/constant/apptheme.dart';
+import 'package:restaurant_mobile/bindings/initialebinding.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
+import 'package:restaurant_mobile/core/services/services.dart';
 import 'package:restaurant_mobile/routes.dart';
-import 'package:restaurant_mobile/view/pages/container/container_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialService();
   runApp(const MyApp());
 }
 
@@ -13,12 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final LocaleController localeController = Get.put(LocaleController());
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Restaurant Mobile',
-      theme: AppTheme.currentTheme,
-      home: const ContainerPage(),
+      theme: localeController.appTheme,
       getPages: AppRouter.routes,
+      initialBinding: InitialeBindings(),
+      locale: localeController.language,
     );
   }
 }

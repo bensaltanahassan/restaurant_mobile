@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/core/constant/routes.dart';
 
 class ContainerController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -26,6 +27,10 @@ class ContainerController extends GetxController
     update();
   }
 
+  void logout() {
+    Get.offAllNamed(AppRoutes.login);
+  }
+
   @override
   void onInit() {
     tabController = TabController(length: 5, vsync: this);
@@ -35,6 +40,8 @@ class ContainerController extends GetxController
   @override
   void onClose() {
     pageController.dispose();
+    tabController.dispose();
+
     super.onClose();
   }
 }

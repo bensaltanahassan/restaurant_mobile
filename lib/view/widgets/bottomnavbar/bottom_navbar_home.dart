@@ -27,8 +27,8 @@ class BottomNavBarHome extends StatelessWidget {
           TabItem(icon: Icons.person, title: 'Profile'),
         ],
         onTap: controller.onBottomNavBarChanged,
-        initialActiveIndex: controller.currentIndex,
         controller: controller.tabController,
+        initialActiveIndex: 0,
       );
     });
   }

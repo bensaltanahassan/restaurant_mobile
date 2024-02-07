@@ -2,6 +2,7 @@ class AppRoutes {
   // onBoarding
   static const String onBoarding = "/onboarding";
   // Auth
+  static const String welcome = "/welcome";
   static const String login = "/login";
   static const String signUp = "/signUp";
   static const String verifycodeSignUp = "/verifycodesignup";
@@ -27,7 +28,8 @@ class AppRoutes {
 
   // Profil
   static const String myOrders = "/orders";
-  static const String inbox = "/inbox";
+  static const String favoris = "/favoris";
+  static const String notifications = "/notifications";
   static const String myCoupons = "/mycoupons";
   static const String recetlySearched = "/recetlysearched";
 
@@ -43,6 +45,7 @@ class AppRoutes {
   static const String passwordsettings = "/passwordsettings";
   static const String notificationSettings = "/notificationsettings";
   static const String deleteAccountSettings = "/deleteaccountsettings";
+  static const String userSettings = "/userSettings";
 
   // SearchPage
   static const String searchPage = "/searchPage";
