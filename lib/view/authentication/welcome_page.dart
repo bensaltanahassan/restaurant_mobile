@@ -12,9 +12,10 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(WelcomeController());
-    return Scaffold(
-      body: StackAuth(
-        child: Padding(
+    return StackAuth(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryColor.withOpacity(.01),
+        body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
           child: Center(
             child: Column(

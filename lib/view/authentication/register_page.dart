@@ -13,9 +13,10 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(RegisterController());
-    return Scaffold(
-      body: StackAuth(
-        child: Padding(
+    return StackAuth(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryColor.withOpacity(.01),
+        body: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -34,12 +35,14 @@ class RegisterPage extends StatelessWidget {
                               width: 200,
                               height: 200,
                             ),
-                            const Text(
-                              'Welcome!',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                            const Expanded(
+                              child: Text(
+                                'Welcome!',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],

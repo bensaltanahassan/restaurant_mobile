@@ -13,9 +13,10 @@ class ChangePasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ChangePasswordController());
-    return Scaffold(
-      body: StackAuth(
-        child: Padding(
+    return StackAuth(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryColor.withOpacity(.01),
+        body: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Form(
             key: controller.formState,
