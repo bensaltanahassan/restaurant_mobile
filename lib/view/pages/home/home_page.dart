@@ -4,16 +4,17 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/home/home_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/view/widgets/bottomnavbar/bottom_navbar_home.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/drawer/drawer.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ContainerPage extends StatelessWidget {
+  const ContainerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
     return Scaffold(
+        bottomNavigationBar: const BottomNavBarHome(),
         appBar: AppBar(
           leading: Builder(
             builder: (BuildContext context) {
@@ -29,57 +30,77 @@ class HomePage extends StatelessWidget {
           ),
         ),
         drawer: const CustomDrawer(),
-        body: ListView(
-          shrinkWrap: true,
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-          children: [
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 200.0,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 5),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: true,
-                aspectRatio: 16 / 9,
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                viewportFraction: 0.8,
-              ),
-              items: [1, 2, 3, 4, 5].map((i) {
-                return const CustomCardSlider();
-              }).toList(),
-            ),
-            const SizedBox(height: 10),
-            CustomCategoryWithDivider(
-                title: 'PIZZA', onPressed: controller.goToProductsCategory),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 320,
-              child: ListView.separated(
-                itemBuilder: (c, i) => const CustomProductHome(),
-                separatorBuilder: (c, i) => const SizedBox(width: 20),
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-              ),
-            ),
-            CustomCategoryWithDivider(
-                title: 'BURGER', onPressed: controller.goToProductsCategory),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 320,
-              child: ListView.separated(
-                itemBuilder: (c, i) => const CustomProductHome(),
-                separatorBuilder: (c, i) => const SizedBox(width: 20),
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-              ),
-            ),
+        body: PageView(
+          children: const [
+            HomePage(),
+            Center(child: Text('Orders')),
+            Center(child: Text('Search')),
+            Center(child: Text('Favoris')),
+            Center(child: Text('Profile')),
           ],
         ));
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(HomeController());
+    return ListView(
+      shrinkWrap: true,
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      children: [
+        CarouselSlider(
+          options: CarouselOptions(
+            height: 200.0,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 5),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: true,
+            enableInfiniteScroll: true,
+            aspectRatio: 16 / 9,
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            viewportFraction: 0.8,
+          ),
+          items: [1, 2, 3, 4, 5].map((i) {
+            return const CustomCardSlider();
+          }).toList(),
+        ),
+        const SizedBox(height: 10),
+        CustomCategoryWithDivider(
+            title: 'PIZZA', onPressed: controller.goToProductsCategory),
+        const SizedBox(height: 10),
+        SizedBox(
+          height: 320,
+          child: ListView.separated(
+            itemBuilder: (c, i) => const CustomProductHome(),
+            separatorBuilder: (c, i) => const SizedBox(width: 20),
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+          ),
+        ),
+        CustomCategoryWithDivider(
+            title: 'BURGER', onPressed: controller.goToProductsCategory),
+        const SizedBox(height: 10),
+        SizedBox(
+          height: 320,
+          child: ListView.separated(
+            itemBuilder: (c, i) => const CustomProductHome(),
+            separatorBuilder: (c, i) => const SizedBox(width: 20),
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+          ),
+        ),
+      ],
+    );
   }
 }
 

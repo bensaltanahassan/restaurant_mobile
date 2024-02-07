@@ -64,7 +64,7 @@ class CustomDrawer extends StatelessWidget {
               children: [
                 CustomDrawetItem(
                   title: "Home",
-                  icon: Icons.person,
+                  icon: Icons.home_outlined,
                   onPressed: () {},
                   isSelected: true,
                 ),
@@ -76,14 +76,14 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 CustomDrawetItem(
-                  title: "Favoris",
-                  icon: Icons.favorite_outline,
+                  title: "Search",
+                  icon: Icons.search_outlined,
                   onPressed: () {},
                 ),
                 const SizedBox(height: 10),
                 CustomDrawetItem(
-                  title: "Search",
-                  icon: Icons.search_outlined,
+                  title: "Favoris",
+                  icon: Icons.favorite_outline,
                   onPressed: () {},
                 ),
                 const SizedBox(height: 10),

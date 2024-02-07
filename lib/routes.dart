@@ -23,7 +23,7 @@ class AppRouter {
     GetPage(
         name: AppRoutes.changePassword, page: () => const ChangePasswordPage()),
     // ================== Home ==================
-    GetPage(name: AppRoutes.home, page: () => const HomePage()),
+    GetPage(name: AppRoutes.home, page: () => const ContainerPage()),
     GetPage(
         name: AppRoutes.productsCategory,
         page: () => const ProductsCategoryPage()),

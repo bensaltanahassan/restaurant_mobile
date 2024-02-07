@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Restaurant Mobile',
       theme: AppTheme.currentTheme,
-      home: const HomePage(),
+      home: const ContainerPage(),
       getPages: AppRouter.routes,
     );
   }
