@@ -4,25 +4,33 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 class CustomTextFormFieldAuth extends StatelessWidget {
   const CustomTextFormFieldAuth({
     super.key,
-    required this.hintText,
-    required this.labelText,
+    this.hintText,
+    this.labelText,
     this.prefixIcon,
     this.controller,
     this.isPassword = false,
     this.suffixIcon,
+    this.initialValue,
+    this.keyboardType,
+    this.borderColor = AppColors.secondColor,
   });
 
-  final String hintText;
-  final String labelText;
+  final String? hintText;
+  final String? labelText;
   final IconData? prefixIcon;
   final TextEditingController? controller;
   final bool isPassword;
   final Widget? suffixIcon;
+  final String? initialValue;
+  final TextInputType? keyboardType;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       obscureText: isPassword,
+      keyboardType: keyboardType ?? TextInputType.text,
       controller: controller,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
@@ -35,15 +43,15 @@ class CustomTextFormFieldAuth extends StatelessWidget {
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.secondColor),
+          borderSide: BorderSide(color: borderColor),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(color: AppColors.secondColor),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(color: borderColor),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(color: AppColors.secondColor),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(color: borderColor),
         ),
       ),
     );
