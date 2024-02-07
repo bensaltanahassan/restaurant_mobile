@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
-import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
 class CustomItemFavoris extends StatelessWidget {
   const CustomItemFavoris({
@@ -11,7 +10,7 @@ class CustomItemFavoris extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: 100,
       width: double.maxFinite,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,7 +20,7 @@ class CustomItemFavoris extends StatelessWidget {
             child: Image.asset(
               AppImageAsset.pizza,
               width: 80,
-              height: 150,
+              height: 100,
               fit: BoxFit.cover,
             ),
           ),
@@ -50,60 +49,30 @@ class CustomItemFavoris extends StatelessWidget {
                           color: AppColors.greyColor,
                         ),
                       ),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          CustomButton(
-                            width: 1,
-                            buttonColor: AppColors.secondColor,
-                            title: "-",
-                            titleColor: AppColors.whiteColor,
-                            titleSize: 20,
-                            onPressed: () {},
-                          ),
-                          const SizedBox(width: 10),
-                          const Text(
-                            "1",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.whiteColor,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          CustomButton(
-                            width: 1,
-                            buttonColor: AppColors.secondColor,
-                            title: "+",
-                            titleColor: AppColors.whiteColor,
-                            titleSize: 20,
-                            onPressed: () {},
-                          ),
-                        ],
-                      )
                     ],
                   ),
                 ),
                 Expanded(
-                    flex: 2,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          const Text("\$500.00",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.secondColor,
-                              )),
-                          const Spacer(),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.delete_outline,
-                                color: AppColors.whiteColor,
-                                size: 25,
-                              ))
-                        ])),
+                  flex: 2,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text("\$500.00",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.secondColor,
+                            )),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.favorite,
+                              color: AppColors.secondColor,
+                              size: 25,
+                            ))
+                      ]),
+                ),
               ],
             ),
           )
