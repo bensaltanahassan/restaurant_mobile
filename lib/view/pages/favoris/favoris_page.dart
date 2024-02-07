@@ -24,7 +24,7 @@ class FavorisPage extends StatelessWidget {
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
               itemCount: 7,
-              separatorBuilder: (c, i) => const Divider(height: 20),
+              separatorBuilder: (c, i) => const Divider(height: 30),
               itemBuilder: (c, i) => const CustomItemFavoris(),
             ),
           ),

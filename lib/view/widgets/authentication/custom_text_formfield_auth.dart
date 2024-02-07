@@ -30,7 +30,8 @@ class CustomTextFormFieldAuth extends StatelessWidget {
         labelText: labelText,
         labelStyle: const TextStyle(color: Colors.white),
         hintStyle: const TextStyle(color: Colors.white),
-        prefixIcon: Icon(prefixIcon, color: Colors.white),
+        prefixIcon:
+            prefixIcon != null ? Icon(prefixIcon, color: Colors.white) : null,
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

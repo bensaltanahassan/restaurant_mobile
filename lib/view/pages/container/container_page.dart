@@ -5,6 +5,8 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/view/pages/cart/cart_page.dart';
 import 'package:restaurant_mobile/view/pages/favoris/favoris_page.dart';
 import 'package:restaurant_mobile/view/pages/home/home_page.dart';
+import 'package:restaurant_mobile/view/pages/profile/profile_page.dart';
+import 'package:restaurant_mobile/view/pages/search/search_page.dart';
 import 'package:restaurant_mobile/view/widgets/bottomnavbar/bottom_navbar_home.dart';
 import 'package:restaurant_mobile/view/widgets/drawer/drawer.dart';
 
@@ -38,9 +40,9 @@ class ContainerPage extends StatelessWidget {
             children: const [
               HomePage(),
               CartPage(),
-              Center(child: Text('Search')),
+              SearchPage(),
               FavorisPage(),
-              Center(child: Text('Profile')),
+              ProfilePage(),
             ],
           );
         }));
