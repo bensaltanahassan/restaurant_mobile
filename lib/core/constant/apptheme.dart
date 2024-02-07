@@ -4,11 +4,16 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 class AppTheme {
   static ThemeData currentTheme = themeEnglish;
   static ThemeData themeEnglish = ThemeData(
-    dividerTheme: const DividerThemeData(
-      color: AppColors.secondColor,
-    ),
-    drawerTheme: const DrawerThemeData(
-      backgroundColor: AppColors.primaryColor,
+    dividerTheme: const DividerThemeData(color: AppColors.secondColor),
+    drawerTheme: const DrawerThemeData(backgroundColor: AppColors.primaryColor),
+    listTileTheme: ListTileThemeData(
+      iconColor: AppColors.whiteColor,
+      titleTextStyle: const TextStyle(color: AppColors.whiteColor),
+      shape: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: AppColors.secondColor),
+      ),
+      leadingAndTrailingTextStyle: const TextStyle(color: AppColors.whiteColor),
     ),
     navigationDrawerTheme: const NavigationDrawerThemeData(
         backgroundColor: AppColors.primaryColor),
