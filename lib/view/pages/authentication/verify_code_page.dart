@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:restaurant_mobile/controllers/authentication/verify_code_controller.dart';
@@ -17,7 +18,7 @@ class VerifyCodePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.primaryColor.withOpacity(.01),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20).r,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -26,71 +27,71 @@ class VerifyCodePage extends StatelessWidget {
                 children: [
                   Image.asset(
                     AppImageAsset.logo,
-                    width: 200,
-                    height: 200,
+                    width: 200.w,
+                    height: 200.h,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: Text(
                       'Verify Code',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              const Align(
+              SizedBox(height: 20.h),
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Enter the code sent to your email xxxx@yyyy.com',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Pinput(
                 length: 5,
                 onCompleted: (pin) {},
-                defaultPinTheme: const PinTheme(
-                  width: 60,
-                  height: 60,
+                defaultPinTheme: PinTheme(
+                  width: 60.w,
+                  height: 60.h,
                   decoration: BoxDecoration(
                     color: AppColors.secondColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)).r,
                   ),
                   textStyle: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                   ),
-                  margin: EdgeInsets.symmetric(horizontal: 2),
+                  margin: const EdgeInsets.symmetric(horizontal: 2).r,
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               TextButton(
                   onPressed: controller.resendCode,
-                  child: const Text('Resend Code',
+                  child: Text('Resend Code',
                       style: TextStyle(
                         color: AppColors.secondColor,
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ))),
               const Spacer(),
               CustomButton(
                 title: "Verify Code",
-                titleSize: 20,
+                titleSize: 20.sp,
                 titleColor: Colors.white,
                 buttonColor: AppColors.secondColor,
                 fontWeight: FontWeight.bold,
                 width: double.infinity,
                 onPressed: controller.verifyCode,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

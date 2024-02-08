@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/change_password_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -17,7 +18,7 @@ class ChangePasswordPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.primaryColor.withOpacity(.01),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20).r,
           child: Form(
             key: controller.formState,
             child: Column(
@@ -28,30 +29,29 @@ class ChangePasswordPage extends StatelessWidget {
                   children: [
                     Image.asset(
                       AppImageAsset.logo,
-                      width: 200,
-                      height: 200,
+                      width: 200.w,
+                      height: 200.h,
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Text(
                         'Change Password!',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 24.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                const SizedBox(height: 20),
+                SizedBox(height: 40.h),
                 const CustomTextFormFieldAuth(
                   labelText: 'New Password',
                   hintText: 'New Password',
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 const CustomTextFormFieldAuth(
                   labelText: 'Confirm Password',
                   hintText: 'Confirm Password',
@@ -61,14 +61,14 @@ class ChangePasswordPage extends StatelessWidget {
                 const Spacer(),
                 CustomButton(
                   title: "Change Password",
-                  titleSize: 20,
+                  titleSize: 20.sp,
                   titleColor: Colors.white,
                   buttonColor: AppColors.secondColor,
                   fontWeight: FontWeight.bold,
                   onPressed: controller.changePassword,
                   width: double.infinity,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
               ],
             ),
           ),
