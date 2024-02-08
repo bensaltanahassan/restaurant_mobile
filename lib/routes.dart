@@ -8,9 +8,12 @@ import 'package:restaurant_mobile/view/pages/authentication/register_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/verify_code_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/welcome_page.dart';
 import 'package:restaurant_mobile/view/pages/container/container_page.dart';
+import 'package:restaurant_mobile/view/pages/notifications/notifications_page.dart';
 import 'package:restaurant_mobile/view/pages/onboarding/introduction_page.dart';
 import 'package:restaurant_mobile/view/pages/order_details/order_details_page.dart';
 import 'package:restaurant_mobile/view/pages/orders/orders_page.dart';
+import 'package:restaurant_mobile/view/pages/payments/payment_page.dart';
+import 'package:restaurant_mobile/view/pages/product_details/product_details_page.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_page.dart';
 import 'package:restaurant_mobile/view/pages/user_settings/user_settings_page.dart';
 
@@ -42,5 +45,11 @@ class AppRouter {
     GetPage(name: AppRoutes.userSettings, page: () => const UserSettingsPage()),
     GetPage(name: AppRoutes.myOrders, page: () => const OrdersPage()),
     GetPage(name: AppRoutes.orderdetails, page: () => const OrderDetailsPage()),
+    GetPage(name: AppRoutes.paymentPage, page: () => const PaymentPage()),
+    GetPage(
+        name: AppRoutes.notifications,
+        page: () => const NotificationsPahe.NotificationsPage()),
+    GetPage(
+        name: AppRoutes.productdetail, page: () => const ProductDetailsPage()),
   ];
 }
