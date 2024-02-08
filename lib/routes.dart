@@ -9,6 +9,8 @@ import 'package:restaurant_mobile/view/authentication/verify_code_page.dart';
 import 'package:restaurant_mobile/view/authentication/welcome_page.dart';
 import 'package:restaurant_mobile/view/onboarding/introduction_page.dart';
 import 'package:restaurant_mobile/view/pages/container/container_page.dart';
+import 'package:restaurant_mobile/view/pages/orders/order_details_page.dart';
+import 'package:restaurant_mobile/view/pages/orders/orders_page.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_page.dart';
 import 'package:restaurant_mobile/view/pages/user_settings/user_settings_page.dart';
 
@@ -38,5 +40,7 @@ class AppRouter {
         name: AppRoutes.productsCategory,
         page: () => const ProductsCategoryPage()),
     GetPage(name: AppRoutes.userSettings, page: () => const UserSettingsPage()),
+    GetPage(name: AppRoutes.myOrders, page: () => const OrdersPage()),
+    GetPage(name: AppRoutes.orderdetails, page: () => const OrderDetailsPage()),
   ];
 }
