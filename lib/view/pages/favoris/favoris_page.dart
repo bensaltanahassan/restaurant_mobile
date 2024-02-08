@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -11,14 +12,14 @@ class FavorisPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(FavorisController());
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20).r,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Favoris",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 30.sp,
               fontWeight: FontWeight.bold,
               color: AppColors.whiteColor,
             ),
@@ -27,7 +28,7 @@ class FavorisPage extends StatelessWidget {
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
               itemCount: 7,
-              separatorBuilder: (c, i) => const Divider(height: 30),
+              separatorBuilder: (c, i) => Divider(height: 30.h),
               itemBuilder: (c, i) => const CustomItemFavoris(),
             ),
           ),
