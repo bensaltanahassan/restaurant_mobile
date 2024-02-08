@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 
 class CustomTextFormFieldAuth extends StatelessWidget {
@@ -42,15 +43,15 @@ class CustomTextFormFieldAuth extends StatelessWidget {
             prefixIcon != null ? Icon(prefixIcon, color: Colors.white) : null,
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10).r,
           borderSide: BorderSide(color: borderColor),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)).r,
           borderSide: BorderSide(color: borderColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)).r,
           borderSide: BorderSide(color: borderColor),
         ),
       ),

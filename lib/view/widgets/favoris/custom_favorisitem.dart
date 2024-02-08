@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 
@@ -10,21 +11,21 @@ class CustomItemFavoris extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 100.h,
       width: double.maxFinite,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).r,
             child: Image.asset(
               AppImageAsset.pizza,
-              width: 80,
-              height: 100,
+              width: 80.w,
+              height: 100.h,
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           Expanded(
             child: Row(
               children: [
@@ -33,9 +34,9 @@ class CustomItemFavoris extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Pizza hot gamberi",
+                      Text("Pizza hot gamberi",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 20.sp,
                             height: 1,
                             fontWeight: FontWeight.bold,
                             color: AppColors.whiteColor,
@@ -44,8 +45,8 @@ class CustomItemFavoris extends StatelessWidget {
                         "Lorem " * 20,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 14,
+                        style: TextStyle(
+                          fontSize: 14.sp,
                           color: AppColors.greyColor,
                         ),
                       ),
@@ -57,19 +58,19 @@ class CustomItemFavoris extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Text("\$500.00",
+                        Text("\$500.00",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
                               color: AppColors.secondColor,
                             )),
                         const Spacer(),
                         IconButton(
                             onPressed: () {},
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.favorite,
                               color: AppColors.secondColor,
-                              size: 25,
+                              size: 25.r,
                             ))
                       ]),
                 ),

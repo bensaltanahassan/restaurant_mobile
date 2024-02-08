@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
@@ -15,35 +16,36 @@ class CustomProductCategory extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 150,
-            width: 150,
+            height: 150.h,
+            width: 150.w,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.grey,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10).r,
               image: const DecorationImage(
                 image: AssetImage(AppImageAsset.pizza),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Pizza',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.whiteColor,
                       ),
                     ),
-                    Icon(Icons.favorite_outline, color: AppColors.secondColor),
+                    const Icon(Icons.favorite_outline,
+                        color: AppColors.secondColor),
                   ],
                 ),
                 Expanded(
@@ -51,17 +53,17 @@ class CustomProductCategory extends StatelessWidget {
                   "data " * 100,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 12,
+                  style: TextStyle(
+                    fontSize: 12.sp,
                     color: AppColors.greyColor,
                   ),
                 )),
                 Row(
                   children: [
-                    const Text(
+                    Text(
                       '\$ 50.00',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.whiteColor,
                       ),
@@ -73,8 +75,8 @@ class CustomProductCategory extends StatelessWidget {
                       buttonColor: AppColors.secondColor,
                       fontWeight: FontWeight.bold,
                       onPressed: () {},
-                      radius: 20,
-                      height: 30,
+                      radius: 20.r,
+                      height: 30.h,
                       width: 00,
                     )
                   ],
