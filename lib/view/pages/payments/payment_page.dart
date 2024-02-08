@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/payment/payment_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -12,18 +13,18 @@ class PaymentPage extends StatelessWidget {
     final controller = Get.put(PaymentController());
     return Scaffold(
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20).r,
         child: CustomButton(
           buttonColor: AppColors.secondColor,
           onPressed: () {},
-          widget: const Row(
+          widget: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Continue",
                 style: TextStyle(
                   color: AppColors.whiteColor,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -31,7 +32,7 @@ class PaymentPage extends StatelessWidget {
                 "\$ 200.00",
                 style: TextStyle(
                   color: AppColors.whiteColor,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -42,7 +43,7 @@ class PaymentPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Payment Method'),
         leading: Container(
-          margin: const EdgeInsets.only(left: 10),
+          margin: const EdgeInsets.only(left: 10).r,
           child: ElevatedButton(
             onPressed: () {
               Get.back();
@@ -50,7 +51,7 @@ class PaymentPage extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 10).r,
             ),
             child: const Center(
                 child:
@@ -59,14 +60,14 @@ class PaymentPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Adress",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor,
               ),
@@ -76,11 +77,11 @@ class PaymentPage extends StatelessWidget {
               buttonText: "Change",
               onPressed: () {},
             ),
-            const SizedBox(height: 10),
-            const Text(
+            SizedBox(height: 10.h),
+            Text(
               "Phone number",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor,
               ),
@@ -90,33 +91,33 @@ class PaymentPage extends StatelessWidget {
               buttonText: "Change",
               onPressed: () {},
             ),
-            const SizedBox(height: 10),
-            const Text(
+            SizedBox(height: 10.h),
+            Text(
               "Payment Method",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor,
               ),
             ),
             SizedBox(
-              height: 150,
+              height: 150.h,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  ChoicePaymentMethode(
+                children: [
+                  const ChoicePaymentMethode(
                     title: "Credit Card",
                     icon: Icons.credit_card,
                     isSelected: true,
                   ),
-                  SizedBox(width: 20),
-                  ChoicePaymentMethode(
+                  SizedBox(width: 20.w),
+                  const ChoicePaymentMethode(
                     title: "Cash",
                     icon: Icons.money,
                     isSelected: false,
                   ),
-                  SizedBox(width: 20),
-                  ChoicePaymentMethode(
+                  SizedBox(width: 20.w),
+                  const ChoicePaymentMethode(
                     title: "Paypal",
                     icon: Icons.paypal,
                     isSelected: false,
@@ -124,31 +125,31 @@ class PaymentPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ElevatedButton.icon(
               onPressed: () {},
               icon: Container(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10).r,
                   decoration: BoxDecoration(
                     color: AppColors.greyColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(Icons.add)),
-              label: const Text(
+              label: Text(
                 "Add New Card",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.whiteColor,
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                fixedSize: const Size(double.maxFinite, 65),
+                fixedSize: Size(double.maxFinite, 65.h),
                 backgroundColor: AppColors.secondColor,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10).r,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10).r,
                 ),
               ),
             ),
@@ -176,37 +177,36 @@ class ChoicePaymentMethode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
-      height: 150,
-      width: 150,
+      padding: const EdgeInsets.all(20).r,
+      height: 150.h,
+      width: 150.w,
       decoration: BoxDecoration(
-        color: isSelected ? AppColors.secondColor : AppColors.greyColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
+          color: isSelected ? AppColors.secondColor : AppColors.greyColor,
+          borderRadius: BorderRadius.circular(10).r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10).r,
             decoration: BoxDecoration(
               color: isSelected
                   ? AppColors.greyColor.withOpacity(.4)
                   : AppColors.primaryColor.withOpacity(.15),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10).r,
             ),
             child: Icon(
               icon,
               color:
                   isSelected ? AppColors.primaryColor : AppColors.secondColor,
-              size: 40,
+              size: 40.r,
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(
             title,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 18.sp,
               fontWeight: FontWeight.bold,
               color:
                   isSelected ? AppColors.primaryColor : AppColors.secondColor,
@@ -235,19 +235,19 @@ class ListTileSettings extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
             color: AppColors.whiteColor,
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.bold),
       ),
       trailing: TextButton(
         onPressed: onPressed,
         child: Text(
           buttonText,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppColors.secondColor,
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: 14.sp,
           ),
         ),
       ),
