@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/register_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -17,7 +18,7 @@ class RegisterPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.primaryColor.withOpacity(.01),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 20).r,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -32,57 +33,57 @@ class RegisterPage extends StatelessWidget {
                           children: [
                             Image.asset(
                               AppImageAsset.logo,
-                              width: 200,
-                              height: 200,
+                              width: 200.w,
+                              height: 200.h,
                             ),
-                            const Expanded(
+                            Expanded(
                               child: Text(
                                 'Welcome!',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24,
+                                  fontSize: 24.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         const CustomTextFormFieldAuth(
                           hintText: 'First Name',
                           labelText: 'First Name',
                           prefixIcon: Icons.person,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         const CustomTextFormFieldAuth(
                           hintText: 'Last Name',
                           labelText: 'Last Name',
                           prefixIcon: Icons.person,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         const CustomTextFormFieldAuth(
                           hintText: 'Email',
                           labelText: 'Email',
                           prefixIcon: Icons.email,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         const CustomTextFormFieldAuth(
                           hintText: 'Password',
                           labelText: 'Password',
                           prefixIcon: Icons.lock,
                           isPassword: true,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         const CustomTextFormFieldAuth(
                           hintText: 'Confirm Password',
                           labelText: 'Confirm Password',
                           prefixIcon: Icons.lock,
                           isPassword: true,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         CustomButton(
                           title: "Register",
-                          titleSize: 20,
+                          titleSize: 20.sp,
                           titleColor: Colors.white,
                           buttonColor: AppColors.secondColor,
                           fontWeight: FontWeight.bold,
@@ -98,21 +99,21 @@ class RegisterPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Already have an account?',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextButton(
                         onPressed: controller.goToLoginPage,
-                        child: const Text(
+                        child: Text(
                           'Login',
                           style: TextStyle(
                             color: AppColors.secondColor,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ))
