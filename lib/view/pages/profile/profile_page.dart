@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/profile/profile_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -11,74 +12,74 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20).r,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Profile",
+            Text("Profile",
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 30.sp,
                   height: 1,
                   fontWeight: FontWeight.bold,
                   color: AppColors.whiteColor,
                 )),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ListTile(
               //disable shap
               shape: const OutlineInputBorder(borderSide: BorderSide.none),
               leading: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(30.r),
                 child: Image.asset(AppImageAsset.hassan,
-                    fit: BoxFit.cover, width: 60, height: 60),
+                    fit: BoxFit.cover, width: 60.w, height: 60.h),
               ),
               title: const Text("BENSALTANA HASSAN"),
               subtitle: const Text("Member since 2021"),
             ),
-            const SizedBox(height: 40),
+            SizedBox(height: 40.h),
             ListTile(
               title: const Text("User Settings"),
               leading: const Icon(Icons.settings),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToUserSettings(),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ListTile(
               leading: const Icon(Icons.lock),
               title: const Text("Change Password"),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToChangePassword(),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ListTile(
               leading: const Icon(Icons.favorite),
               title: const Text("Favorite"),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToFavorite(),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ListTile(
               title: const Text("Recent Orders"),
               leading: const Icon(Icons.shopping_cart),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToRecentOrders(),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ListTile(
               title: const Text("Notifications"),
               leading: const Icon(Icons.notifications),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToNotifications(),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text("Logout"),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: controller.logout,
             ),
-            const SizedBox(height: 40)
+            SizedBox(height: 40.h)
           ],
         ),
       ),
