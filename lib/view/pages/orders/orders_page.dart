@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/orders/orders_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -26,12 +27,13 @@ class OrdersPage extends StatelessWidget {
       ),
       body: ListView.separated(
         padding: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.mainPadding,
-            vertical: AppDimensions.mainPadding / 2),
+                horizontal: AppDimensions.mainPadding,
+                vertical: AppDimensions.mainPadding / 2)
+            .r,
         itemCount: 20,
         separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            height: 30,
+          return Divider(
+            height: 30.h,
             color: AppColors.greyColor,
           );
         },
