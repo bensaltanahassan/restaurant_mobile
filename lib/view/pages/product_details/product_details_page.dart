@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/product_details/product_details_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -27,9 +28,10 @@ class ProductDetailsPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(
-            left: AppDimensions.mainPadding,
-            right: AppDimensions.mainPadding,
-            bottom: AppDimensions.mainPadding),
+                left: AppDimensions.mainPadding,
+                right: AppDimensions.mainPadding,
+                bottom: AppDimensions.mainPadding)
+            .w,
         child: Row(
           children: [
             Expanded(
@@ -37,11 +39,11 @@ class ProductDetailsPage extends StatelessWidget {
                   buttonColor: AppColors.secondColor,
                   title: "Add to Cart",
                   titleColor: AppColors.whiteColor,
-                  titleSize: 20,
+                  titleSize: 20.sp,
                   fontWeight: FontWeight.bold,
                   onPressed: () {}),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             IconButton(
               onPressed: () {},
               icon: const Icon(
@@ -59,118 +61,118 @@ class ProductDetailsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20).r,
               child: Image.asset(
                 AppImageAsset.pizza,
                 fit: BoxFit.cover,
                 width: double.maxFinite,
-                height: 300,
+                height: 300.h,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Row(
               children: [
                 Expanded(
                   child: Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    child: const Text(
+                    margin: const EdgeInsets.only(right: 10).r,
+                    child: Text(
                       'Delicious Pizza Hotgaaam',
                       style: TextStyle(
                         height: 1.5,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.whiteColor,
                       ),
                     ),
                   ),
                 ),
-                const Text(
+                Text(
                   "\$99.00",
                   style: TextStyle(
                     height: 1.5,
-                    fontSize: 24,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.bold,
                     color: AppColors.secondColor,
                   ),
                 )
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: 20.h),
+            Text(
               'Description',
               style: TextStyle(
                 height: 1.5,
-                fontSize: 20,
+                fontSize: 20.sp,
                 color: AppColors.whiteColor,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Text(
               "Lorem " * 20,
-              style: const TextStyle(
+              style: TextStyle(
                 height: 1.5,
-                fontSize: 16,
+                fontSize: 16.sp,
                 color: AppColors.greyColor,
               ),
             ),
-            const SizedBox(height: 20),
-            const Text("Quantity",
+            SizedBox(height: 20.h),
+            Text("Quantity",
                 style: TextStyle(
                   height: 1.5,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   color: AppColors.whiteColor,
                 )),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
-              ),
+              ).r,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(50).r,
                 border: Border.all(color: AppColors.secondColor),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    width: 50,
-                    height: 40,
-                    decoration: const BoxDecoration(
+                    width: 50.w,
+                    height: 40.h,
+                    decoration: BoxDecoration(
                       color: AppColors.whiteColor,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(50),
                         bottomLeft: Radius.circular(50),
                         topRight: Radius.circular(0),
                         bottomRight: Radius.circular(0),
-                      ),
+                      ).r,
                     ),
                     child: const Icon(
                       Icons.remove,
                       color: AppColors.primaryColor,
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  const Text(
+                  SizedBox(width: 10.w),
+                  Text(
                     '1',
                     style: TextStyle(
                       height: 1.5,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       color: AppColors.whiteColor,
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Container(
-                    width: 50,
-                    height: 40,
-                    decoration: const BoxDecoration(
+                    width: 50.w,
+                    height: 40.h,
+                    decoration: BoxDecoration(
                       color: AppColors.whiteColor,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(0),
                         bottomLeft: Radius.circular(0),
                         topRight: Radius.circular(50),
                         bottomRight: Radius.circular(50),
-                      ),
+                      ).r,
                     ),
                     child: const Icon(
                       Icons.add,
