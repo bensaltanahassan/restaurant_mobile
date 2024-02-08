@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/cart/custom_itemcart.dart';
@@ -8,6 +10,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.put(CartController());
     return Padding(
       padding: const EdgeInsets.only(bottom: 25, left: 20, right: 20),
       child: Column(
@@ -58,7 +61,9 @@ class CartPage extends StatelessWidget {
             buttonColor: AppColors.secondColor,
             fontWeight: FontWeight.bold,
             titleSize: 20,
-            onPressed: () {},
+            onPressed: () {
+              cartController.goToPaymentPage();
+            },
           )
         ],
       ),

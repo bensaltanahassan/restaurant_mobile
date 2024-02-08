@@ -17,14 +17,14 @@ class AppRoutes {
   static const String containerPage = "/containerPage";
   //item
   static const String productsCategory = "/productsCategory";
-  static const String itemdetail = "/itemdetails";
+  static const String productdetail = "/productdetail";
   // orders
   static const String orderdetails = "/orderdetails";
   // cart
   static const String cart = "/cart";
 
   // SearchPage
-  static const String checkout = "/checkout";
+  static const String paymentPage = "/paymentPage";
 
   // Profil
   static const String myOrders = "/orders";

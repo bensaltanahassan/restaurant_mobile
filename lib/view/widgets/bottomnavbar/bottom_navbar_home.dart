@@ -24,7 +24,7 @@ class BottomNavBarHome extends StatelessWidget {
           TabItem(icon: Icons.shopping_basket_outlined, title: 'Cart'),
           TabItem(icon: Icons.search, title: 'Search'),
           TabItem(icon: Icons.favorite_outline, title: 'Favoris'),
-          TabItem(icon: Icons.person, title: 'Profile'),
+          TabItem(icon: Icons.person_outline, title: 'Profile'),
         ],
         onTap: controller.onBottomNavBarChanged,
         controller: controller.tabController,

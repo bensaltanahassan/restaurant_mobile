@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/home/home_controller.dart';
-import 'package:restaurant_mobile/core/constant/colors.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
-import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
+import 'package:restaurant_mobile/view/widgets/home/custom_card_slider.dart';
+import 'package:restaurant_mobile/view/widgets/home/custom_category_with_divider.dart';
+import 'package:restaurant_mobile/view/widgets/home/custom_product_home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -64,144 +64,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class CustomCategoryWithDivider extends StatelessWidget {
-  const CustomCategoryWithDivider({
-    super.key,
-    required this.title,
-    this.onPressed,
-  });
-
-  final String title;
-  final void Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppColors.whiteColor,
-          ),
-        ),
-        const SizedBox(width: 20),
-        const Expanded(
-          child: ColoredBox(
-            color: Colors.grey,
-            child: SizedBox(height: 3),
-          ),
-        ),
-        const SizedBox(width: 10),
-        TextButton(
-          onPressed: onPressed,
-          style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              const EdgeInsets.all(0),
-            ),
-          ),
-          child: const Text('View All',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: AppColors.secondColor,
-              )),
-        )
-      ],
-    );
-  }
-}
-
-class CustomProductHome extends StatelessWidget {
-  const CustomProductHome({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                image: AssetImage(AppImageAsset.pizza),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const SizedBox(height: 5),
-          const Text(
-            'PIZZA HOT  czac zac GAM',
-            style: TextStyle(
-              height: 1.5,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.whiteColor,
-            ),
-          ),
-          const SizedBox(height: 5),
-          const Text(
-            '\$ 20.00',
-            style: TextStyle(
-              height: 1.5,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: AppColors.whiteColor,
-            ),
-          ),
-          const SizedBox(height: 5),
-          CustomButton(
-            title: "Add Cart",
-            fontWeight: FontWeight.bold,
-            titleColor: Colors.white,
-            buttonColor: AppColors.secondColor,
-            onPressed: () {},
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class CustomCardSlider extends StatelessWidget {
-  const CustomCardSlider({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(bottom: 20),
-      height: 250,
-      alignment: Alignment.bottomCenter,
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: AppColors.secondColor,
-          image: DecorationImage(
-            image: AssetImage(AppImageAsset.pizza),
-            fit: BoxFit.fill,
-            opacity: 0.5,
-          )),
-      child: const Text(
-        'Different kind of food',
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
     );
   }
 }

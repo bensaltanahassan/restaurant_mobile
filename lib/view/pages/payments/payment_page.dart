@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/payment/payment_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
@@ -7,6 +9,7 @@ class PaymentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PaymentController());
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -41,7 +44,9 @@ class PaymentPage extends StatelessWidget {
         leading: Container(
           margin: const EdgeInsets.only(left: 10),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
@@ -59,7 +64,7 @@ class PaymentPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Delivery method",
+              "Adress",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -71,26 +76,43 @@ class PaymentPage extends StatelessWidget {
               buttonText: "Change",
               onPressed: () {},
             ),
+            const SizedBox(height: 10),
+            const Text(
+              "Phone number",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.whiteColor,
+              ),
+            ),
             ListTileSettings(
               title: "+212698989898",
               buttonText: "Change",
               onPressed: () {},
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
+            const Text(
+              "Payment Method",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.whiteColor,
+              ),
+            ),
             SizedBox(
               height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: const [
                   ChoicePaymentMethode(
-                    title: "Cash",
-                    icon: Icons.money,
+                    title: "Credit Card",
+                    icon: Icons.credit_card,
                     isSelected: true,
                   ),
                   SizedBox(width: 20),
                   ChoicePaymentMethode(
-                    title: "Credit Card",
-                    icon: Icons.credit_card,
+                    title: "Cash",
+                    icon: Icons.money,
                     isSelected: false,
                   ),
                   SizedBox(width: 20),
@@ -211,12 +233,11 @@ class ListTileSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.zero,
       title: Text(
         title,
         style: const TextStyle(
             color: AppColors.whiteColor,
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.bold),
       ),
       trailing: TextButton(
@@ -226,7 +247,7 @@ class ListTileSettings extends StatelessWidget {
           style: const TextStyle(
             color: AppColors.secondColor,
             fontWeight: FontWeight.bold,
-            fontSize: 16,
+            fontSize: 14,
           ),
         ),
       ),
