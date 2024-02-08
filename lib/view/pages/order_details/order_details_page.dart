@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/order_details/order_details_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -26,8 +27,9 @@ class OrderDetailsPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.all(AppDimensions.mainPadding).copyWith(bottom: 0),
+        padding: const EdgeInsets.all(AppDimensions.mainPadding)
+            .copyWith(bottom: 0)
+            .r,
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -36,22 +38,22 @@ class OrderDetailsPage extends StatelessWidget {
                 title: "Status",
                 subtitle: "Delivered",
               ),
-              const SizedBox(height: AppDimensions.mainSpacing / 2),
+              SizedBox(height: (AppDimensions.mainSpacing / 2).h),
               const CustomListTileOrderDetails(
                 title: "Address",
                 subtitle: "Jl. Raya Kedung Baruk No. 1",
               ),
-              const SizedBox(height: AppDimensions.mainSpacing / 2),
-              const Row(
+              SizedBox(height: (AppDimensions.mainSpacing / 2).h),
+              Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: CustomListTileOrderDetails(
                       title: "Phone",
                       subtitle: "08123456789",
                     ),
                   ),
-                  SizedBox(width: AppDimensions.mainSpacing / 2),
-                  Expanded(
+                  SizedBox(width: (AppDimensions.mainSpacing / 2).w),
+                  const Expanded(
                     child: CustomListTileOrderDetails(
                       title: "Date",
                       subtitle: "12/12/2021",
@@ -59,57 +61,59 @@ class OrderDetailsPage extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(height: AppDimensions.mainSpacing / 2),
+              SizedBox(height: (AppDimensions.mainSpacing / 2).h),
               const CustomListTileOrderDetails(
                 title: "Email",
                 subtitle: "bensaltanahassan@gmail.com",
               ),
-              const SizedBox(height: AppDimensions.mainSpacing / 2),
+              SizedBox(height: (AppDimensions.mainSpacing / 2).h),
               const CustomListTileOrderDetails(
                 title: "Payment Method",
                 subtitle: "Cash",
               ),
-              const SizedBox(height: AppDimensions.mainSpacing / 2),
+              SizedBox(height: (AppDimensions.mainSpacing / 2).h),
               const CustomListTileOrderDetails(
                 title: "Comment",
                 subtitle: "No Comment",
               ),
-              const SizedBox(height: AppDimensions.mainSpacing / 2),
+              SizedBox(height: (AppDimensions.mainSpacing / 2).h),
               ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10).r,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.greyColor),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10).r,
                   ),
-                  child: const Column(
+                  child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.mainSpacing / 2,
-                            vertical: AppDimensions.mainSpacing / 3),
+                        padding: const EdgeInsets.symmetric(
+                                horizontal: AppDimensions.mainSpacing / 2,
+                                vertical: AppDimensions.mainSpacing / 3)
+                            .r,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "Products in order",
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.whiteColor),
                             ),
-                            CustomProductInOrder(),
-                            SizedBox(height: AppDimensions.mainSpacing / 2),
-                            CustomProductInOrder(),
-                            SizedBox(height: AppDimensions.mainSpacing / 2),
-                            CustomProductInOrder(),
-                            SizedBox(height: AppDimensions.mainSpacing / 2),
-                            CustomProductInOrder(),
-                            SizedBox(height: AppDimensions.mainSpacing / 2),
-                            CustomProductInOrder()
+                            const CustomProductInOrder(),
+                            SizedBox(height: (AppDimensions.mainSpacing / 2).r),
+                            const CustomProductInOrder(),
+                            SizedBox(height: (AppDimensions.mainSpacing / 2).r),
+                            const CustomProductInOrder(),
+                            SizedBox(height: (AppDimensions.mainSpacing / 2).r),
+                            const CustomProductInOrder(),
+                            SizedBox(height: (AppDimensions.mainSpacing / 2).r),
+                            const CustomProductInOrder()
                           ],
                         ),
                       ),
+                      SizedBox(height: 20.h),
                       ColoredBox(
                           color: AppColors.greyColor,
                           child: Column(
@@ -119,14 +123,14 @@ class OrderDetailsPage extends StatelessWidget {
                                 title: Text(
                                   "Subtotal",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 trailing: Text(
                                   "\$100.00",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -136,14 +140,14 @@ class OrderDetailsPage extends StatelessWidget {
                                 title: Text(
                                   "Shipping",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 trailing: Text(
                                   "\$10.00",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -153,14 +157,14 @@ class OrderDetailsPage extends StatelessWidget {
                                 title: Text(
                                   "Total",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 trailing: Text(
                                   "\$110.00",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
