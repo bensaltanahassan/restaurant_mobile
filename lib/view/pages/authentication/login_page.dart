@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/login_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -21,21 +22,21 @@ class LoginPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Don\'t have an account?',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               TextButton(
                   onPressed: controller.goToRegisterPage,
-                  child: const Text(
+                  child: Text(
                     'Sign Up',
                     style: TextStyle(
                       color: AppColors.secondColor,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ))
@@ -43,40 +44,40 @@ class LoginPage extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20).r,
           child: Form(
             key: controller.formState,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 100),
+                  SizedBox(height: 100.h),
                   Row(
                     children: [
                       Image.asset(
                         AppImageAsset.logo,
-                        width: 200,
-                        height: 200,
+                        width: 200.w,
+                        height: 200.h,
                       ),
-                      const Expanded(
+                      Expanded(
                         child: Text(
                           'Welcome Back!',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 24.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   const CustomTextFormFieldAuth(
                     hintText: 'Email',
                     labelText: 'Email',
                     prefixIcon: Icons.email,
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   CustomTextFormFieldAuth(
                     hintText: 'Password',
                     labelText: 'Password',
@@ -86,7 +87,7 @@ class LoginPage extends StatelessWidget {
                         style: ButtonStyle(
                           padding:
                               MaterialStateProperty.all<EdgeInsetsGeometry>(
-                            const EdgeInsets.only(right: 10),
+                            const EdgeInsets.only(right: 10).r,
                           ),
                         ),
                         onPressed: () {},
@@ -98,29 +99,29 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   CustomButton(
                     title: "Login",
-                    titleSize: 20,
+                    titleSize: 20.sp,
                     titleColor: Colors.white,
                     buttonColor: AppColors.secondColor,
                     fontWeight: FontWeight.bold,
                     onPressed: controller.login,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: controller.goToForgetPasswordPage,
-                      child: const Text(
+                      child: Text(
                         'Forgot Password?',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                  // const Spacer(),
+                  //  Spacer(),
                 ],
               ),
             ),
