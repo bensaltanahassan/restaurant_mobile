@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/order_details/order_details_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/view/widgets/order_details/custom_listtile_orderdetails.dart';
@@ -9,6 +11,7 @@ class OrderDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(OrderDetailsController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('ORDER #1234'),

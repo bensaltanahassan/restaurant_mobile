@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/notifications/notifications_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 
 class NotificationsPage extends StatelessWidget {
@@ -6,6 +8,7 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(NotificationsController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notifications'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
@@ -9,6 +10,7 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SearchController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimensions.mainPadding)
           .copyWith(top: AppDimensions.mainPadding),

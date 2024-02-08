@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/user_settings/user_settings_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
@@ -10,6 +12,7 @@ class UserSettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(UserSettingsController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Settings'),

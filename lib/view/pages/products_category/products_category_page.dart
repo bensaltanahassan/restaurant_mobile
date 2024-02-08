@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/products_category/products_category_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
@@ -9,6 +11,7 @@ class ProductsCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ProductsCategoryController());
     return Scaffold(
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),

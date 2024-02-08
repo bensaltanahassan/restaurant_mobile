@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/product_details/product_details_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
@@ -9,6 +11,7 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ProductDetailsController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pizza Hotgaaam'),
