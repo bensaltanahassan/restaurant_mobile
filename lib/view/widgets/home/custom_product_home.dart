@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
@@ -17,14 +18,14 @@ class CustomProductHome extends StatelessWidget {
         Get.toNamed(AppRoutes.productdetail);
       },
       child: SizedBox(
-        width: 150,
+        width: 150.w,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 150,
-              height: 150,
+              width: 150.w,
+              height: 150.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: const DecorationImage(
@@ -33,27 +34,27 @@ class CustomProductHome extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
-            const Text(
+            SizedBox(height: 5.h),
+            Text(
               'PIZZA HOT  czac zac GAM',
               style: TextStyle(
                 height: 1.5,
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor,
               ),
             ),
-            const SizedBox(height: 5),
-            const Text(
+            SizedBox(height: 5.h),
+            Text(
               '\$ 20.00',
               style: TextStyle(
                 height: 1.5,
-                fontSize: 15,
+                fontSize: 15.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor,
               ),
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: 5.h),
             CustomButton(
               title: "Add Cart",
               fontWeight: FontWeight.bold,

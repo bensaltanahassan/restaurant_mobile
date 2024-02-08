@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -27,7 +28,7 @@ class ContainerPage extends StatelessWidget {
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                iconSize: 30.0,
+                iconSize: 30.h,
                 color: AppColors.whiteColor,
               );
             },

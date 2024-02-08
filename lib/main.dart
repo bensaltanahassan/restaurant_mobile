@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/bindings/initialebinding.dart';
 import 'package:restaurant_mobile/core/localization/changelocal.dart';
@@ -17,14 +18,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LocaleController localeController = Get.put(LocaleController());
+    // print the dimension of the screen
 
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Restaurant Mobile',
-      theme: localeController.appTheme,
-      getPages: AppRouter.routes,
-      initialBinding: InitialeBindings(),
-      locale: localeController.language,
+    return ScreenUtilInit(
+      designSize: const Size(411, 867),
+      builder: (_, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Restaurant Mobile',
+          theme: localeController.appTheme,
+          getPages: AppRouter.routes,
+          initialBinding: InitialeBindings(),
+          locale: localeController.language,
+        );
+      },
     );
   }
 }

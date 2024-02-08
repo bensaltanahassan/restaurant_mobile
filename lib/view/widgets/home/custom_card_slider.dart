@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 
@@ -10,8 +11,8 @@ class CustomCardSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 20),
-      height: 250,
+      padding: EdgeInsets.only(bottom: 20.h),
+      height: 250.h,
       alignment: Alignment.bottomCenter,
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -21,10 +22,10 @@ class CustomCardSlider extends StatelessWidget {
             fit: BoxFit.fill,
             opacity: 0.5,
           )),
-      child: const Text(
+      child: Text(
         'Different kind of food',
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 30.sp,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),

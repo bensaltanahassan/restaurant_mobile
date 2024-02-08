@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/home/home_controller.dart';
 import 'package:restaurant_mobile/view/widgets/home/custom_card_slider.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
     final controller = Get.put(HomeController());
     return ListView(
       shrinkWrap: true,
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 20).w,
       children: [
         CarouselSlider(
           options: CarouselOptions(
@@ -34,12 +35,12 @@ class HomePage extends StatelessWidget {
             return const CustomCardSlider();
           }).toList(),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         CustomCategoryWithDivider(
             title: 'PIZZA', onPressed: controller.goToProductsCategory),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         SizedBox(
-          height: 320,
+          height: 320.h,
           child: ListView.separated(
             itemBuilder: (c, i) => const CustomProductHome(),
             separatorBuilder: (c, i) => const SizedBox(width: 20),
@@ -51,9 +52,9 @@ class HomePage extends StatelessWidget {
         ),
         CustomCategoryWithDivider(
             title: 'BURGER', onPressed: controller.goToProductsCategory),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         SizedBox(
-          height: 320,
+          height: 320.h,
           child: ListView.separated(
             itemBuilder: (c, i) => const CustomProductHome(),
             separatorBuilder: (c, i) => const SizedBox(width: 20),

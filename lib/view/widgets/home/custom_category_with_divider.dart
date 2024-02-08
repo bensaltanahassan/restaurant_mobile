@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 
 class CustomCategoryWithDivider extends StatelessWidget {
@@ -17,20 +18,20 @@ class CustomCategoryWithDivider extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 20,
+          style: TextStyle(
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.whiteColor,
           ),
         ),
-        const SizedBox(width: 20),
-        const Expanded(
+        SizedBox(width: 20.w),
+        Expanded(
           child: ColoredBox(
             color: Colors.grey,
-            child: SizedBox(height: 3),
+            child: SizedBox(height: 3.h),
           ),
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10.w),
         TextButton(
           onPressed: onPressed,
           style: ButtonStyle(
@@ -38,9 +39,9 @@ class CustomCategoryWithDivider extends StatelessWidget {
               const EdgeInsets.all(0),
             ),
           ),
-          child: const Text('View All',
+          child: Text('View All',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: AppColors.secondColor,
               )),
