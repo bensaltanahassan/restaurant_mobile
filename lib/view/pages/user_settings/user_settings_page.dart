@@ -116,6 +116,7 @@ class UserSettingsPage extends StatelessWidget {
                 keyboardType: TextInputType.phone,
                 initialValue: "1234567890",
               ),
+              SizedBox(height: 40)
             ],
           ),
         ),

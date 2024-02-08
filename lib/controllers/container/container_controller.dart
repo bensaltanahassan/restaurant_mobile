@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
@@ -25,6 +27,34 @@ class ContainerController extends GetxController
     pageController.jumpToPage(index);
     tabController.animateTo(index);
     update();
+  }
+
+  void onPopInvoked(bool didPop) {
+    if (currentIndex == 0) {
+      Get.defaultDialog(
+        title: "Exit",
+        middleText: "Do you want to exit the app?",
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text("No"),
+          ),
+          TextButton(
+            onPressed: () {
+              exit(0);
+            },
+            child: const Text("Yes"),
+          ),
+        ],
+      );
+    } else {
+      currentIndex = 0;
+      pageController.jumpToPage(0);
+      tabController.animateTo(0);
+      update();
+    }
   }
 
   void logout() {

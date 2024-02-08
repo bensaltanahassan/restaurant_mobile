@@ -19,6 +19,7 @@ class ContainerPage extends StatelessWidget {
     return Scaffold(
         bottomNavigationBar: const BottomNavBarHome(),
         appBar: AppBar(
+          title: const Text("Restaurant App"),
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(
@@ -33,18 +34,22 @@ class ContainerPage extends StatelessWidget {
           ),
         ),
         drawer: const CustomDrawer(),
-        body: GetBuilder<ContainerController>(builder: (controller) {
-          return PageView(
-            controller: controller.pageController,
-            onPageChanged: controller.onPageChanged,
-            children: const [
-              HomePage(),
-              CartPage(),
-              SearchPage(),
-              FavorisPage(),
-              ProfilePage(),
-            ],
-          );
-        }));
+        body: PopScope(
+          canPop: false,
+          onPopInvoked: controller.onPopInvoked,
+          child: GetBuilder<ContainerController>(builder: (controller) {
+            return PageView(
+              controller: controller.pageController,
+              onPageChanged: controller.onPageChanged,
+              children: const [
+                HomePage(),
+                CartPage(),
+                SearchPage(),
+                FavorisPage(),
+                ProfilePage(),
+              ],
+            );
+          }),
+        ));
   }
 }
