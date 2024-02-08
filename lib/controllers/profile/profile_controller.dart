@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -17,25 +18,25 @@ class ProfileController extends GetxController {
         context: Get.context!,
         builder: (BuildContext context) {
           return Container(
-            height: 500,
+            height: 500.h,
             padding: const EdgeInsets.all(AppDimensions.mainPadding),
             child: Column(
               children: [
-                const Text(
+                Text(
                   "Change Password",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                     color: AppColors.whiteColor,
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 const CustomTextFormFieldAuth(
                   hintText: "New Password",
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 const CustomTextFormFieldAuth(
                   hintText: "Confirm Password",
                   prefixIcon: Icons.lock,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:restaurant_mobile/controllers/introduction/introduction_controller.dart';
@@ -23,7 +24,7 @@ class IntroductionPage extends StatelessWidget {
                       MaterialStateProperty.all(Colors.transparent),
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8).r,
                     side: const BorderSide(color: AppColors.secondColor),
                   ))),
               onPressed: controller.onDone,
@@ -39,7 +40,7 @@ class IntroductionPage extends StatelessWidget {
                       MaterialStateProperty.all(Colors.transparent),
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8).r,
                     side: const BorderSide(color: AppColors.secondColor),
                   ))),
               onPressed: controller.introKey.currentState?.next,
@@ -55,7 +56,7 @@ class IntroductionPage extends StatelessWidget {
                       MaterialStateProperty.all(Colors.transparent),
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8).r,
                     side: const BorderSide(color: AppColors.secondColor),
                   ))),
               onPressed: controller.onSkip,
@@ -75,8 +76,8 @@ class IntroductionPage extends StatelessWidget {
                       titleWidget: Text(
                         e.title,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 24,
+                        style: TextStyle(
+                          fontSize: 24.sp,
                           height: 1.5,
                           fontWeight: FontWeight.bold,
                           color: AppColors.whiteColor,
@@ -85,8 +86,8 @@ class IntroductionPage extends StatelessWidget {
                       bodyWidget: Text(
                         e.body,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 18,
+                        style: TextStyle(
+                          fontSize: 18.sp,
                           height: 1.5,
                           color: AppColors.whiteColor,
                         ),
@@ -94,7 +95,7 @@ class IntroductionPage extends StatelessWidget {
                       image: Center(
                           child: Image.asset(
                         e.image,
-                        height: 200,
+                        height: 200.h,
                       )),
                     ))
                 .toList()),

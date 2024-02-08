@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/welcome_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -16,25 +17,25 @@ class WelcomePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.primaryColor.withOpacity(.01),
         body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20).r,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(AppImageAsset.logo, width: 200, height: 200),
-                const Text(
+                Image.asset(AppImageAsset.logo, width: 200.w, height: 200.h),
+                Text(
                   'Restaurant Akhawayn',
                   style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 25.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                const SizedBox(height: 10),
-                const Text(
+                SizedBox(height: 10.h),
+                Text(
                   'Special & Delicious Food',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
@@ -43,21 +44,19 @@ class WelcomePage extends StatelessWidget {
                 CustomButton(
                   title: 'Log In',
                   titleColor: AppColors.whiteColor,
-                  titleSize: 20,
+                  titleSize: 20.sp,
                   buttonColor: AppColors.secondColor,
                   width: double.infinity,
-                  height: 50,
                   fontWeight: FontWeight.bold,
                   onPressed: controller.goToLoginPage,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 CustomButton(
                   title: 'Sign Up',
                   titleColor: AppColors.secondColor,
-                  titleSize: 20,
+                  titleSize: 20.sp,
                   buttonColor: AppColors.whiteColor,
                   width: double.infinity,
-                  height: 50,
                   fontWeight: FontWeight.bold,
                   onPressed: controller.goToRegisterPage,
                 ),

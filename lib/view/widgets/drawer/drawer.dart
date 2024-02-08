@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -26,15 +27,15 @@ class CustomDrawer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 100,
-                    width: 100,
+                    height: 100.h,
+                    width: 100.w,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10).r,
                         image: const DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(AppImageAsset.hassan))),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +66,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10).r,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -78,7 +79,7 @@ class CustomDrawer extends StatelessWidget {
                     },
                     isSelected: controller.currentIndex == 0,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomDrawetItem(
                     title: "Cart",
                     icon: Icons.shopping_basket_outlined,
@@ -88,7 +89,7 @@ class CustomDrawer extends StatelessWidget {
                     },
                     isSelected: controller.currentIndex == 1,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomDrawetItem(
                     title: "Search",
                     icon: Icons.search_outlined,
@@ -98,7 +99,7 @@ class CustomDrawer extends StatelessWidget {
                     },
                     isSelected: controller.currentIndex == 2,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomDrawetItem(
                     title: "Favoris",
                     icon: Icons.favorite_outline,
@@ -108,7 +109,7 @@ class CustomDrawer extends StatelessWidget {
                     },
                     isSelected: controller.currentIndex == 3,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomDrawetItem(
                     title: "Contact Us",
                     icon: Icons.phone_outlined,
@@ -119,7 +120,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             const Spacer(),
             Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20).r,
               child: CustomButton(
                 radius: 30,
                 buttonColor: AppColors.secondColor,
@@ -128,7 +129,7 @@ class CustomDrawer extends StatelessWidget {
                 onPressed: controller.logout,
               ),
             ),
-            const SizedBox(height: 20)
+            SizedBox(height: 20.h)
           ],
         ),
       );
@@ -170,8 +171,8 @@ class CustomDrawetItem extends StatelessWidget {
           minimumSize:
               const MaterialStatePropertyAll(Size(double.maxFinite, 1)),
           alignment: Alignment.centerLeft,
-          padding: const MaterialStatePropertyAll(
-              EdgeInsets.symmetric(horizontal: 20, vertical: 15))),
+          padding: MaterialStatePropertyAll(
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 15).r)),
     );
   }
 }
