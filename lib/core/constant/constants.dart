@@ -7,4 +7,5 @@ class Constants {
 
 class AppDimensions {
   static const double mainPadding = 20.0;
+  static const double mainSpacing = 20.0;
 }
