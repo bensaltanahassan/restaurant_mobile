@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/user_settings/user_settings_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
@@ -28,23 +29,25 @@ class UserSettingsPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(
-            left: AppDimensions.mainPadding,
-            right: AppDimensions.mainPadding,
-            bottom: AppDimensions.mainPadding),
+                left: AppDimensions.mainPadding,
+                right: AppDimensions.mainPadding,
+                bottom: AppDimensions.mainPadding)
+            .r,
         child: CustomButton(
           buttonColor: AppColors.secondColor,
           title: "Save",
           titleColor: AppColors.whiteColor,
-          titleSize: 20,
+          titleSize: 20.sp,
           fontWeight: FontWeight.bold,
           onPressed: () {},
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.only(
-            left: AppDimensions.mainPadding,
-            right: AppDimensions.mainPadding,
-            top: AppDimensions.mainPadding),
+      body: Padding(
+        padding: const EdgeInsets.only(
+                left: AppDimensions.mainPadding,
+                right: AppDimensions.mainPadding,
+                top: AppDimensions.mainPadding)
+            .r,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,74 +55,74 @@ class UserSettingsPage extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: CircleAvatar(
-                  radius: 53,
+                  radius: 53.r,
                   backgroundColor: AppColors.secondColor,
                   child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(AppImageAsset.hassan),
+                    radius: 50.r,
+                    backgroundImage: const AssetImage(AppImageAsset.hassan),
                     child: Align(
                       alignment: Alignment.bottomRight,
                       child: CircleAvatar(
-                        radius: 15,
+                        radius: 15.r,
                         backgroundColor: AppColors.whiteColor,
-                        child: Icon(Icons.camera_alt_outlined,
+                        child: const Icon(Icons.camera_alt_outlined,
                             color: AppColors.primaryColor),
                       ),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Text(
                 "First Name",
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 18.sp),
               ),
-              CustomTextFormFieldAuth(
+              const CustomTextFormFieldAuth(
                 hintText: "First Name",
                 initialValue: "HASSAN",
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Text(
                 "Last Name",
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 18.sp),
               ),
-              CustomTextFormFieldAuth(
+              const CustomTextFormFieldAuth(
                 hintText: "Last Name",
                 initialValue: "BENSALTANA",
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Text(
                 "Email",
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 18.sp),
               ),
-              CustomTextFormFieldAuth(
+              const CustomTextFormFieldAuth(
                 hintText: "Email",
                 keyboardType: TextInputType.emailAddress,
                 initialValue: "bensaltanahassan@gmail.com",
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Text(
                 "Phone",
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 18.sp),
               ),
-              CustomTextFormFieldAuth(
+              const CustomTextFormFieldAuth(
                 hintText: "Phone",
                 keyboardType: TextInputType.phone,
                 initialValue: "1234567890",
               ),
-              SizedBox(height: 40)
+              SizedBox(height: 40.h)
             ],
           ),
         ),
