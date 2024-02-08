@@ -47,8 +47,7 @@ class AppRouter {
     GetPage(name: AppRoutes.orderdetails, page: () => const OrderDetailsPage()),
     GetPage(name: AppRoutes.paymentPage, page: () => const PaymentPage()),
     GetPage(
-        name: AppRoutes.notifications,
-        page: () => const NotificationsPahe.NotificationsPage()),
+        name: AppRoutes.notifications, page: () => const NotificationsPage()),
     GetPage(
         name: AppRoutes.productdetail, page: () => const ProductDetailsPage()),
   ];

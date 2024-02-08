@@ -9,6 +9,15 @@ class NotificationsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notifications'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.delete_outline,
+              color: AppColors.whiteColor,
+            ),
+          ),
+        ],
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -19,8 +28,22 @@ class NotificationsPage extends StatelessWidget {
           },
         ),
       ),
-      body: const Center(
-        child: Text('Notifications'),
+      body: ListView.separated(
+        itemCount: 10,
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            color: AppColors.greyColor,
+          );
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            //disable shape
+            shape: const RoundedRectangleBorder(),
+            leading: const Icon(Icons.shopping_bag_outlined),
+            title: Text('Notification $index'),
+            trailing: Text("12:0$index PM"),
+          );
+        },
       ),
     );
   }
