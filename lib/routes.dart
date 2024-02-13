@@ -7,6 +7,7 @@ import 'package:restaurant_mobile/view/pages/authentication/login_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/register_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/verify_code_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/welcome_page.dart';
+import 'package:restaurant_mobile/view/pages/booking/booking_page.dart';
 import 'package:restaurant_mobile/view/pages/container/container_page.dart';
 import 'package:restaurant_mobile/view/pages/notifications/notifications_page.dart';
 import 'package:restaurant_mobile/view/pages/onboarding/introduction_page.dart';
@@ -15,7 +16,6 @@ import 'package:restaurant_mobile/view/pages/orders/orders_page.dart';
 import 'package:restaurant_mobile/view/pages/payments/payment_page.dart';
 import 'package:restaurant_mobile/view/pages/product_details/product_details_page.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_page.dart';
-import 'package:restaurant_mobile/view/pages/reservation/reservation_page.dart';
 import 'package:restaurant_mobile/view/pages/user_settings/user_settings_page.dart';
 
 class AppRouter {
@@ -51,6 +51,6 @@ class AppRouter {
         name: AppRoutes.notifications, page: () => const NotificationsPage()),
     GetPage(
         name: AppRoutes.productdetail, page: () => const ProductDetailsPage()),
-    GetPage(name: AppRoutes.reservation, page: () => const ReservationPage()),
+    GetPage(name: AppRoutes.reservation, page: () => const BookingPage()),
   ];
 }

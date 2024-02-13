@@ -52,8 +52,7 @@ class CustomDrawer extends StatelessWidget {
                                 padding:
                                     MaterialStatePropertyAll(EdgeInsets.zero)),
                             onPressed: () {
-                              controller.onDrawerChanged(4);
-                              Navigator.of(context).pop();
+                              controller.onDrawerChanged(4, context);
                             },
                             child: const Text(
                               "View Profile",
@@ -74,8 +73,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Home",
                     icon: Icons.home_outlined,
                     onPressed: () {
-                      controller.onDrawerChanged(0);
-                      Navigator.of(context).pop();
+                      controller.onDrawerChanged(0, context);
                     },
                     isSelected: controller.currentIndex == 0,
                   ),
@@ -84,8 +82,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Cart",
                     icon: Icons.shopping_basket_outlined,
                     onPressed: () {
-                      controller.onDrawerChanged(1);
-                      Navigator.of(context).pop();
+                      controller.onDrawerChanged(1, context);
                     },
                     isSelected: controller.currentIndex == 1,
                   ),
@@ -94,8 +91,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Search",
                     icon: Icons.search_outlined,
                     onPressed: () {
-                      controller.onDrawerChanged(2);
-                      Navigator.of(context).pop();
+                      controller.onDrawerChanged(2, context);
                     },
                     isSelected: controller.currentIndex == 2,
                   ),
@@ -104,8 +100,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Favoris",
                     icon: Icons.favorite_outline,
                     onPressed: () {
-                      controller.onDrawerChanged(3);
-                      Navigator.of(context).pop();
+                      controller.onDrawerChanged(3, context);
                     },
                     isSelected: controller.currentIndex == 3,
                   ),
@@ -117,9 +112,9 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   CustomDrawetItem(
-                    title: "Reserve Table",
+                    title: "Book Table",
                     icon: Icons.table_chart_outlined,
-                    onPressed: () {},
+                    onPressed: controller.goToReservationPage,
                   )
                 ],
               ),

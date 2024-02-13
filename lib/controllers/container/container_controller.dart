@@ -22,7 +22,7 @@ class ContainerController extends GetxController
     update();
   }
 
-  void onDrawerChanged(int index) {
+  void onDrawerChanged(int index, BuildContext context) {
     currentIndex = index;
     pageController.jumpToPage(index);
     tabController.animateTo(index);

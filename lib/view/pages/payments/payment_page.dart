@@ -6,6 +6,7 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/payment/list_tile_setting.dart';
 import 'package:restaurant_mobile/view/widgets/payment/payment_methode_card.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_back_button.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
@@ -44,22 +45,7 @@ class PaymentPage extends StatelessWidget {
       ),
       appBar: AppBar(
         title: const Text('Payment Method'),
-        leading: Container(
-          margin: const EdgeInsets.only(left: 10).r,
-          child: ElevatedButton(
-            onPressed: () {
-              Get.back();
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              shadowColor: Colors.transparent,
-              padding: const EdgeInsets.only(left: 10).r,
-            ),
-            child: const Center(
-                child:
-                    Icon(Icons.arrow_back_ios, color: AppColors.secondColor)),
-          ),
-        ),
+        leading: const CustomBackButton(),
       ),
       body: GetBuilder<PaymentController>(builder: (controller) {
         return Padding(

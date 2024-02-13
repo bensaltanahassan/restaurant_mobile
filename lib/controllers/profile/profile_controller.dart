@@ -62,5 +62,5 @@ class ProfileController extends GetxController {
     await Get.offAllNamed(AppRoutes.login);
   }
 
-  void goToFavorite() => containerController.onDrawerChanged(3);
+  void goToFavorite() => containerController.onDrawerChanged(3, Get.context!);
 }
