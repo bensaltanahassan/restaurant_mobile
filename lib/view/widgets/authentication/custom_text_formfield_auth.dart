@@ -14,8 +14,10 @@ class CustomTextFormFieldAuth extends StatelessWidget {
     this.initialValue,
     this.keyboardType,
     this.borderColor = AppColors.secondColor,
+    this.fontColor,
   });
 
+  final Color? fontColor;
   final String? hintText;
   final String? labelText;
   final IconData? prefixIcon;
@@ -37,8 +39,8 @@ class CustomTextFormFieldAuth extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
-        labelStyle: const TextStyle(color: Colors.white),
-        hintStyle: const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: fontColor ?? Colors.white),
+        hintStyle: TextStyle(color: fontColor ?? Colors.white),
         prefixIcon:
             prefixIcon != null ? Icon(prefixIcon, color: Colors.white) : null,
         suffixIcon: suffixIcon,

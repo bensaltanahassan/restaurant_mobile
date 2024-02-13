@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
-import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
 
 class SearchPage extends StatelessWidget {
@@ -21,16 +20,20 @@ class SearchPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: CustomTextFormFieldAuth(
-                  hintText: "Search",
-                  labelText: "Search",
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                  ),
+                child: SearchBar(
+                  hintText: 'Search',
+                  trailing: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.search_outlined,
+                        color: AppColors.primaryColor,
+                        size: 30.r,
+                      ),
+                    )
+                  ],
+                  side: const MaterialStatePropertyAll(
+                      BorderSide(color: AppColors.secondColor)),
                 ),
               ),
               IconButton(

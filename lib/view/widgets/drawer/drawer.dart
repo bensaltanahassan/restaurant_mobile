@@ -115,6 +115,12 @@ class CustomDrawer extends StatelessWidget {
                     icon: Icons.phone_outlined,
                     onPressed: () {},
                   ),
+                  SizedBox(height: 10.h),
+                  CustomDrawetItem(
+                    title: "Reserve Table",
+                    icon: Icons.table_chart_outlined,
+                    onPressed: () {},
+                  )
                 ],
               ),
             ),

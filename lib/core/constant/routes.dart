@@ -49,4 +49,5 @@ class AppRoutes {
 
   // SearchPage
   static const String searchPage = "/searchPage";
+  static const String reservation = "/reservation";
 }

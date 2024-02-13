@@ -29,6 +29,10 @@ class ContainerController extends GetxController
     update();
   }
 
+  void goToReservationPage() {
+    Get.toNamed(AppRoutes.reservation);
+  }
+
   void onPopInvoked(bool didPop) {
     if (currentIndex == 0) {
       Get.defaultDialog(
