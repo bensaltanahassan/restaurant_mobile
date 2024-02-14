@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/search/search_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
@@ -10,7 +11,7 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SearchController());
+    Get.put(SearchFoodsController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppDimensions.mainPadding)
           .copyWith(top: AppDimensions.mainPadding)
@@ -48,12 +49,17 @@ class SearchPage extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Expanded(
-              child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemCount: 7,
-            separatorBuilder: (c, i) => Divider(height: 20.h),
-            itemBuilder: (c, i) => const CustomProductCategory(),
-          ))
+              child: GetBuilder<SearchFoodsController>(builder: (controller) {
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemCount: 7,
+              separatorBuilder: (c, i) => Divider(height: 20.h),
+              itemBuilder: (c, i) => CustomProductCategory(
+                tag: "pizza$i",
+                onTap: () => controller.goToProductDetail(tag: "pizza$i"),
+              ),
+            );
+          }))
         ],
       ),
     );

@@ -16,10 +16,10 @@ class CustomProductHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: SizedBox(
-        width: 150.w,
+    return SizedBox(
+      width: 150.w,
+      child: GestureDetector(
+        onTap: onTap,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,12 +28,7 @@ class CustomProductHome extends StatelessWidget {
               borderRadius: BorderRadius.circular(20).r,
               child: Hero(
                 tag: tag,
-                child: Image.asset(
-                  AppImageAsset.pizza,
-                  fit: BoxFit.cover,
-                  width: 150.w,
-                  height: 150.w,
-                ),
+                child: Image.asset(AppImageAsset.pizza, fit: BoxFit.cover),
               ),
             ),
             SizedBox(height: 5.h),

@@ -5,4 +5,8 @@ class CartController extends GetxController {
   void goToPaymentPage() {
     Get.toNamed(AppRoutes.paymentPage);
   }
+
+  void goToProductDetail({required String tag}) {
+    Get.toNamed(AppRoutes.productdetail, arguments: {"tag": tag});
+  }
 }

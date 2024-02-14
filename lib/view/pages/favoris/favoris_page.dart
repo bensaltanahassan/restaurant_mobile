@@ -25,12 +25,17 @@ class FavorisPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemCount: 7,
-              separatorBuilder: (c, i) => Divider(height: 30.h),
-              itemBuilder: (c, i) => const CustomItemFavoris(),
-            ),
+            child: GetBuilder<FavorisController>(builder: (controller) {
+              return ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemCount: 7,
+                separatorBuilder: (c, i) => Divider(height: 30.h),
+                itemBuilder: (c, i) => CustomItemFavoris(
+                  tag: "pizza$i",
+                  onTap: () => controller.goToProductDetail(tag: "pizza$i"),
+                ),
+              );
+            }),
           ),
         ],
       ),

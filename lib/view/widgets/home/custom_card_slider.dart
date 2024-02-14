@@ -6,28 +6,48 @@ import 'package:restaurant_mobile/core/constant/imageassets.dart';
 class CustomCardSlider extends StatelessWidget {
   const CustomCardSlider({
     super.key,
+    required this.tag,
+    this.onTap,
   });
+
+  final String tag;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 20.h),
-      height: 250.h,
-      alignment: Alignment.bottomCenter,
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          color: AppColors.secondColor,
-          image: DecorationImage(
-            image: AssetImage(AppImageAsset.pizza),
-            fit: BoxFit.fill,
-            opacity: 0.5,
-          )),
-      child: Text(
-        'Different kind of food',
-        style: TextStyle(
-          fontSize: 30.sp,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        height: 250.h,
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20).r,
+              child: Hero(
+                tag: tag,
+                child: Image.asset(
+                  AppImageAsset.pizza,
+                  width: double.maxFinite,
+                  height: 250.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              height: 250.h,
+              color: Colors.black.withOpacity(0.3),
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.all(20.w),
+              child: Text(
+                'Different kind of food',
+                style: TextStyle(
+                  fontSize: 28.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.whiteColor,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

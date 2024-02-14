@@ -41,13 +41,18 @@ class ProductsCategoryPage extends StatelessWidget {
         body: MediaQuery.removePadding(
           context: context,
           removeTop: true,
-          child: ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            itemBuilder: (c, i) => const CustomProductCategory(),
-            separatorBuilder: (c, i) =>
-                const Divider(color: AppColors.greyColor, height: 10),
-            itemCount: 10,
-          ),
+          child: GetBuilder<ProductsCategoryController>(builder: (controller) {
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              itemBuilder: (c, i) => CustomProductCategory(
+                tag: "pizza$i",
+                onTap: () => controller.goToProductDetail(tag: "pizza$i"),
+              ),
+              separatorBuilder: (c, i) => const Divider(
+                  color: AppColors.greyColor, height: 20, thickness: .6),
+              itemCount: 10,
+            );
+          }),
         ),
       ),
     );

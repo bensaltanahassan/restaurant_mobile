@@ -58,6 +58,15 @@ class ProductDetailsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20).r,
                 child: Hero(
                   tag: controller.tag,
+                  transitionOnUserGestures: true,
+                  placeholderBuilder:
+                      (BuildContext context, Size heroSize, Widget child) {
+                    return SizedBox(
+                      width: heroSize.width,
+                      height: heroSize.height,
+                      child: child,
+                    );
+                  },
                   child: Image.asset(
                     AppImageAsset.pizza,
                     fit: BoxFit.cover,

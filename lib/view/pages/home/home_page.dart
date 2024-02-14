@@ -33,7 +33,10 @@ class HomePage extends StatelessWidget {
               viewportFraction: 0.8,
             ),
             items: [1, 2, 3, 4, 5].map((i) {
-              return const CustomCardSlider();
+              return CustomCardSlider(
+                tag: "slider$i",
+                onTap: () => controller.goToProductDetail(tag: "slider$i"),
+              );
             }).toList(),
           ),
           SizedBox(height: 10.h),
