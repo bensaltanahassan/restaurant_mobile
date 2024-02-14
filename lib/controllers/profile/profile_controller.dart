@@ -31,13 +31,13 @@ class ProfileController extends GetxController {
                   ),
                 ),
                 SizedBox(height: 20.h),
-                const CustomTextFormFieldAuth(
+                const CustomTextFormField(
                   hintText: "New Password",
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),
                 SizedBox(height: 20.h),
-                const CustomTextFormFieldAuth(
+                const CustomTextFormField(
                   hintText: "Confirm Password",
                   prefixIcon: Icons.lock,
                   isPassword: true,

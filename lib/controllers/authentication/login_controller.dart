@@ -5,6 +5,14 @@ import 'package:restaurant_mobile/core/services/services.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> formState = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool showPassword = false;
+  void setShowPassword() {
+    showPassword = !showPassword;
+    update(["password"]);
+  }
+
   final MyServices myServices = Get.find();
   void goToRegisterPage() {
     Get.offNamed(AppRoutes.signUp);
@@ -15,7 +23,9 @@ class LoginController extends GetxController {
   }
 
   void login() async {
-    await myServices.sharedPreferences.setBool("login", true);
-    Get.offAllNamed(AppRoutes.containerPage);
+    if (formState.currentState!.validate()) {
+      await myServices.sharedPreferences.setBool("login", true);
+      Get.offAllNamed(AppRoutes.containerPage);
+    }
   }
 }

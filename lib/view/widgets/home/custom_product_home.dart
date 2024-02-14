@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
-import 'package:restaurant_mobile/core/constant/routes.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
 class CustomProductHome extends StatelessWidget {
   const CustomProductHome({
     super.key,
+    required this.tag,
+    required this.onTap,
   });
+
+  final String tag;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Get.toNamed(AppRoutes.productdetail);
-      },
+      onTap: onTap,
       child: SizedBox(
         width: 150.w,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 150.w,
-              height: 150.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: const DecorationImage(
-                  image: AssetImage(AppImageAsset.pizza),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20).r,
+              child: Hero(
+                tag: tag,
+                child: Image.asset(
+                  AppImageAsset.pizza,
                   fit: BoxFit.cover,
+                  width: 150.w,
+                  height: 150.w,
                 ),
               ),
             ),

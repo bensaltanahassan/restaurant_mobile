@@ -80,7 +80,7 @@ class UserSettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormFieldAuth(
+              const CustomTextFormField(
                 hintText: "First Name",
                 initialValue: "HASSAN",
               ),
@@ -92,7 +92,7 @@ class UserSettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormFieldAuth(
+              const CustomTextFormField(
                 hintText: "Last Name",
                 initialValue: "BENSALTANA",
               ),
@@ -104,7 +104,7 @@ class UserSettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormFieldAuth(
+              const CustomTextFormField(
                 hintText: "Email",
                 keyboardType: TextInputType.emailAddress,
                 initialValue: "bensaltanahassan@gmail.com",
@@ -117,7 +117,7 @@ class UserSettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormFieldAuth(
+              const CustomTextFormField(
                 hintText: "Phone",
                 keyboardType: TextInputType.phone,
                 initialValue: "1234567890",

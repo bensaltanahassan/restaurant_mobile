@@ -56,7 +56,7 @@ class PaymentController extends GetxController {
                     color: AppColors.primaryColor,
                   ),
                 ),
-                const CustomTextFormFieldAuth(
+                const CustomTextFormField(
                   borderColor: AppColors.greyColor,
                   hintText: "Address",
                   fontColor: AppColors.greyColor,
@@ -121,7 +121,7 @@ class PaymentController extends GetxController {
                     color: AppColors.primaryColor,
                   ),
                 ),
-                const CustomTextFormFieldAuth(
+                const CustomTextFormField(
                   borderColor: AppColors.greyColor,
                   hintText: "Phone Number",
                   fontColor: AppColors.greyColor,
@@ -186,7 +186,7 @@ class PaymentController extends GetxController {
                     color: AppColors.primaryColor,
                   ),
                 ),
-                const CustomTextFormFieldAuth(
+                const CustomTextFormField(
                   borderColor: AppColors.greyColor,
                   hintText: "Card Number",
                   fontColor: AppColors.greyColor,
@@ -208,7 +208,7 @@ class PaymentController extends GetxController {
                               color: AppColors.primaryColor,
                             ),
                           ),
-                          const CustomTextFormFieldAuth(
+                          const CustomTextFormField(
                             hintText: "MM/YY",
                             fontColor: AppColors.greyColor,
                             borderColor: AppColors.greyColor,
@@ -231,7 +231,7 @@ class PaymentController extends GetxController {
                               color: AppColors.primaryColor,
                             ),
                           ),
-                          const CustomTextFormFieldAuth(
+                          const CustomTextFormField(
                             hintText: "CVV",
                             fontColor: AppColors.greyColor,
                             borderColor: AppColors.greyColor,

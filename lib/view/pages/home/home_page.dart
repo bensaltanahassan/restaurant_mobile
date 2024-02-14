@@ -14,57 +14,65 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
-    return ListView(
-      shrinkWrap: true,
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20).w,
-      children: [
-        CarouselSlider(
-          options: CarouselOptions(
-            height: 200.0,
-            autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 5),
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: true,
-            aspectRatio: 16 / 9,
-            autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            viewportFraction: 0.8,
+    Get.put(HomeController());
+    return GetBuilder<HomeController>(builder: (controller) {
+      return ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 20).r,
+        children: [
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 200.0.h,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 5),
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: true,
+              aspectRatio: 16 / 9,
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              viewportFraction: 0.8,
+            ),
+            items: [1, 2, 3, 4, 5].map((i) {
+              return const CustomCardSlider();
+            }).toList(),
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
-            return const CustomCardSlider();
-          }).toList(),
-        ),
-        SizedBox(height: 10.h),
-        CustomCategoryWithDivider(
-            title: 'PIZZA', onPressed: controller.goToProductsCategory),
-        SizedBox(height: 10.h),
-        SizedBox(
-          height: 320.h,
-          child: ListView.separated(
-            itemBuilder: (c, i) => const CustomProductHome(),
-            separatorBuilder: (c, i) => const SizedBox(width: 20),
-            itemCount: 10,
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
+          SizedBox(height: 10.h),
+          CustomCategoryWithDivider(
+              title: 'PIZZA', onPressed: controller.goToProductsCategory),
+          SizedBox(height: 10.h),
+          SizedBox(
+            height: 320.h,
+            child: ListView.separated(
+              itemBuilder: (c, i) => CustomProductHome(
+                tag: "pizza$i",
+                onTap: () => controller.goToProductDetail(tag: "pizza$i"),
+              ),
+              separatorBuilder: (c, i) => const SizedBox(width: 20),
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+            ),
           ),
-        ),
-        CustomCategoryWithDivider(
-            title: 'BURGER', onPressed: controller.goToProductsCategory),
-        SizedBox(height: 10.h),
-        SizedBox(
-          height: 320.h,
-          child: ListView.separated(
-            itemBuilder: (c, i) => const CustomProductHome(),
-            separatorBuilder: (c, i) => const SizedBox(width: 20),
-            itemCount: 10,
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
+          CustomCategoryWithDivider(
+              title: 'BURGER', onPressed: controller.goToProductsCategory),
+          SizedBox(height: 10.h),
+          SizedBox(
+            height: 320.h,
+            child: ListView.separated(
+              itemBuilder: (c, i) => CustomProductHome(
+                tag: "burger$i",
+                onTap: () => controller.goToProductDetail(tag: "burger$i"),
+              ),
+              separatorBuilder: (c, i) => const SizedBox(width: 20),
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }

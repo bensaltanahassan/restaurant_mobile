@@ -11,7 +11,7 @@ class StackAuth extends StatelessWidget {
     return Stack(
       children: [
         Opacity(
-          opacity: .2,
+          opacity: .12,
           child: Image.asset(
             AppImageAsset.pizza,
             width: double.infinity,

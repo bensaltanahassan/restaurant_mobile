@@ -5,4 +5,8 @@ class HomeController extends GetxController {
   void goToProductsCategory() {
     Get.toNamed(AppRoutes.productsCategory);
   }
+
+  void goToProductDetail({required String tag}) {
+    Get.toNamed(AppRoutes.productdetail, arguments: {"tag": tag});
+  }
 }

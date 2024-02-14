@@ -20,6 +20,7 @@ class ProductsCategoryPage extends StatelessWidget {
             SliverAppBar(
               expandedHeight: 150.0,
               floating: true,
+              leading: const SizedBox(),
               flexibleSpace: FlexibleSpaceBar(
                 title: const Text('Pizza'),
                 background: Image.asset(AppImageAsset.pizza, fit: BoxFit.cover),
@@ -28,7 +29,7 @@ class ProductsCategoryPage extends StatelessWidget {
             const SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(left: 10, right: 10, top: 10),
-                child: CustomTextFormFieldAuth(
+                child: CustomTextFormField(
                   hintText: 'Search',
                   labelText: 'Search',
                   prefixIcon: Icons.search,
