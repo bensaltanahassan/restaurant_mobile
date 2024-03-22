@@ -1,16 +1,6 @@
 class AppLinks {
   // server
-  // static const String server = "http://10.0.2.2:5000";
-  static const String server = "https://backend-ecommerce-i4gg.onrender.com";
-  static const String image = "$server/media";
-
-  // test
-  static const String test = "$server/test.php";
-
-  //=============Images Network==============
-  static const String imageCategories = "$image/categories";
-  static const String imageItems = "$image/items";
-
+  static const String server = "http://10.0.2.2:5241";
   //=============Auth==============
   static const String signup = "$server/auth/signup";
   static const String verifycodesignup = "$server/auth/verifycode";
@@ -32,24 +22,18 @@ class AppLinks {
   static const String products = "$server/products";
 
   //=============Search Products=================
-  static const String search = "$server/products/search";
+  static const String search = "$products/search";
 
   //=============Favoris=================
-  static const String favoris = "$server/favoris";
+  static const String favoris = "$server/favorite";
 
   //=============Cart=================
   static const String cart = "$server/cart";
 
-  //=============Address=================
-  static const String address = "$server/address";
-
   //=============Orders=================
   static const String orders = "$server/orders";
 
-  //=============Coupons=================
-  static const String coupons = "$server/coupons";
-
-  //=============Coupons=================
+  //=============checkout=================
   static const String checkout = "$server/checkout";
 
   //Settings

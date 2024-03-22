@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:restaurant_mobile/controllers/products_category/products_category_controller.dart';
-import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/class/handlingdataview.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/view/pages/products_category/products_category_loading.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
 
@@ -41,18 +44,27 @@ class ProductsCategoryPage extends StatelessWidget {
         body: MediaQuery.removePadding(
           context: context,
           removeTop: true,
-          child: GetBuilder<ProductsCategoryController>(builder: (controller) {
-            return ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              itemBuilder: (c, i) => CustomProductCategory(
-                tag: "pizza$i",
-                onTap: () => controller.goToProductDetail(tag: "pizza$i"),
-              ),
-              separatorBuilder: (c, i) => const Divider(
-                  color: AppColors.greyColor, height: 20, thickness: .6),
-              itemCount: 10,
-            );
-          }),
+          child: GetBuilder<ProductsCategoryController>(
+              id: "main",
+              builder: (controller) {
+                return HandlingDataView(
+                  statusRequest: controller.statusRequest,
+                  loadingWidget: const ProductsCategoryLoading(),
+                  child: PagedListView<int, int>(
+                    pagingController: controller.pagingController,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
+                            .r,
+                    builderDelegate: PagedChildBuilderDelegate<int>(
+                      itemBuilder: (context, item, i) => CustomProductCategory(
+                        tag: "pizza$i",
+                        onTap: () =>
+                            controller.goToProductDetail(tag: "pizza$i"),
+                      ),
+                    ),
+                  ),
+                );
+              }),
         ),
       ),
     );

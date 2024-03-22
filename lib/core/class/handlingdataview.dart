@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/view/widgets/shared/loading.dart';
 
 class HandlingDataView extends StatelessWidget {
   const HandlingDataView({
@@ -18,7 +19,7 @@ class HandlingDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     if (statusRequest == StatusRequest.loading) {
       if (loadingWidget != null) {
-        return loadingWidget!;
+        return LoadingWidget(child: loadingWidget!);
       }
       return Center(child: Lottie.asset(AppImageAsset.loading));
     } else if (statusRequest == StatusRequest.offlinefailure) {
