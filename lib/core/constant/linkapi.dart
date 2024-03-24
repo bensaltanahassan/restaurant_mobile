@@ -1,6 +1,6 @@
 class AppLinks {
   // server
-  static const String server = "http://10.0.2.2:5241";
+  static const String server = "http://10.0.2.2:5241/api";
   //=============Auth==============
   static const String signup = "$server/auth/signup";
   static const String verifycodesignup = "$server/auth/verifycode";

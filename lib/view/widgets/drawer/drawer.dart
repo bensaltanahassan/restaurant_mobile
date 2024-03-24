@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -31,18 +30,19 @@ class CustomDrawer extends StatelessWidget {
                     width: 100.w,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10).r,
-                        image: const DecorationImage(
+                        image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(AppImageAsset.hassan))),
+                            image: NetworkImage(
+                                controller.myServices.user!.image!.url!))),
                   ),
                   SizedBox(width: 10.w),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "BENSALTANA HASSAN",
-                          style: TextStyle(
+                        Text(
+                          controller.myServices.user!.fullName!,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),

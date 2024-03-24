@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/data/model/favorismodel.dart' as fv;
 
 class CustomItemFavoris extends StatelessWidget {
   const CustomItemFavoris({
     super.key,
-    required this.tag,
     this.onTap,
+    required this.favoris,
   });
 
-  final String tag;
+  final fv.FavorisModel favoris;
   final void Function()? onTap;
 
   @override
@@ -26,9 +26,9 @@ class CustomItemFavoris extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10).r,
               child: Hero(
-                tag: tag,
-                child: Image.asset(
-                  AppImageAsset.pizza,
+                tag: favoris.id!,
+                child: Image.network(
+                  favoris.product!.productImages![0].image!.url!,
                   width: 80.w,
                   height: 100.h,
                   fit: BoxFit.cover,
@@ -44,7 +44,7 @@ class CustomItemFavoris extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Pizza hot gamberi",
+                        Text(favoris.product!.name!,
                             style: TextStyle(
                               fontSize: 20.sp,
                               height: 1,
@@ -52,7 +52,7 @@ class CustomItemFavoris extends StatelessWidget {
                               color: AppColors.whiteColor,
                             )),
                         Text(
-                          "Lorem " * 20,
+                          favoris.product!.description!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -68,7 +68,7 @@ class CustomItemFavoris extends StatelessWidget {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text("\$500.00",
+                          Text("\$${favoris.product!.price}",
                               style: TextStyle(
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.bold,

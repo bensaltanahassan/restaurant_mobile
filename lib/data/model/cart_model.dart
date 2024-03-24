@@ -20,19 +20,4 @@ class CartModel {
     orderId = json['order'];
     version = json['__v'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['cartId'] = cartId;
-    if (user != null) {
-      data['user'] = user!.toJson();
-    }
-    if (product != null) {
-      data['product'] = product!.toJson();
-    }
-    data['quanity'] = quantity;
-    data['order'] = orderId;
-    data['version'] = version;
-    return data;
-  }
 }

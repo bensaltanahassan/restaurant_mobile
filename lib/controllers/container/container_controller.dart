@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
+import 'package:restaurant_mobile/core/services/services.dart';
 
 class ContainerController extends GetxController
     with GetSingleTickerProviderStateMixin {
+  MyServices myServices = Get.find<MyServices>();
   int currentIndex = 0;
   final pageController = PageController();
   late TabController tabController;

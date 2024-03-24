@@ -1,16 +1,53 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/data/model/image_model.dart';
+import 'package:restaurant_mobile/data/model/user_model.dart';
 import 'package:restaurant_mobile/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyServices extends GetxService {
   late SharedPreferences sharedPreferences;
+  UserModel? user;
   Future<MyServices> init() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     sharedPreferences = await SharedPreferences.getInstance();
+    await initUser();
+
     return this;
+  }
+
+  Future<void> saveUser(UserModel user) async {
+    await Future.wait([
+      sharedPreferences.setString("email", user.email!),
+      sharedPreferences.setString("fullName", user.fullName!),
+      sharedPreferences.setString("id", user.id.toString()),
+      sharedPreferences.setString("phone", user.phone!),
+    ]);
+    if (user.image != null) {
+      await sharedPreferences.setString("photo", user.image!.url!);
+    }
+    if (user.token != null) {
+      await sharedPreferences.setString("token", user.token!);
+    }
+  }
+
+  Future<UserModel?> initUser() async {
+    if (sharedPreferences.containsKey("email")) {
+      user = UserModel(
+          id: 9,
+          email: sharedPreferences.getString("email"),
+          fullName: sharedPreferences.getString("fullName"),
+          phone: sharedPreferences.getString("phone"),
+          address: sharedPreferences.getString("address"),
+          createdAt: sharedPreferences.getString("createdAt"),
+          updatedAt: sharedPreferences.getString("updatedAt"),
+          token: sharedPreferences.getString("token"),
+          image: ImageModel(url: sharedPreferences.getString("photo")));
+      return user;
+    }
+    return null;
   }
 }
 

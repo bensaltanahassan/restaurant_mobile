@@ -1,18 +1,28 @@
 class ImageModel {
-  String? url;
+  int? id;
   String? publicId;
+  String? url;
+  String? createdAt;
+  String? updatedAt;
 
-  ImageModel({this.url, this.publicId});
+  ImageModel(
+      {this.id, this.publicId, this.url, this.createdAt, this.updatedAt});
 
   ImageModel.fromJson(Map<String, dynamic> json) {
-    url = json['url'];
+    id = json['id'];
     publicId = json['publicId'];
+    url = json['url'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['url'] = url;
+    data['id'] = id;
     data['publicId'] = publicId;
+    data['url'] = url;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
     return data;
   }
 }
