@@ -1,87 +1,152 @@
-import 'package:restaurant_mobile/data/model/categoriesmodel.dart';
-
-import './image_model.dart';
-
 class ProductModel {
-  String? productId;
+  int? id;
   String? name;
-  String? nameAr;
+  String? nameAn;
   String? description;
-  String? descriptionAr;
-  int? price;
-  int? count;
+  String? descriptionAn;
+  double? price;
   int? discount;
-  bool? isActive;
-  int? nbrOfSell;
-  List<ImageModel>? images;
-  CategoryModel? category;
+  int? nbrOfSales;
+  bool? isAvailable;
+  int? categoryId;
+  Category? category;
   String? createdAt;
   String? updatedAt;
-  int? version;
+  List<ProductImages>? productImages;
 
   ProductModel(
-      {this.productId,
+      {this.id,
       this.name,
-      this.nameAr,
+      this.nameAn,
       this.description,
-      this.descriptionAr,
+      this.descriptionAn,
       this.price,
-      this.count,
       this.discount,
-      this.isActive,
-      this.nbrOfSell,
-      this.images,
+      this.nbrOfSales,
+      this.isAvailable,
+      this.categoryId,
       this.category,
       this.createdAt,
       this.updatedAt,
-      this.version});
+      this.productImages});
 
   ProductModel.fromJson(Map<String, dynamic> json) {
-    productId = json['_id'];
+    id = json['id'];
     name = json['name'];
-    nameAr = json['nameAr'];
+    nameAn = json['nameAn'];
     description = json['description'];
-    descriptionAr = json['descriptionAr'];
-    price = json['price'];
-    count = json['count'];
+    descriptionAn = json['descriptionAn'];
+    price = json['price'] is int ? json['price'].toDouble() : json['price'];
     discount = json['discount'];
-    isActive = json['isActive'];
-    nbrOfSell = json['nbrOfSell'];
-    if (json['images'] != null) {
-      images = <ImageModel>[];
-      json['images'].forEach((v) {
-        images!.add(ImageModel.fromJson(v));
-      });
-    }
-    category = json['category'] != null
-        ? CategoryModel.fromJson(json['category'])
-        : null;
+    nbrOfSales = json['nbrOfSales'];
+    isAvailable = json['isAvailable'];
+    categoryId = json['categoryId'];
+    category =
+        json['category'] != null ? Category.fromJson(json['category']) : null;
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    version = json['version'];
+    if (json['productImages'] != null) {
+      productImages = <ProductImages>[];
+      json['productImages'].forEach((v) {
+        productImages!.add(ProductImages.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['productId'] = productId;
+    data['id'] = id;
     data['name'] = name;
-    data['nameAr'] = nameAr;
+    data['nameAn'] = nameAn;
     data['description'] = description;
-    data['descriptionAr'] = descriptionAr;
+    data['descriptionAn'] = descriptionAn;
     data['price'] = price;
-    data['count'] = count;
     data['discount'] = discount;
-    data['isActive'] = isActive;
-    data['nbrOfSell'] = nbrOfSell;
-    if (images != null) {
-      data['images'] = images!.map((v) => v.toJson()).toList();
-    }
+    data['nbrOfSales'] = nbrOfSales;
+    data['isAvailable'] = isAvailable;
+    data['categoryId'] = categoryId;
     if (category != null) {
       data['category'] = category!.toJson();
     }
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
-    data['version'] = version;
+    if (productImages != null) {
+      data['productImages'] = productImages!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Category {
+  int? id;
+  String? name;
+  String? nameAn;
+
+  Category({this.id, this.name, this.nameAn});
+
+  Category.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    nameAn = json['nameAn'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['nameAn'] = nameAn;
+    return data;
+  }
+}
+
+class ProductImages {
+  int? id;
+  Image? image;
+  bool? isMain;
+
+  ProductImages({this.id, this.image, this.isMain});
+
+  ProductImages.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    image = json['image'] != null ? Image.fromJson(json['image']) : null;
+    isMain = json['isMain'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    if (image != null) {
+      data['image'] = image!.toJson();
+    }
+    data['isMain'] = isMain;
+    return data;
+  }
+}
+
+class Image {
+  int? id;
+  String? publicId;
+  String? url;
+  String? createdAt;
+  String? updatedAt;
+
+  Image({this.id, this.publicId, this.url, this.createdAt, this.updatedAt});
+
+  Image.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    publicId = json['publicId'];
+    url = json['url'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['publicId'] = publicId;
+    data['url'] = url;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
     return data;
   }
 }

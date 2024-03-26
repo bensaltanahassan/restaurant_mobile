@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
+import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/data/model/cart_model.dart' as cm;
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
 class CustomItemCart extends StatelessWidget {
-  const CustomItemCart({
-    super.key,
-    required this.tag,
-    this.onTap,
-  });
+  const CustomItemCart({super.key, required this.cartModel});
 
-  final String tag;
-  final void Function()? onTap;
+  final cm.CartModel cartModel;
 
   @override
   Widget build(BuildContext context) {
+    final CartController controller = Get.find<CartController>();
     return SizedBox(
       height: 150.h,
       width: double.maxFinite,
       child: GestureDetector(
-        onTap: onTap,
+        onTap: () =>
+            controller.goToProductDetail(productModel: cartModel.product!),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Hero(
-                tag: tag,
-                child: Image.asset(
-                  AppImageAsset.pizza,
+                tag: cartModel.product!.productImages![0].image!.publicId!,
+                child: Image.network(
+                  cartModel.product!.productImages![0].image!.url!,
                   width: 80.w,
                   height: 150.h,
                   fit: BoxFit.cover,
@@ -45,7 +45,7 @@ class CustomItemCart extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Pizza hot gamberi",
+                        Text(cartModel.product!.name!,
                             style: TextStyle(
                               fontSize: 20.sp,
                               height: 1,
@@ -53,7 +53,7 @@ class CustomItemCart extends StatelessWidget {
                               color: AppColors.whiteColor,
                             )),
                         Text(
-                          "Lorem " * 20,
+                          cartModel.product!.description!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -70,17 +70,24 @@ class CustomItemCart extends StatelessWidget {
                               title: "-",
                               titleColor: AppColors.whiteColor,
                               titleSize: 20.sp,
-                              onPressed: () {},
+                              onPressed: () {
+                                controller.changeQuantity(
+                                    quantity: -1, cart: cartModel);
+                              },
                             ),
                             const SizedBox(width: 10),
-                            Text(
-                              "1",
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.whiteColor,
-                              ),
-                            ),
+                            GetBuilder<CartController>(
+                                id: "quantity/${cartModel.id}",
+                                builder: (context) {
+                                  return Text(
+                                    cartModel.quantity.toString(),
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.whiteColor,
+                                    ),
+                                  );
+                                }),
                             SizedBox(width: 10.w),
                             CustomButton(
                               width: 1,
@@ -88,7 +95,10 @@ class CustomItemCart extends StatelessWidget {
                               title: "+",
                               titleColor: AppColors.whiteColor,
                               titleSize: 20.sp,
-                              onPressed: () {},
+                              onPressed: () {
+                                controller.changeQuantity(
+                                    quantity: 1, cart: cartModel);
+                              },
                             ),
                           ],
                         )
@@ -100,20 +110,31 @@ class CustomItemCart extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("\$500.00",
+                            Text("\$${cartModel.product!.price}",
                                 style: TextStyle(
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.secondColor,
                                 )),
                             const Spacer(),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.delete_outline,
-                                  color: AppColors.whiteColor,
-                                  size: 25.r,
-                                ))
+                            GetBuilder<CartController>(
+                                id: "delete/${cartModel.id}",
+                                builder: (controller) {
+                                  return AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 500),
+                                    child: controller.statusRequest ==
+                                            StatusRequest.loading
+                                        ? const CircularProgressIndicator()
+                                        : IconButton(
+                                            onPressed: () =>
+                                                controller.delete(cartModel),
+                                            icon: Icon(
+                                              Icons.delete_outline,
+                                              color: AppColors.whiteColor,
+                                              size: 25.r,
+                                            )),
+                                  );
+                                })
                           ])),
                 ],
               ),

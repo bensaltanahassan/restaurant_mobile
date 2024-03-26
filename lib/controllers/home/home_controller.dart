@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
 
@@ -14,6 +15,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
+    Get.put(FavorisController());
     statusRequest = StatusRequest.loading;
     Future.delayed(const Duration(seconds: 5), () {
       statusRequest = StatusRequest.success;

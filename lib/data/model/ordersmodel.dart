@@ -1,72 +1,93 @@
-class OrdersModel {
-  String? orderId;
-  String? user;
-  double? price;
-  String? coupon;
-  String? address;
-  String? deliveryType;
-  int? shippingPrice;
+import 'package:restaurant_mobile/data/model/product_model.dart';
+
+class OrderModel {
+  int? id;
   double? totalPrice;
+  String? adress;
+  String? phoneNumber;
   String? paymentMethod;
-  String? status;
-  bool? deleted;
+  String? paymentStatus;
+  String? orderStatus;
   String? createdAt;
   String? updatedAt;
-  int? number;
-  int? v;
+  List<OrderItems>? orderItems;
 
-  OrdersModel(
-      {this.orderId,
-      this.user,
-      this.price,
-      this.coupon,
-      this.address,
-      this.deliveryType,
-      this.shippingPrice,
+  OrderModel(
+      {this.id,
       this.totalPrice,
+      this.adress,
+      this.phoneNumber,
       this.paymentMethod,
-      this.status,
-      this.deleted,
+      this.paymentStatus,
+      this.orderStatus,
       this.createdAt,
       this.updatedAt,
-      this.number,
-      this.v});
+      this.orderItems});
 
-  OrdersModel.fromJson(Map<String, dynamic> json) {
-    orderId = json['_id'];
-    number = json['number'];
-    user = json['user'];
-    price = double.parse(json['price'].toString());
-    coupon = json['coupon'];
-    address = json['address'];
-    deliveryType = json['deliveryType'];
-    shippingPrice = json['shippingPrice'];
-    totalPrice = double.parse(json['totalPrice'].toString());
+  OrderModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    totalPrice = json['totalPrice'];
+    adress = json['adress'];
+    phoneNumber = json['phoneNumber'];
     paymentMethod = json['paymentMethod'];
-    status = json['status'];
-    deleted = json['deleted'];
+    paymentStatus = json['paymentStatus'];
+    orderStatus = json['orderStatus'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    v = json['v'];
+    if (json['orderItems'] != null) {
+      orderItems = <OrderItems>[];
+      json['orderItems'].forEach((v) {
+        orderItems!.add(OrderItems.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['orderId'] = orderId;
-    data['user'] = user;
-    data['price'] = price;
-    data['coupon'] = coupon;
-    data['address'] = address;
-    data['deliveryType'] = deliveryType;
-    data['shippingPrice'] = shippingPrice;
+    data['id'] = id;
     data['totalPrice'] = totalPrice;
+    data['adress'] = adress;
+    data['phoneNumber'] = phoneNumber;
     data['paymentMethod'] = paymentMethod;
-    data['status'] = status;
-    data['deleted'] = deleted;
+    data['paymentStatus'] = paymentStatus;
+    data['orderStatus'] = orderStatus;
     data['createdAt'] = createdAt;
-    data['number'] = number;
     data['updatedAt'] = updatedAt;
-    data['v'] = v;
+    if (orderItems != null) {
+      data['orderItems'] = orderItems!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class OrderItems {
+  int? id;
+  int? quantity;
+  ProductModel? product;
+  String? createdAt;
+  String? updatedAt;
+
+  OrderItems(
+      {this.id, this.quantity, this.product, this.createdAt, this.updatedAt});
+
+  OrderItems.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    quantity = json['quantity'];
+    product =
+        json['product'] != null ? ProductModel.fromJson(json['product']) : null;
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['quantity'] = quantity;
+    if (product != null) {
+      data['product'] = product!.toJson();
+    }
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
     return data;
   }
 }

@@ -8,7 +8,6 @@ class CartLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: 10,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10).r,
       separatorBuilder: (c, i) => Divider(height: 40.h),
       itemBuilder: (c, i) {
         return SizedBox(

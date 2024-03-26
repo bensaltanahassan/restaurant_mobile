@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.borderColor = AppColors.secondColor,
     this.fontColor,
     this.validator,
+    this.onChanged,
   });
 
   final Color? fontColor;
@@ -29,16 +30,18 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color borderColor;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       validator: validator,
       initialValue: initialValue,
       obscureText: isPassword,
       keyboardType: keyboardType ?? TextInputType.text,
       controller: controller,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: fontColor ?? Colors.white),
       decoration: InputDecoration(
         errorStyle: const TextStyle(color: AppColors.secondColor),
         hintText: hintText,

@@ -24,6 +24,7 @@ class MyServices extends GetxService {
       sharedPreferences.setString("fullName", user.fullName!),
       sharedPreferences.setString("id", user.id.toString()),
       sharedPreferences.setString("phone", user.phone!),
+      sharedPreferences.setString("address", user.address!),
     ]);
     if (user.image != null) {
       await sharedPreferences.setString("photo", user.image!.url!);
@@ -31,6 +32,7 @@ class MyServices extends GetxService {
     if (user.token != null) {
       await sharedPreferences.setString("token", user.token!);
     }
+    this.user = user;
   }
 
   Future<UserModel?> initUser() async {

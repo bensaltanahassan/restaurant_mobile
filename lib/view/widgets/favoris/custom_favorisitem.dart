@@ -7,11 +7,13 @@ class CustomItemFavoris extends StatelessWidget {
   const CustomItemFavoris({
     super.key,
     this.onTap,
+    this.onDelete,
     required this.favoris,
   });
 
   final fv.FavorisModel favoris;
   final void Function()? onTap;
+  final void Function()? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CustomItemFavoris extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10).r,
               child: Hero(
-                tag: favoris.id!,
+                tag: favoris.product!.productImages![0].image!.publicId!,
                 child: Image.network(
                   favoris.product!.productImages![0].image!.url!,
                   width: 80.w,
@@ -76,7 +78,7 @@ class CustomItemFavoris extends StatelessWidget {
                               )),
                           const Spacer(),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: onDelete,
                               icon: Icon(
                                 Icons.favorite,
                                 color: AppColors.secondColor,

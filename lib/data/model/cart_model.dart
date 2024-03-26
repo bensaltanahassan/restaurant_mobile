@@ -1,23 +1,33 @@
 import 'package:restaurant_mobile/data/model/product_model.dart';
-import 'package:restaurant_mobile/data/model/user_model.dart';
 
 class CartModel {
-  String? cartId;
-  UserModel? user;
-  ProductModel? product;
+  int? id;
   int? quantity;
-  String? orderId;
-  int? version;
+  ProductModel? product;
+  String? createdAt;
+  String? updatedAt;
 
-  CartModel({this.cartId, this.user, this.product, this.version});
+  CartModel(
+      {this.id, this.quantity, this.product, this.createdAt, this.updatedAt});
 
   CartModel.fromJson(Map<String, dynamic> json) {
-    cartId = json['_id'];
-    user = json['user'] != null ? UserModel.fromJson(json['user']) : null;
+    id = json['id'];
+    quantity = json['quantity'];
     product =
         json['product'] != null ? ProductModel.fromJson(json['product']) : null;
-    quantity = json['quantity'];
-    orderId = json['order'];
-    version = json['__v'];
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['quantity'] = quantity;
+    if (product != null) {
+      data['product'] = product!.toJson();
+    }
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    return data;
   }
 }

@@ -14,7 +14,7 @@ class Cartdata {
     required String userId,
     required String productId,
     required String token,
-    required int quantity,
+    int quantity = 1,
   }) async {
     var response = await crud.postData(
       linkUrl: AppLinks.cart,

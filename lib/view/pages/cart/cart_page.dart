@@ -20,8 +20,6 @@ class CartPage extends StatelessWidget {
           id: "main",
           builder: (controller) {
             return HandlingDataView(
-              statusRequest: controller.statusRequest,
-              loadingWidget: const CartLoading(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,49 +32,68 @@ class CartPage extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: 7,
-                      separatorBuilder: (c, i) => Divider(height: 20.h),
-                      itemBuilder: (c, i) => CustomItemCart(
-                          tag: "pizza$i",
-                          onTap: () =>
-                              controller.goToProductDetail(tag: "pizza$i")),
+                    child: HandlingDataView(
+                      statusRequest: controller.statusRequest,
+                      loadingWidget: const CartLoading(),
+                      child: RefreshIndicator(
+                        onRefresh: () async {
+                          await controller.getAllProductsInCart();
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(
+                              child: ListView.separated(
+                                physics: const AlwaysScrollableScrollPhysics(),
+                                itemCount: controller.carts.length,
+                                separatorBuilder: (c, i) =>
+                                    Divider(height: 20.h),
+                                itemBuilder: (c, i) => CustomItemCart(
+                                    cartModel: controller.carts[i]),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Total price",
+                                  style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.whiteColor,
+                                  ),
+                                ),
+                                GetBuilder<CartController>(
+                                    id: "totalPrice",
+                                    builder: (context) {
+                                      return Text(
+                                        "\$${controller.totalPrice.toStringAsFixed(2)}",
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.secondColor,
+                                        ),
+                                      );
+                                    }),
+                              ],
+                            ),
+                            SizedBox(height: 10.h),
+                            CustomButton(
+                              width: double.maxFinite,
+                              title: "Order",
+                              titleColor: AppColors.whiteColor,
+                              buttonColor: AppColors.secondColor,
+                              fontWeight: FontWeight.bold,
+                              titleSize: 20.sp,
+                              onPressed: () {
+                                controller.goToPaymentPage();
+                              },
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Total price",
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.whiteColor,
-                        ),
-                      ),
-                      Text(
-                        "\$500.00",
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.secondColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10.h),
-                  CustomButton(
-                    width: double.maxFinite,
-                    title: "Order",
-                    titleColor: AppColors.whiteColor,
-                    buttonColor: AppColors.secondColor,
-                    fontWeight: FontWeight.bold,
-                    titleSize: 20.sp,
-                    onPressed: () {
-                      controller.goToPaymentPage();
-                    },
-                  )
                 ],
               ),
             );

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/payment/checkout_page.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
 import 'package:restaurant_mobile/core/middleware/mymiddleware.dart';
 import 'package:restaurant_mobile/view/pages/authentication/change_password_page.dart';
@@ -52,5 +53,6 @@ class AppRouter {
     GetPage(
         name: AppRoutes.productdetail, page: () => const ProductDetailsPage()),
     GetPage(name: AppRoutes.reservation, page: () => const BookingPage()),
+    GetPage(name: AppRoutes.checkout, page: () => const CheckoutPage()),
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/core/constant/colors.dart';
 
 void showCustomSnackBar({
   required String title,
@@ -24,10 +25,8 @@ void showCustomSnackBar({
       // backgroundColor: AppColors.packetColor4,
       backgroundGradient: const LinearGradient(
         colors: [
-          // AppColors.packetColor3,
-          // AppColors.packetColor3,
-          // AppColors.packetColor4,
-          // AppColors.packetColor4,
+          AppColors.primaryColor,
+          AppColors.secondColor,
         ],
       ),
     ),

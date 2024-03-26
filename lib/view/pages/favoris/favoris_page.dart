@@ -12,7 +12,7 @@ class FavorisPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(FavorisController());
+    Get.find<FavorisController>();
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20).r,
       child: GetBuilder<FavorisController>(
@@ -34,14 +34,21 @@ class FavorisPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: GetBuilder<FavorisController>(builder: (controller) {
-                      return ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: controller.favorites.length,
-                        separatorBuilder: (c, i) => Divider(height: 30.h),
-                        itemBuilder: (c, i) => CustomItemFavoris(
-                          favoris: controller.favorites[i],
-                          onTap: () =>
-                              controller.goToProductDetail(tag: "pizza$i"),
+                      return RefreshIndicator(
+                        onRefresh: () async {
+                          await controller.getAllFavoris();
+                        },
+                        child: ListView.separated(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemCount: controller.favorites.length,
+                          separatorBuilder: (c, i) => Divider(height: 30.h),
+                          itemBuilder: (c, i) => CustomItemFavoris(
+                              favoris: controller.favorites[i],
+                              onTap: () => controller.goToProductDetail(
+                                  productModel:
+                                      controller.favorites[i].product!),
+                              onDelete: () => controller
+                                  .deleteFavorite(controller.favorites[i])),
                         ),
                       );
                     }),

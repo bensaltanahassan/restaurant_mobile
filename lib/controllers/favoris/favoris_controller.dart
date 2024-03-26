@@ -6,17 +6,20 @@ import 'package:restaurant_mobile/core/functions/handlingdatacontroller.dart';
 import 'package:restaurant_mobile/core/services/services.dart';
 import 'package:restaurant_mobile/data/datasource/remote/favoris/favorisdata.dart';
 import 'package:restaurant_mobile/data/model/favorismodel.dart';
+import 'package:restaurant_mobile/data/model/product_model.dart';
 
 class FavorisController extends GetxController {
   late StatusRequest statusRequest;
   FavorisData fd = FavorisData(Get.find<Crud>());
   List<FavorisModel> favorites = [];
   MyServices sv = Get.find<MyServices>();
-  void goToProductDetail({required String tag}) {
-    Get.toNamed(AppRoutes.productdetail, arguments: {"tag": tag});
+
+  void goToProductDetail({required ProductModel productModel}) {
+    Get.toNamed(AppRoutes.productdetail, arguments: {"product": productModel});
   }
 
   Future<void> getAllFavoris() async {
+    favorites.clear();
     statusRequest = StatusRequest.loading;
     update();
     var response = await fd.getData(
@@ -35,6 +38,36 @@ class FavorisController extends GetxController {
     } else {
       statusRequest = StatusRequest.serverfailure;
       update(["main"]);
+    }
+  }
+
+  Future<void> deleteFavorite(FavorisModel favoris) async {
+    statusRequest = StatusRequest.loading;
+    update(["delete/${favoris.id}"]);
+    var response =
+        await fd.deleteData(favId: favoris.id.toString(), token: "token");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      favorites.remove(favoris);
+      update(["main", "favButton/${favoris.productId}"]);
+    } else {
+      statusRequest = StatusRequest.serverfailure;
+      update(["main"]);
+    }
+  }
+
+  Future<void> addToFavoris(ProductModel product) async {
+    var response = await fd.addData(
+        userId: sv.user!.id!.toString(),
+        productId: product.id.toString(),
+        token: sv.user!.token ?? "");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      await getAllFavoris();
+      update(["favButton/${product.id}"]);
+    } else {
+      statusRequest = StatusRequest.serverfailure;
+      update();
     }
   }
 

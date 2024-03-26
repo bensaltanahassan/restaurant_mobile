@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/constant/routes.dart';
+import 'package:restaurant_mobile/core/enums/payment_methodes.dart';
+import 'package:restaurant_mobile/data/model/ordersmodel.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
 class PaymentController extends GetxController {
-  String paymentMethod = "creditCard";
-  void changePaymentMethod(String newPaymentMethod) {
+  late OrderModel order;
+  PaymentMethodes paymentMethod = PaymentMethodes.creditCard;
+  void changePaymentMethod(PaymentMethodes newPaymentMethod) {
     paymentMethod = newPaymentMethod;
-    update();
+    update(["paymentMethod"]);
   }
 
   void changeAddress() {
+    String address = order.adress ?? "";
     showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
@@ -56,16 +61,21 @@ class PaymentController extends GetxController {
                     color: AppColors.primaryColor,
                   ),
                 ),
-                const CustomTextFormField(
+                CustomTextFormField(
+                  onChanged: (p0) {
+                    address = p0;
+                  },
                   borderColor: AppColors.greyColor,
                   hintText: "Address",
-                  fontColor: AppColors.greyColor,
+                  fontColor: AppColors.primaryColor,
                 ),
                 const Spacer(),
                 CustomButton(
                   buttonColor: AppColors.primaryColor,
                   title: "Save",
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.back(result: address);
+                  },
                   width: double.maxFinite,
                   titleColor: AppColors.whiteColor,
                 ),
@@ -74,10 +84,16 @@ class PaymentController extends GetxController {
           ),
         );
       },
-    );
+    ).then((value) {
+      if (value != null) {
+        order.adress = value;
+        update(["address"]);
+      }
+    });
   }
 
   void changePhone() {
+    String phone = order.phoneNumber ?? "";
     showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
@@ -121,16 +137,21 @@ class PaymentController extends GetxController {
                     color: AppColors.primaryColor,
                   ),
                 ),
-                const CustomTextFormField(
+                CustomTextFormField(
                   borderColor: AppColors.greyColor,
                   hintText: "Phone Number",
-                  fontColor: AppColors.greyColor,
+                  fontColor: AppColors.primaryColor,
+                  onChanged: (p0) {
+                    phone = p0;
+                  },
                 ),
                 const Spacer(),
                 CustomButton(
                   buttonColor: AppColors.primaryColor,
                   title: "Save",
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.back(result: phone);
+                  },
                   width: double.maxFinite,
                   titleColor: AppColors.whiteColor,
                 ),
@@ -139,7 +160,12 @@ class PaymentController extends GetxController {
           ),
         );
       },
-    );
+    ).then((value) {
+      if (value != null) {
+        order.phoneNumber = value;
+        update(["phone"]);
+      }
+    });
   }
 
   void addNewCard({required BuildContext context}) async {
@@ -255,5 +281,19 @@ class PaymentController extends GetxController {
         );
       },
     );
+  }
+
+  goToCheckoutPage() {
+    Get.toNamed(AppRoutes.checkout, arguments: {"order": order});
+  }
+
+  initData() {
+    order = Get.arguments["order"];
+  }
+
+  @override
+  void onInit() {
+    initData();
+    super.onInit();
   }
 }

@@ -19,7 +19,7 @@ class FavorisData {
     required String token,
   }) async {
     var response = await crud.postData(
-        linkUrl: AppLinks.favoris,
+        linkUrl: "${AppLinks.favoris}/AddToFavorites",
         data: {
           "userId": userId,
           "productId": productId,
