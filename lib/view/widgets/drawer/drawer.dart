@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -25,15 +26,13 @@ class CustomDrawer extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 100.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10).r,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                controller.myServices.user!.image!.url!))),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10).r,
+                    child: CustomNetworkImage(
+                      imageUrl: controller.myServices.user!.image!.url!,
+                      width: 100.w,
+                      height: 100.h,
+                    ),
                   ),
                   SizedBox(width: 10.w),
                   Expanded(

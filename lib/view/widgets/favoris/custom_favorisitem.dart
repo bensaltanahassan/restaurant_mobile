@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/data/model/favorismodel.dart' as fv;
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class CustomItemFavoris extends StatelessWidget {
   const CustomItemFavoris({
@@ -29,11 +30,10 @@ class CustomItemFavoris extends StatelessWidget {
               borderRadius: BorderRadius.circular(10).r,
               child: Hero(
                 tag: favoris.product!.productImages![0].image!.publicId!,
-                child: Image.network(
-                  favoris.product!.productImages![0].image!.url!,
+                child: CustomNetworkImage(
+                  imageUrl: favoris.product!.productImages![0].image!.url!,
                   width: 80.w,
                   height: 100.h,
-                  fit: BoxFit.cover,
                 ),
               ),
             ),

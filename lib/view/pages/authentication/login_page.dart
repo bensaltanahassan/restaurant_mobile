@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/login_controller.dart';
+import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/core/functions/validationtextformfield/validinput.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/stack_auth.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_animated_switcher.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_loading_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -75,6 +78,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     SizedBox(height: 20.h),
                     CustomTextFormField(
+                      controller: controller.emailController,
                       hintText: 'Email',
                       labelText: 'Email',
                       prefixIcon: Icons.email,
@@ -86,6 +90,7 @@ class LoginPage extends StatelessWidget {
                         id: 'password',
                         builder: (controller) {
                           return CustomTextFormField(
+                              controller: controller.passwordController,
                               validator: (p0) =>
                                   AppValidation.validInput(val: p0 ?? ""),
                               hintText: 'Password',
@@ -115,15 +120,24 @@ class LoginPage extends StatelessWidget {
                               ));
                         }),
                     const SizedBox(height: 20),
-                    CustomButton(
-                      title: "Login",
-                      titleSize: 20.sp,
-                      titleColor: Colors.white,
-                      buttonColor: AppColors.secondColor,
-                      fontWeight: FontWeight.bold,
-                      onPressed: controller.login,
-                      width: double.infinity,
-                    ),
+                    GetBuilder<LoginController>(
+                        id: 'login',
+                        builder: (context) {
+                          return CustomAnimatedSwitcher(
+                            condition: controller.statusRequest ==
+                                StatusRequest.loading,
+                            firstChild: const CustomLoadingButton(),
+                            secondChild: CustomButton(
+                              title: "Login",
+                              titleSize: 20.sp,
+                              titleColor: Colors.white,
+                              buttonColor: AppColors.secondColor,
+                              fontWeight: FontWeight.bold,
+                              onPressed: controller.login,
+                              width: double.infinity,
+                            ),
+                          );
+                        }),
                     SizedBox(height: 20.h),
                     Align(
                       alignment: Alignment.centerRight,

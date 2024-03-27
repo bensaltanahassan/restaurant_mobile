@@ -1,19 +1,21 @@
 import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/constant/linkapi.dart';
 
-class SignUpData {
+class RegisterData {
   Crud crud;
-  SignUpData(this.crud);
+  RegisterData(this.crud);
   postData(
       {required String firstName,
       required String lastName,
       required String email,
-      required String password}) async {
-    var response = await crud.postData(linkUrl: AppLinks.signup, data: {
-      "firstName": firstName,
-      "lastName": lastName,
+      required String password,
+      required String adress}) async {
+    var response = await crud.postData(linkUrl: AppLinks.register, data: {
+      "fullName": firstName,
       "email": email,
+      "phone": lastName,
       "password": password,
+      "adress": adress
     });
     return response.fold((l) => l, (r) => r);
   }

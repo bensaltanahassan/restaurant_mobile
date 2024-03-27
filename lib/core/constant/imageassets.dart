@@ -21,6 +21,7 @@ class AppImageAsset {
   static const String offline = "$rootLotties/offline.json";
   static const String nofav = "$rootLotties/nofav.json";
   static const String noOrder = "$rootLotties/noorder.json";
+  static const String loadingButton = "$rootLotties/loading_button.json";
 
   //static
   static const String item1 = "$rootImages/item1.png";

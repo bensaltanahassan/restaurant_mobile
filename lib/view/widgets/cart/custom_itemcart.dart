@@ -6,6 +6,7 @@ import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/data/model/cart_model.dart' as cm;
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class CustomItemCart extends StatelessWidget {
   const CustomItemCart({super.key, required this.cartModel});
@@ -28,11 +29,10 @@ class CustomItemCart extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               child: Hero(
                 tag: cartModel.product!.productImages![0].image!.publicId!,
-                child: Image.network(
-                  cartModel.product!.productImages![0].image!.url!,
-                  width: 80.w,
-                  height: 150.h,
-                  fit: BoxFit.cover,
+                child: CustomNetworkImage(
+                  imageUrl: cartModel.product!.productImages![0].image!.url!,
+                  width: 100,
+                  height: 150,
                 ),
               ),
             ),

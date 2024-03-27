@@ -2,15 +2,16 @@ class AppLinks {
   // server
   static const String server = "http://10.0.2.2:5241/api";
   //=============Auth==============
-  static const String signup = "$server/auth/signup";
+  static const String userAuth = "$server/userauth";
+  static const String register = "$userAuth/register";
+  static const String login = "$userAuth/login";
   static const String verifycodesignup = "$server/auth/verifycode";
-  static const String login = "$server/auth/login";
   static const String sendVerificationCode = "$server/auth/sendverifycode";
 
   //=============Password============
   static const String forgetpassword = "$server/auth/forgetpassword";
   static const String verifycodeforgetpassword = "$server/auth/verifycode";
-  static const String resetpassword = "$server/auth/resetpassword";
+  static const String resetpassword = "$userAuth/resetpassword";
 
   //=============Home============
   static const String homepage = "$server/home";
