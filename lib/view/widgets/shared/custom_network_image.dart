@@ -13,17 +13,28 @@ class CustomNetworkImage extends StatelessWidget {
 
   final double width;
   final double height;
-  final String imageUrl;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-        imageUrl: imageUrl,
+    if (imageUrl == null) {
+      return const Center(
+        child: Icon(
+          Icons.person_outline,
+          color: AppColors.secondColor,
+          size: 50,
+        ),
+      );
+    } else {
+      return CachedNetworkImage(
+        imageUrl: imageUrl!,
         width: width.w,
         height: height.h,
         fit: BoxFit.cover,
         placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(color: AppColors.secondColor),
-            ));
+          child: CircularProgressIndicator(color: AppColors.secondColor),
+        ),
+      );
+    }
   }
 }

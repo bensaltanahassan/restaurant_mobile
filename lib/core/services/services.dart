@@ -18,6 +18,12 @@ class MyServices extends GetxService {
     return this;
   }
 
+  Future<void> logout() async {
+    await sharedPreferences.clear();
+    sharedPreferences.setBool("intro", true);
+    user = null;
+  }
+
   Future<void> saveUser(UserModel user) async {
     await Future.wait([
       sharedPreferences.setString("email", user.email!),

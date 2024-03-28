@@ -7,10 +7,10 @@ import 'package:restaurant_mobile/core/services/services.dart';
 
 class ContainerController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  MyServices myServices = Get.find<MyServices>();
-  int currentIndex = 0;
+  final myServices = Get.find<MyServices>();
   final pageController = PageController();
   late TabController tabController;
+  int currentIndex = 0;
 
   void onPageChanged(int index) {
     currentIndex = index;
@@ -63,7 +63,8 @@ class ContainerController extends GetxController
     }
   }
 
-  void logout() {
+  void logout() async {
+    await myServices.logout();
     Get.offAllNamed(AppRoutes.login);
   }
 

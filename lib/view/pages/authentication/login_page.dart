@@ -82,6 +82,7 @@ class LoginPage extends StatelessWidget {
                       hintText: 'Email',
                       labelText: 'Email',
                       prefixIcon: Icons.email,
+                      keyboardType: TextInputType.emailAddress,
                       validator: (p0) => AppValidation.validInput(
                           val: p0 ?? "", type: "email"),
                     ),

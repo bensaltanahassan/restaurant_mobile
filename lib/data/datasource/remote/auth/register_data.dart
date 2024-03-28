@@ -11,7 +11,7 @@ class RegisterData {
       required String password,
       required String adress}) async {
     var response = await crud.postData(linkUrl: AppLinks.register, data: {
-      "fullName": firstName,
+      "fullName": "$firstName $lastName",
       "email": email,
       "phone": lastName,
       "password": password,

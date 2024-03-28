@@ -8,6 +8,8 @@ import 'package:restaurant_mobile/core/functions/showsnackbar.dart';
 import 'package:restaurant_mobile/core/services/services.dart';
 import 'package:restaurant_mobile/data/datasource/remote/auth/login_data.dart';
 import 'package:restaurant_mobile/data/exceptions/auth/login_exception.dart';
+import 'package:restaurant_mobile/data/model/login_model.dart';
+import 'package:restaurant_mobile/data/model/user_model.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> formState = GlobalKey<FormState>();
@@ -41,15 +43,18 @@ class LoginController extends GetxController {
       var response = await ld.postData(
           email: emailController.text, password: passwordController.text);
       statusRequest = handlingData(response);
-      print(response);
-      return update(["login"]);
       if (statusRequest == StatusRequest.success) {
-        if (response["status"] == "Success") {
-          showCustomSnackBar(
-            title: 'Success',
-            message: 'Login Success',
-            duration: const Duration(seconds: 3),
-          );
+        Map<String, dynamic> responseMap = response as Map<String, dynamic>;
+        LoginModel loginModel = LoginModel.fromJson(responseMap);
+        if (loginModel.status == "Success") {
+          UserModel userModel = loginModel.user!;
+          userModel.token = loginModel.token;
+          await Future.wait([
+            myServices.saveUser(userModel),
+            myServices.sharedPreferences.setBool("login", true),
+          ]);
+
+          Get.offAllNamed(AppRoutes.containerPage);
         } else {
           String message =
               loginException.handleException(message: response["message"]);
@@ -60,9 +65,13 @@ class LoginController extends GetxController {
           );
         }
       } else {
-        Get.snackbar('Failed', 'Register Failed');
+        showCustomSnackBar(
+          title: 'Failed',
+          message: 'Login Failed',
+          duration: const Duration(seconds: 3),
+        );
       }
-      update(['register']);
+      update(['login']);
     }
 
     // await myServices.sharedPreferences.setBool("login", true);

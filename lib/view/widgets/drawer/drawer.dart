@@ -29,7 +29,7 @@ class CustomDrawer extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10).r,
                     child: CustomNetworkImage(
-                      imageUrl: controller.myServices.user!.image!.url!,
+                      imageUrl: controller.myServices.user!.image?.url,
                       width: 100.w,
                       height: 100.h,
                     ),
