@@ -39,7 +39,8 @@ class RegisterController extends GetxController {
       );
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
-        if (response["status"] == "Success") {
+        // TODO
+        if (response["status"] == true) {
           showCustomSnackBar(
             title: 'Success',
             message:

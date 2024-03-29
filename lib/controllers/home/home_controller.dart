@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
 import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
@@ -41,7 +40,6 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     getHomeData();
-    Get.put(FavorisController());
 
     super.onInit();
   }

@@ -12,51 +12,52 @@ class FavorisPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<FavorisController>();
+    if (Get.isRegistered<FavorisController>()) {
+      Get.find<FavorisController>();
+    } else {
+      Get.put(FavorisController());
+    }
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20).r,
-      child: GetBuilder<FavorisController>(
-          id: "main",
-          builder: (controller) {
-            return HandlingDataView(
-              statusRequest: controller.statusRequest,
-              loadingWidget: const FavorisLoading(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Favoris",
-                    style: TextStyle(
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.whiteColor,
-                    ),
-                  ),
-                  Expanded(
-                    child: GetBuilder<FavorisController>(builder: (controller) {
-                      return RefreshIndicator(
-                        onRefresh: () async {
-                          await controller.getAllFavoris();
-                        },
-                        child: ListView.separated(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemCount: controller.favorites.length,
-                          separatorBuilder: (c, i) => Divider(height: 30.h),
-                          itemBuilder: (c, i) => CustomItemFavoris(
-                              favoris: controller.favorites[i],
-                              onTap: () => controller.goToProductDetail(
-                                  productModel:
-                                      controller.favorites[i].product!),
-                              onDelete: () => controller
-                                  .deleteFavorite(controller.favorites[i])),
-                        ),
-                      );
-                    }),
-                  ),
-                ],
+      child: GetBuilder<FavorisController>(builder: (controller) {
+        return HandlingDataView(
+          statusRequest: controller.statusRequest,
+          loadingWidget: const FavorisLoading(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Favoris",
+                style: TextStyle(
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.whiteColor,
+                ),
               ),
-            );
-          }),
+              Expanded(
+                child: GetBuilder<FavorisController>(builder: (controller) {
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      await controller.getAllFavoris();
+                    },
+                    child: ListView.separated(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemCount: controller.favorites.length,
+                      separatorBuilder: (c, i) => Divider(height: 30.h),
+                      itemBuilder: (c, i) => CustomItemFavoris(
+                          favoris: controller.favorites[i],
+                          onTap: () => controller.goToProductDetail(
+                              productModel: controller.favorites[i].product!),
+                          onDelete: () => controller
+                              .deleteFavorite(controller.favorites[i])),
+                    ),
+                  );
+                }),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

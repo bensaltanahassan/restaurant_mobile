@@ -33,11 +33,11 @@ class FavorisController extends GetxController {
         }
         favorites.sort((a, b) => DateTime.parse(a.createdAt!)
             .compareTo(DateTime.parse(b.createdAt!)));
-        update(["main"]);
+        update();
       }
     } else {
       statusRequest = StatusRequest.serverfailure;
-      update(["main"]);
+      update();
     }
   }
 
@@ -49,10 +49,11 @@ class FavorisController extends GetxController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       favorites.remove(favoris);
-      update(["main", "favButton/${favoris.productId}"]);
+      update(["favButton/${favoris.productId}"]);
+      update();
     } else {
       statusRequest = StatusRequest.serverfailure;
-      update(["main"]);
+      update();
     }
   }
 

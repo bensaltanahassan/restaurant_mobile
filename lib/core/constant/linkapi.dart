@@ -20,7 +20,7 @@ class AppLinks {
   static const String categories = "$server/categories";
 
   //=============Products=================
-  static const String products = "$server/products";
+  static const String products = "$server/product";
 
   //=============Search Products=================
   static const String search = "$products/search";

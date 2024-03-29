@@ -24,8 +24,6 @@ class Crud {
             headers: requestHeaders,
             validateStatus: (status) => true,
           ));
-      print("================");
-      print(response);
 
       if (response.statusCode != 500) {
         Map responseBody = response.data;
@@ -59,6 +57,8 @@ class Crud {
           validateStatus: (status) => true,
         ),
       );
+
+      print(response);
 
       if (response.statusCode != 500) {
         Map responseBody = response.data;

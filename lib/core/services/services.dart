@@ -44,7 +44,7 @@ class MyServices extends GetxService {
   Future<UserModel?> initUser() async {
     if (sharedPreferences.containsKey("email")) {
       user = UserModel(
-          id: 9,
+          id: int.parse(sharedPreferences.getString("id")!),
           email: sharedPreferences.getString("email"),
           fullName: sharedPreferences.getString("fullName"),
           phone: sharedPreferences.getString("phone"),

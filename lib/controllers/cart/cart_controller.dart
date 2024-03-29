@@ -3,6 +3,7 @@ import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
 import 'package:restaurant_mobile/core/functions/handlingdatacontroller.dart';
+import 'package:restaurant_mobile/core/functions/showsnackbar.dart';
 import 'package:restaurant_mobile/core/services/services.dart';
 import 'package:restaurant_mobile/data/datasource/remote/cart/cart_data.dart';
 import 'package:restaurant_mobile/data/model/cart_model.dart';
@@ -10,7 +11,8 @@ import 'package:restaurant_mobile/data/model/ordersmodel.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 
 class CartController extends GetxController {
-  late StatusRequest statusRequest;
+  StatusRequest? statusRequest;
+  bool loadingButtons = false;
   double totalPrice = 0;
   Cartdata cd = Cartdata(Get.find<Crud>());
   MyServices sv = Get.find<MyServices>();
@@ -42,7 +44,7 @@ class CartController extends GetxController {
     carts.clear();
     totalPrice = 0;
     statusRequest = StatusRequest.loading;
-    update(["main"]);
+    update();
     await Future.delayed(const Duration(seconds: 2));
     var response = await cd.getData(
         userId: sv.user!.id!.toString(), token: sv.user!.token ?? "");
@@ -56,11 +58,11 @@ class CartController extends GetxController {
         carts.sort((a, b) => DateTime.parse(a.createdAt!)
             .compareTo(DateTime.parse(b.createdAt!)));
         calculateTotalPrice();
-        update(["main"]);
+        update();
       }
     } else {
       statusRequest = StatusRequest.serverfailure;
-      update(["main"]);
+      update();
     }
   }
 
@@ -107,10 +109,33 @@ class CartController extends GetxController {
     }
   }
 
+  Future<void> addToCart({required String productId}) async {
+    loadingButtons = true;
+    update(["button/$productId"]);
+    var response = await cd.postData(
+      userId: sv.user!.id!.toString(),
+      productId: productId,
+      token: sv.user!.token ?? "",
+    );
+
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      showCustomSnackBar(
+        title: "Success",
+        message: "Product added to cart",
+      );
+    } else {
+      statusRequest = StatusRequest.serverfailure;
+    }
+    loadingButtons = false;
+    update(["button/$productId"]);
+    getAllProductsInCart();
+  }
+
   @override
   void onInit() async {
-    statusRequest = StatusRequest.loading;
-    await getAllProductsInCart();
+    getAllProductsInCart();
+
     super.onInit();
   }
 }

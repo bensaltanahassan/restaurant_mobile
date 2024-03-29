@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/search/search_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
-import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -54,10 +53,14 @@ class SearchPage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: 7,
               separatorBuilder: (c, i) => Divider(height: 20.h),
-              itemBuilder: (c, i) => CustomProductCategory(
-                tag: "pizza$i",
-                onTap: () => controller.goToProductDetail(tag: "pizza$i"),
-              ),
+              itemBuilder: (c, i) {
+                return null;
+
+                //   return CustomProductCategory(
+                //   tag: "pizza$i",
+                //   onTap: () => controller.goToProductDetail(tag: "pizza$i"),
+                // );
+              },
             );
           }))
         ],

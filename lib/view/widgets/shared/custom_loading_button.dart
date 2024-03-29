@@ -5,7 +5,10 @@ import 'package:restaurant_mobile/core/constant/imageassets.dart';
 class CustomLoadingButton extends StatelessWidget {
   const CustomLoadingButton({
     super.key,
+    this.height,
   });
+
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class CustomLoadingButton extends StatelessWidget {
       child: Lottie.asset(
         AppImageAsset.loadingButton,
         fit: BoxFit.fill,
-        height: 100,
+        height: height ?? 100,
       ),
     );
   }

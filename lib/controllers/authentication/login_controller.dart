@@ -46,9 +46,9 @@ class LoginController extends GetxController {
       if (statusRequest == StatusRequest.success) {
         Map<String, dynamic> responseMap = response as Map<String, dynamic>;
         LoginModel loginModel = LoginModel.fromJson(responseMap);
-        if (loginModel.status == "Success") {
-          UserModel userModel = loginModel.user!;
-          userModel.token = loginModel.token;
+        if (loginModel.status == true) {
+          UserModel userModel = loginModel.data!.user!;
+          userModel.token = loginModel.data!.token;
           await Future.wait([
             myServices.saveUser(userModel),
             myServices.sharedPreferences.setBool("login", true),
@@ -57,7 +57,7 @@ class LoginController extends GetxController {
           Get.offAllNamed(AppRoutes.containerPage);
         } else {
           String message =
-              loginException.handleException(message: response["message"]);
+              loginException.handleException(message: loginModel.message!);
           showCustomSnackBar(
             title: 'Failed',
             message: message,

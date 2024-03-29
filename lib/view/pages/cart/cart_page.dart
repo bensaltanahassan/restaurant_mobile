@@ -13,91 +13,92 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CartController());
+    if (Get.isRegistered<CartController>() == false) {
+      Get.put(CartController());
+    } else {
+      Get.find<CartController>();
+    }
     return Padding(
       padding: const EdgeInsets.only(bottom: 25, left: 20, right: 20).r,
-      child: GetBuilder<CartController>(
-          id: "main",
-          builder: (controller) {
-            return HandlingDataView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Order",
-                    style: TextStyle(
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.whiteColor,
-                    ),
-                  ),
-                  Expanded(
-                    child: HandlingDataView(
-                      statusRequest: controller.statusRequest,
-                      loadingWidget: const CartLoading(),
-                      child: RefreshIndicator(
-                        onRefresh: () async {
-                          await controller.getAllProductsInCart();
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
+      child: GetBuilder<CartController>(builder: (controller) {
+        return HandlingDataView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Order",
+                style: TextStyle(
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.whiteColor,
+                ),
+              ),
+              Expanded(
+                child: HandlingDataView(
+                  statusRequest: controller.statusRequest,
+                  loadingWidget: const CartLoading(),
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      await controller.getAllProductsInCart();
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(
+                          child: ListView.separated(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            itemCount: controller.carts.length,
+                            separatorBuilder: (c, i) => Divider(height: 20.h),
+                            itemBuilder: (c, i) =>
+                                CustomItemCart(cartModel: controller.carts[i]),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              child: ListView.separated(
-                                physics: const AlwaysScrollableScrollPhysics(),
-                                itemCount: controller.carts.length,
-                                separatorBuilder: (c, i) =>
-                                    Divider(height: 20.h),
-                                itemBuilder: (c, i) => CustomItemCart(
-                                    cartModel: controller.carts[i]),
+                            Text(
+                              "Total price",
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.whiteColor,
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Total price",
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.whiteColor,
-                                  ),
-                                ),
-                                GetBuilder<CartController>(
-                                    id: "totalPrice",
-                                    builder: (context) {
-                                      return Text(
-                                        "\$${controller.totalPrice.toStringAsFixed(2)}",
-                                        style: TextStyle(
-                                          fontSize: 20.sp,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.secondColor,
-                                        ),
-                                      );
-                                    }),
-                              ],
-                            ),
-                            SizedBox(height: 10.h),
-                            CustomButton(
-                              width: double.maxFinite,
-                              title: "Order",
-                              titleColor: AppColors.whiteColor,
-                              buttonColor: AppColors.secondColor,
-                              fontWeight: FontWeight.bold,
-                              titleSize: 20.sp,
-                              onPressed: () {
-                                controller.goToPaymentPage();
-                              },
-                            )
+                            GetBuilder<CartController>(
+                                id: "totalPrice",
+                                builder: (context) {
+                                  return Text(
+                                    "\$${controller.totalPrice.toStringAsFixed(2)}",
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.secondColor,
+                                    ),
+                                  );
+                                }),
                           ],
                         ),
-                      ),
+                        SizedBox(height: 10.h),
+                        CustomButton(
+                          width: double.maxFinite,
+                          title: "Order",
+                          titleColor: AppColors.whiteColor,
+                          buttonColor: AppColors.secondColor,
+                          fontWeight: FontWeight.bold,
+                          titleSize: 20.sp,
+                          onPressed: () {
+                            controller.goToPaymentPage();
+                          },
+                        )
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
-            );
-          }),
+            ],
+          ),
+        );
+      }),
     );
   }
 }
