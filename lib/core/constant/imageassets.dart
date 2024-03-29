@@ -20,8 +20,10 @@ class AppImageAsset {
   static const String loading = "$rootLotties/loading.json";
   static const String offline = "$rootLotties/offline.json";
   static const String nofav = "$rootLotties/nofav.json";
-  static const String noOrder = "$rootLotties/noorder.json";
+  static const String noOrder = "$rootLotties/no-orders.json";
   static const String loadingButton = "$rootLotties/loading_button.json";
+  static const String noFood = "$rootLotties/no-food.json";
+  static const String searchFood = "$rootLotties/search-food.json";
 
   //static
   static const String item1 = "$rootImages/item1.png";

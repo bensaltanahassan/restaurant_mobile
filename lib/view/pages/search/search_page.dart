@@ -41,14 +41,32 @@ class SearchPage extends StatelessWidget {
                       BorderSide(color: AppColors.secondColor)),
                 ),
               ),
-              IconButton(
-                onPressed: () {},
+              PopupMenuButton(
+                itemBuilder: (context) {
+                  return [
+                    PopupMenuItem(
+                      child: const Text('All'),
+                      onTap: () {
+                        controller.categoryId = null;
+                      },
+                    ),
+                    ...controller.categories
+                        .map((e) => PopupMenuItem(
+                              value: e.id,
+                              child: Text(e.name!),
+                              onTap: () {
+                                controller.categoryId = e.id;
+                              },
+                            ))
+                        .toList()
+                  ];
+                },
                 icon: Icon(
                   Icons.filter_alt_outlined,
-                  color: AppColors.whiteColor,
+                  color: AppColors.secondColor,
                   size: 30.r,
                 ),
-              )
+              ),
             ],
           ),
           SizedBox(height: 20.h),
@@ -61,6 +79,12 @@ class SearchPage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10).r,
                 builderDelegate: PagedChildBuilderDelegate<ProductModel>(
+                  noItemsFoundIndicatorBuilder: (context) => const Center(
+                    child: Text('No items found'),
+                  ),
+                  firstPageErrorIndicatorBuilder: (context) => const Center(
+                    child: Text('Error'),
+                  ),
                   itemBuilder: (context, item, i) => CustomProductCategory(
                     product: item,
                     onTap: () => controller.goToProductDetail(product: item),
@@ -68,7 +92,7 @@ class SearchPage extends StatelessWidget {
                 ),
               ),
             );
-          }))
+          })),
         ],
       ),
     );

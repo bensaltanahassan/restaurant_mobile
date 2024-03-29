@@ -7,19 +7,41 @@ import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
 import 'package:restaurant_mobile/core/functions/handlingdatacontroller.dart';
+import 'package:restaurant_mobile/core/services/services.dart';
+import 'package:restaurant_mobile/data/datasource/remote/categories/categories_data.dart';
 import 'package:restaurant_mobile/data/datasource/remote/items/itemsdata.dart';
+import 'package:restaurant_mobile/data/model/categoriesmodel.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
+import 'package:restaurant_mobile/data/model/responses/get_categories_response.dart';
 import 'package:restaurant_mobile/data/model/responses/search_response.dart';
 
 class SearchFoodsController extends GetxController {
   StatusRequest? statusRequest;
+  bool isRequest = false;
   final searchController = TextEditingController();
   final pd = ProductsData(Get.find<Crud>());
+  final cd = CategorieData(Get.find<Crud>());
+  final ms = Get.find<MyServices>();
   final PagingController<int, ProductModel> pagingController =
       PagingController(firstPageKey: 1);
+  List<CategoryModel> categories = [];
+
+  Future<void> getAllCategories() async {
+    var response = await cd.getAllCategories(token: ms.user!.token ?? "");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      GetCategoriesResponse getCategoriesResponse =
+          GetCategoriesResponse.fromJson(response);
+      if (getCategoriesResponse.status == true) {
+        categories = getCategoriesResponse.categories!;
+        update(["categories"]);
+      }
+    }
+  }
 
   final _pageSize = 3;
   int currentPage = 1;
+  int? categoryId;
   SearchResponse searchResponse = SearchResponse(
     status: false,
     products: [],
@@ -30,6 +52,7 @@ class SearchFoodsController extends GetxController {
   }
 
   Future<void> searchForProduct() async {
+    isRequest = true;
     FocusScope.of(Get.context!).unfocus();
     currentPage = 1;
     pagingController.refresh();
@@ -41,6 +64,7 @@ class SearchFoodsController extends GetxController {
         keyword: searchController.text,
         page: currentPage,
         limit: _pageSize,
+        categoryId: categoryId,
       );
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
@@ -70,8 +94,13 @@ class SearchFoodsController extends GetxController {
 
   void initData() {
     pagingController.addPageRequestListener((pageKey) {
-      fetchPage(pageKey);
+      if (isRequest) {
+        fetchPage(pageKey);
+      } else {
+        pagingController.error = "Please search for product";
+      }
     });
+    getAllCategories();
   }
 
   @override
