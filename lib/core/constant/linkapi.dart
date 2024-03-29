@@ -23,7 +23,7 @@ class AppLinks {
   static const String products = "$server/product";
 
   //=============Search Products=================
-  static const String search = "$products/search";
+  static const String search = "$products/SearchProduct";
 
   //=============Favoris=================
   static const String favoris = "$server/favorite";

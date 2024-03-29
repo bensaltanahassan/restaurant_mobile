@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
+import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
 import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
@@ -15,12 +16,11 @@ import 'package:restaurant_mobile/data/model/responses/products_category_model.d
 class ProductsCategoryController extends GetxController {
   late StatusRequest statusRequest;
   late CategoryModel category;
-  late final searchController = TextEditingController();
   final MyServices myServices = Get.find<MyServices>();
   final cd = Cartdata(Get.find());
   final sv = Get.find<MyServices>();
   final ProductsData pd = ProductsData(Get.find<Crud>());
-  final _pageSize = 3;
+  final _pageSize = 10;
   int currentPage = 1;
 
   List<ProductModel> products = [];
@@ -34,7 +34,6 @@ class ProductsCategoryController extends GetxController {
   }
 
   Future<List<int>> getData(int page) async {
-    await Future.delayed(const Duration(seconds: 2));
     final newItems = List<int>.generate(10, (index) => index + page * 10);
     return newItems;
   }
@@ -65,21 +64,18 @@ class ProductsCategoryController extends GetxController {
           } else {}
         } else {}
       }
-
-      // final newItems = await getData(pageKey);
-      // final isLastPage = newItems.length < _pageSize;
-      // if (isLastPage) {
-      //   pagingController.appendLastPage(newItems);
-      // } else {
-      //   final nextPageKey = pageKey + newItems.length;
-      //   pagingController.appendPage(newItems, nextPageKey);
-      // }
     } catch (error) {
       pagingController.error = error;
     }
   }
 
   initData() {
+    Get.isRegistered<FavorisController>()
+        ? Get.find<FavorisController>()
+        : Get.put(FavorisController(), permanent: true);
+    Get.isRegistered<CartController>()
+        ? Get.find<CartController>()
+        : Get.put(CartController(), permanent: true);
     statusRequest = StatusRequest.loading;
     category = Get.arguments["category"];
     pagingController.addPageRequestListener((pageKey) {
@@ -99,7 +95,6 @@ class ProductsCategoryController extends GetxController {
 
   @override
   void onClose() {
-    searchController.dispose();
     pagingController.dispose();
     super.onClose();
   }

@@ -38,7 +38,6 @@ class LoginController extends GetxController {
     if (formState.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update(["login"]);
-      await Future.delayed(const Duration(seconds: 2));
 
       var response = await ld.postData(
           email: emailController.text, password: passwordController.text);

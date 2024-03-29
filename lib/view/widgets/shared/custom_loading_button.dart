@@ -12,7 +12,8 @@ class CustomLoadingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      alignment: Alignment.center,
       child: Lottie.asset(
         AppImageAsset.loadingButton,
         fit: BoxFit.fill,

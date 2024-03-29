@@ -45,7 +45,6 @@ class CartController extends GetxController {
     totalPrice = 0;
     statusRequest = StatusRequest.loading;
     update();
-    await Future.delayed(const Duration(seconds: 2));
     var response = await cd.getData(
         userId: sv.user!.id!.toString(), token: sv.user!.token ?? "");
     statusRequest = handlingData(response);
@@ -83,10 +82,10 @@ class CartController extends GetxController {
     if (statusRequest == StatusRequest.success) {
       carts.remove(carte);
       calculateTotalPrice();
-      update(["main"]);
+      update();
     } else {
       statusRequest = StatusRequest.serverfailure;
-      update(["main"]);
+      update();
     }
   }
 
@@ -105,7 +104,7 @@ class CartController extends GetxController {
       update(["quantity/${cart.id}"]);
     } else {
       statusRequest = StatusRequest.serverfailure;
-      update(["main"]);
+      update();
     }
   }
 

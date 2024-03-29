@@ -13,4 +13,22 @@ class ProductsData {
     );
     return response.fold((l) => l, (r) => r);
   }
+
+  searchForProduct(
+      {required String keyword,
+      required int page,
+      required int limit,
+      int? categoryId}) async {
+    var response = await crud.getData(
+      linkUrl: AppLinks.search,
+      queryParameters: {
+        "productName": keyword,
+        "page": page,
+        "limit": limit,
+        "categoryId": categoryId,
+      },
+    );
+
+    return response.fold((l) => l, (r) => r);
+  }
 }

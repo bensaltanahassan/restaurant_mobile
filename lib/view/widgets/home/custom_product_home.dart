@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/home/home_controller.dart';
+import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_animated_switcher.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_loading_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class CustomProductHome extends StatelessWidget {
@@ -17,6 +22,7 @@ class CustomProductHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<HomeController>();
     return SizedBox(
       width: 150.w,
       child: GestureDetector(
@@ -56,13 +62,25 @@ class CustomProductHome extends StatelessWidget {
               ),
             ),
             SizedBox(height: 5.h),
-            CustomButton(
-              title: "Add Cart",
-              fontWeight: FontWeight.bold,
-              titleColor: Colors.white,
-              buttonColor: AppColors.secondColor,
-              onPressed: () {},
-            )
+            GetBuilder<HomeController>(
+                id: 'addToCartButton/${product.id}',
+                builder: (controller) {
+                  return CustomAnimatedSwitcher(
+                    condition:
+                        controller.statusRequest == StatusRequest.loading &&
+                            controller.productModel == product,
+                    firstChild: CustomLoadingButton(height: 60.h),
+                    secondChild: CustomButton(
+                      title: "Add Cart",
+                      fontWeight: FontWeight.bold,
+                      titleColor: Colors.white,
+                      buttonColor: AppColors.secondColor,
+                      onPressed: () {
+                        controller.addToCart(product: product);
+                      },
+                    ),
+                  );
+                })
           ],
         ),
       ),

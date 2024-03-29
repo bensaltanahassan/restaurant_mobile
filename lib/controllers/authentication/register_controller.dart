@@ -29,7 +29,6 @@ class RegisterController extends GetxController {
         statusRequest != StatusRequest.loading) {
       statusRequest = StatusRequest.loading;
       update(['register']);
-      await Future.delayed(const Duration(seconds: 2));
       var response = await rd.postData(
         firstName: firstNameController.text,
         lastName: lastNameController.text,

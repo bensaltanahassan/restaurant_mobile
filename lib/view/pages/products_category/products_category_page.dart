@@ -6,7 +6,6 @@ import 'package:restaurant_mobile/controllers/products_category/products_categor
 import 'package:restaurant_mobile/core/class/handlingdataview.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_loading.dart';
-import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
 
@@ -29,16 +28,6 @@ class ProductsCategoryPage extends StatelessWidget {
                 title: Text(controller.category.name!),
                 background: CustomNetworkImage(
                     imageUrl: controller.category.image?.url),
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.only(left: 10, right: 10, top: 10),
-                child: CustomTextFormField(
-                  hintText: 'Search',
-                  labelText: 'Search',
-                  prefixIcon: Icons.search,
-                ),
               ),
             ),
           ];
