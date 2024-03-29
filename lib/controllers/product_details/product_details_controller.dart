@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
+import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/functions/handlingdatacontroller.dart';
 import 'package:restaurant_mobile/core/functions/showsnackbar.dart';
@@ -18,7 +20,7 @@ class ProductDetailsController extends GetxController {
 
   Future<void> addToCart() async {
     statusRequest = StatusRequest.loading;
-    update(["button"]);
+    update(["addToCartButton"]);
     var response = await cd.postData(
       userId: user.id.toString(),
       productId: productModel.id.toString(),
@@ -28,10 +30,11 @@ class ProductDetailsController extends GetxController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       showCustomSnackBar(title: "Success", message: "Product added to cart");
-      update(["button"]);
+      update(["addToCartButton"]);
+      Get.find<CartController>().getAllProductsInCart();
     } else {
       statusRequest = StatusRequest.serverfailure;
-      update(["button"]);
+      update(["addToCartButton"]);
     }
   }
 
@@ -53,6 +56,17 @@ class ProductDetailsController extends GetxController {
     user = sv.user!;
     productModel = Get.arguments["product"];
     totalPrice = productModel.price!;
+    if (Get.isRegistered<FavorisController>()) {
+      Get.find<FavorisController>();
+    } else {
+      Get.put(FavorisController(), permanent: true);
+    }
+    if (Get.isRegistered<CartController>()) {
+      Get.find<CartController>();
+    } else {
+      Get.put(CartController(), permanent: true);
+    }
+
     update();
   }
 

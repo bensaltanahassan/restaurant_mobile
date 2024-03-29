@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:restaurant_mobile/controllers/products_category/products_category_controller.dart';
 import 'package:restaurant_mobile/core/class/handlingdataview.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_loading.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
 
 class ProductsCategoryPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class ProductsCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ProductsCategoryController());
+    final controller = Get.put(ProductsCategoryController());
     return Scaffold(
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
@@ -25,8 +26,9 @@ class ProductsCategoryPage extends StatelessWidget {
               floating: true,
               leading: const SizedBox(),
               flexibleSpace: FlexibleSpaceBar(
-                title: const Text('Pizza'),
-                background: Image.asset(AppImageAsset.pizza, fit: BoxFit.cover),
+                title: Text(controller.category.name!),
+                background: CustomNetworkImage(
+                    imageUrl: controller.category.image?.url),
               ),
             ),
             const SliverToBoxAdapter(
@@ -48,18 +50,18 @@ class ProductsCategoryPage extends StatelessWidget {
               id: "main",
               builder: (controller) {
                 return HandlingDataView(
-                  statusRequest: controller.statusRequest,
+                  // statusRequest: controller.statusRequest,
                   loadingWidget: const ProductsCategoryLoading(),
-                  child: PagedListView<int, int>(
+                  child: PagedListView<int, ProductModel>(
                     pagingController: controller.pagingController,
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 10)
                             .r,
-                    builderDelegate: PagedChildBuilderDelegate<int>(
+                    builderDelegate: PagedChildBuilderDelegate<ProductModel>(
                       itemBuilder: (context, item, i) => CustomProductCategory(
-                        tag: "pizza$i",
+                        product: item,
                         onTap: () =>
-                            controller.goToProductDetail(tag: "pizza$i"),
+                            controller.goToProductDetail(product: item),
                       ),
                     ),
                   ),

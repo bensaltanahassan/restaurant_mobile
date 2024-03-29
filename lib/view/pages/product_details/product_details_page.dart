@@ -8,6 +8,7 @@ import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_back_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});
@@ -16,7 +17,7 @@ class ProductDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ProductDetailsController controller =
         Get.put(ProductDetailsController());
-    Get.find<FavorisController>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(controller.productModel.name!),
@@ -32,7 +33,7 @@ class ProductDetailsPage extends StatelessWidget {
           children: [
             Expanded(
               child: GetBuilder<ProductDetailsController>(
-                  id: "button",
+                  id: "addToCartButton",
                   builder: (controller) {
                     return SizedBox(
                       child: AnimatedSwitcher(
@@ -54,31 +55,26 @@ class ProductDetailsPage extends StatelessWidget {
                   }),
             ),
             SizedBox(width: 10.w),
-            GetBuilder<FavorisController>(
-                id: "favButton/${controller.productModel.id}",
-                builder: (favController) {
-                  bool isFavorite = favController.favorites.indexWhere(
-                          (element) =>
-                              element.product!.id ==
-                              controller.productModel.id) >=
-                      0;
-                  return IconButton(
-                    onPressed: () {
-                      if (isFavorite) {
-                        favController.deleteFavorite(favController.favorites
-                            .firstWhere((element) =>
-                                element.product!.id ==
-                                controller.productModel.id));
-                      } else {
-                        favController.addToFavoris(controller.productModel);
-                      }
-                    },
-                    icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_outline,
-                      color: AppColors.secondColor,
-                    ),
-                  );
-                })
+            GetBuilder<FavorisController>(builder: (favController) {
+              bool isFavorite = favController.favorites.indexWhere((element) =>
+                      element.product!.id == controller.productModel.id) >=
+                  0;
+              return IconButton(
+                onPressed: () {
+                  if (isFavorite) {
+                    favController.deleteFavorite(favController.favorites
+                        .firstWhere((element) =>
+                            element.product!.id == controller.productModel.id));
+                  } else {
+                    favController.addToFavoris(controller.productModel);
+                  }
+                },
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_outline,
+                  color: AppColors.secondColor,
+                ),
+              );
+            })
           ],
         ),
       ),
@@ -103,9 +99,9 @@ class ProductDetailsPage extends StatelessWidget {
                       child: child,
                     );
                   },
-                  child: Image.network(
-                    controller.productModel.productImages![0].image!.url!,
-                    fit: BoxFit.cover,
+                  child: CustomNetworkImage(
+                    imageUrl:
+                        controller.productModel.productImages![0].image!.url!,
                     width: double.maxFinite,
                     height: 300.h,
                   ),
@@ -237,7 +233,7 @@ class ProductDetailsPage extends StatelessWidget {
                       id: "quantity",
                       builder: (context) {
                         return Text(
-                          "${controller.totalPrice}\$",
+                          "${controller.totalPrice.toStringAsFixed(2)}\$",
                           style: TextStyle(
                             height: 1.5,
                             fontSize: 20.sp,
