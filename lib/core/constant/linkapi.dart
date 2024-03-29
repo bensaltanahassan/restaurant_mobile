@@ -14,7 +14,7 @@ class AppLinks {
   static const String resetpassword = "$userAuth/resetpassword";
 
   //=============Home============
-  static const String homepage = "$server/home";
+  static const String home = "$server/home/mobile";
 
   //=============Categories============
   static const String categories = "$server/categories";

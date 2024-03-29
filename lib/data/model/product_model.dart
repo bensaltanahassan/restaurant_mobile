@@ -1,3 +1,5 @@
+import 'package:restaurant_mobile/data/model/categoriesmodel.dart';
+
 class ProductModel {
   int? id;
   String? name;
@@ -9,7 +11,7 @@ class ProductModel {
   int? nbrOfSales;
   bool? isAvailable;
   int? categoryId;
-  Category? category;
+  CategoryModel? category;
   String? createdAt;
   String? updatedAt;
   List<ProductImages>? productImages;
@@ -41,8 +43,9 @@ class ProductModel {
     nbrOfSales = json['nbrOfSales'];
     isAvailable = json['isAvailable'];
     categoryId = json['categoryId'];
-    category =
-        json['category'] != null ? Category.fromJson(json['category']) : null;
+    category = json['category'] != null
+        ? CategoryModel.fromJson(json['category'])
+        : null;
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     if (json['productImages'] != null) {
@@ -73,28 +76,6 @@ class ProductModel {
     if (productImages != null) {
       data['productImages'] = productImages!.map((v) => v.toJson()).toList();
     }
-    return data;
-  }
-}
-
-class Category {
-  int? id;
-  String? name;
-  String? nameAn;
-
-  Category({this.id, this.name, this.nameAn});
-
-  Category.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    nameAn = json['nameAn'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['nameAn'] = nameAn;
     return data;
   }
 }

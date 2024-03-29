@@ -1,3 +1,4 @@
+import 'package:restaurant_mobile/data/model/categoriesmodel.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 
 class HomeModel {
@@ -37,14 +38,15 @@ class HomeModel {
 }
 
 class Categories {
-  Category? category;
+  CategoryModel? category;
   List<ProductModel>? products;
 
   Categories({this.category, this.products});
 
   Categories.fromJson(Map<String, dynamic> json) {
-    category =
-        json['category'] != null ? Category.fromJson(json['category']) : null;
+    category = json['category'] != null
+        ? CategoryModel.fromJson(json['category'])
+        : null;
     if (json['products'] != null) {
       products = <ProductModel>[];
       json['products'].forEach((v) {

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/data/model/product_model.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class CustomCardSlider extends StatelessWidget {
   const CustomCardSlider({
     super.key,
-    required this.tag,
     this.onTap,
+    required this.product,
   });
 
-  final String tag;
   final void Function()? onTap;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +24,10 @@ class CustomCardSlider extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20).r,
-              child: Hero(
-                tag: tag,
-                child: Image.asset(
-                  AppImageAsset.pizza,
-                  width: double.maxFinite,
-                  height: 250.h,
-                  fit: BoxFit.cover,
-                ),
+              child: CustomNetworkImage(
+                imageUrl: product.productImages?.first.image?.url,
+                width: double.maxFinite,
+                height: 250.h,
               ),
             ),
             Container(
@@ -39,7 +36,7 @@ class CustomCardSlider extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               padding: EdgeInsets.all(20.w),
               child: Text(
-                'Different kind of food',
+                product.name!,
                 style: TextStyle(
                   fontSize: 28.sp,
                   fontWeight: FontWeight.bold,

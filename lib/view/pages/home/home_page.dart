@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/home/home_controller.dart';
 import 'package:restaurant_mobile/core/class/handlingdataview.dart';
+import 'package:restaurant_mobile/data/model/home_model.dart' as hm;
 import 'package:restaurant_mobile/view/widgets/home/custom_card_slider.dart';
 import 'package:restaurant_mobile/view/widgets/home/custom_category_with_divider.dart';
 import 'package:restaurant_mobile/view/widgets/home/custom_product_home.dart';
@@ -28,66 +29,75 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20, right: 20, top: 20).r,
               children: [
                 CarouselSlider(
-                  options: CarouselOptions(
-                    height: 200.0.h,
-                    autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 5),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: true,
-                    aspectRatio: 16 / 9,
-                    autoPlayAnimationDuration:
-                        const Duration(milliseconds: 800),
-                    viewportFraction: 0.8,
-                  ),
-                  items: [1, 2, 3, 4, 5].map((i) {
-                    return CustomCardSlider(
-                      tag: "slider$i",
-                      onTap: () =>
-                          controller.goToProductDetail(tag: "slider$i"),
-                    );
-                  }).toList(),
-                ),
-                SizedBox(height: 10.h),
-                CustomCategoryWithDivider(
-                    title: 'PIZZA', onPressed: controller.goToProductsCategory),
-                SizedBox(height: 10.h),
-                SizedBox(
-                  height: 320.h,
-                  child: ListView.separated(
-                    itemBuilder: (c, i) => CustomProductHome(
-                      tag: "pizza$i",
-                      onTap: () => controller.goToProductDetail(tag: "pizza$i"),
+                    options: CarouselOptions(
+                      height: 200.0.h,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 5),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: true,
+                      aspectRatio: 16 / 9,
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      viewportFraction: 0.8,
                     ),
-                    separatorBuilder: (c, i) => const SizedBox(width: 20),
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                  ),
-                ),
-                CustomCategoryWithDivider(
-                    title: 'BURGER',
-                    onPressed: controller.goToProductsCategory),
+                    items: controller.homeModel?.topProducts!.map((e) {
+                      return CustomCardSlider(
+                        product: e,
+                        onTap: () => controller.goToProductDetail(product: e),
+                      );
+                    }).toList()),
                 SizedBox(height: 10.h),
-                SizedBox(
-                  height: 320.h,
-                  child: ListView.separated(
-                    itemBuilder: (c, i) => CustomProductHome(
-                      tag: "burger$i",
-                      onTap: () =>
-                          controller.goToProductDetail(tag: "burger$i"),
+                if (controller.homeModel != null)
+                  ...controller.homeModel!.categories!.map(
+                    (e) => CustomItemsHome(
+                      category: e,
                     ),
-                    separatorBuilder: (c, i) => const SizedBox(width: 20),
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                  ),
-                ),
+                  )
               ],
             ),
           );
         });
+  }
+}
+
+class CustomItemsHome extends StatelessWidget {
+  const CustomItemsHome({
+    super.key,
+    required this.category,
+  });
+
+  final hm.Categories category;
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.find<HomeController>();
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CustomCategoryWithDivider(
+            title: "${category.category!.name}",
+            onPressed: () {
+              controller.goToProductsCategory(category: category.category!);
+            }),
+        SizedBox(height: 10.h),
+        SizedBox(
+          height: 320.h,
+          child: ListView.separated(
+            itemBuilder: (c, i) => CustomProductHome(
+              onTap: () => {
+                controller.goToProductDetail(product: category.products![i])
+              },
+              product: category.products![i],
+            ),
+            separatorBuilder: (c, i) => const SizedBox(width: 20),
+            itemCount: category.products?.length ?? 0,
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+          ),
+        )
+      ],
+    );
   }
 }

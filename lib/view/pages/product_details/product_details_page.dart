@@ -19,7 +19,7 @@ class ProductDetailsPage extends StatelessWidget {
     Get.find<FavorisController>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pizza Hotgaaam'),
+        title: Text(controller.productModel.name!),
         leading: const CustomBackButton(),
       ),
       bottomNavigationBar: Padding(

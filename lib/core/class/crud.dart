@@ -24,6 +24,9 @@ class Crud {
             headers: requestHeaders,
             validateStatus: (status) => true,
           ));
+      print("================");
+      print(response);
+
       if (response.statusCode != 500) {
         Map responseBody = response.data;
         return Right(responseBody);

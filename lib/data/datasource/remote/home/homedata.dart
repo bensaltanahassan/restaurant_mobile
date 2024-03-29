@@ -5,7 +5,8 @@ class HomeData {
   Crud crud;
   HomeData(this.crud);
   getData({required String token}) async {
-    var response = await crud.getData(linkUrl: AppLinks.homepage, token: token);
+    var response = await crud.getData(linkUrl: AppLinks.home, token: token);
+
     return response.fold((l) => l, (r) => r);
   }
 }
