@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -85,27 +86,25 @@ class ProductDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20).r,
-                child: Hero(
-                  tag: controller
-                      .productModel.productImages![0].image!.publicId!,
-                  transitionOnUserGestures: true,
-                  placeholderBuilder:
-                      (BuildContext context, Size heroSize, Widget child) {
-                    return SizedBox(
-                      width: heroSize.width,
-                      height: heroSize.height,
-                      child: child,
-                    );
-                  },
-                  child: CustomNetworkImage(
-                    imageUrl:
-                        controller.productModel.productImages![0].image!.url!,
-                    width: double.maxFinite,
-                    height: 300.h,
-                  ),
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 250.0.h,
+                  viewportFraction: 0.8,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
                 ),
+                items: controller.productModel.productImages!
+                    .map((e) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8).r,
+                          child: Hero(
+                            tag: e.image!.publicId!,
+                            child: CustomNetworkImage(
+                              imageUrl: e.image!.url!,
+                              height: 250.h,
+                            ),
+                          ),
+                        ))
+                    .toList(),
               ),
               SizedBox(height: 20.h),
               Row(

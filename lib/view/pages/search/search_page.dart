@@ -7,6 +7,8 @@ import 'package:restaurant_mobile/core/class/handlingdataview.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
+import 'package:restaurant_mobile/view/widgets/search/no_food.dart';
+import 'package:restaurant_mobile/view/widgets/search/search_for_food.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_product.dart';
 
 class SearchPage extends StatelessWidget {
@@ -80,10 +82,10 @@ class SearchPage extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10).r,
                 builderDelegate: PagedChildBuilderDelegate<ProductModel>(
                   noItemsFoundIndicatorBuilder: (context) => const Center(
-                    child: Text('No items found'),
+                    child: NoFoodWidget(),
                   ),
                   firstPageErrorIndicatorBuilder: (context) => const Center(
-                    child: Text('Error'),
+                    child: SearchForFood(),
                   ),
                   itemBuilder: (context, item, i) => CustomProductCategory(
                     product: item,

@@ -52,9 +52,13 @@ class SearchFoodsController extends GetxController {
   }
 
   Future<void> searchForProduct() async {
-    isRequest = true;
     FocusScope.of(Get.context!).unfocus();
     currentPage = 1;
+    if (searchController.text.isNotEmpty) {
+      isRequest = true;
+    } else {
+      isRequest = false;
+    }
     pagingController.refresh();
   }
 

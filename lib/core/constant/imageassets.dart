@@ -24,6 +24,7 @@ class AppImageAsset {
   static const String loadingButton = "$rootLotties/loading_button.json";
   static const String noFood = "$rootLotties/no-food.json";
   static const String searchFood = "$rootLotties/search-food.json";
+  static const String emptyCart = "$rootLotties/empty-cart.json";
 
   //static
   static const String item1 = "$rootImages/item1.png";
