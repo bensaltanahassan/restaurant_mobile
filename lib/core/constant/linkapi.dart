@@ -43,4 +43,6 @@ class AppLinks {
   static const String changePassword = "$server/settings/changepassword";
   static const String deleteAccount = "$server/settings/deleteaccount";
   static const String updateUser = "$server/User/updateUser";
+  //=============Booking=================
+  static const String reservation = "$server/reservation";
 }

@@ -49,16 +49,18 @@ class Crud {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${token!}'
       };
-      var response = await dio.post(
+      var response = await dio
+          .post(
         linkUrl,
         data: data,
         options: Options(
           headers: requestHeaders,
           validateStatus: (status) => true,
         ),
-      );
-
-      print(response);
+      )
+          .catchError((e) {
+        print(e);
+      });
 
       if (response.statusCode != 500) {
         Map responseBody = response.data;
