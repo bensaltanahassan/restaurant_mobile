@@ -2,6 +2,7 @@ import 'package:restaurant_mobile/data/model/product_model.dart';
 
 class OrderModel {
   int? id;
+  int? userId;
   double? totalPrice;
   String? adress;
   String? phoneNumber;
@@ -14,9 +15,10 @@ class OrderModel {
 
   OrderModel(
       {this.id,
-      this.totalPrice,
-      this.adress,
-      this.phoneNumber,
+      required this.totalPrice,
+      required this.adress,
+      required this.userId,
+      required this.phoneNumber,
       this.paymentMethod,
       this.paymentStatus,
       this.orderStatus,
@@ -26,6 +28,7 @@ class OrderModel {
 
   OrderModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['userId'];
     totalPrice = json['totalPrice'];
     adress = json['adress'];
     phoneNumber = json['phoneNumber'];
@@ -45,6 +48,7 @@ class OrderModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['userId'] = userId;
     data['totalPrice'] = totalPrice;
     data['adress'] = adress;
     data['phoneNumber'] = phoneNumber;
@@ -63,16 +67,23 @@ class OrderModel {
 class OrderItems {
   int? id;
   int? quantity;
+  int? orderId;
   ProductModel? product;
   String? createdAt;
   String? updatedAt;
 
   OrderItems(
-      {this.id, this.quantity, this.product, this.createdAt, this.updatedAt});
+      {this.id,
+      this.quantity,
+      this.product,
+      this.createdAt,
+      this.updatedAt,
+      this.orderId});
 
   OrderItems.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     quantity = json['quantity'];
+    orderId = json['orderId'];
     product =
         json['product'] != null ? ProductModel.fromJson(json['product']) : null;
     createdAt = json['createdAt'];
@@ -83,6 +94,7 @@ class OrderItems {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['quantity'] = quantity;
+    data['orderId'] = orderId;
     if (product != null) {
       data['product'] = product!.toJson();
     }

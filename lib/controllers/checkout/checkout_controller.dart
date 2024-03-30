@@ -4,6 +4,7 @@ import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
 import 'package:restaurant_mobile/core/functions/handlingdatacontroller.dart';
+import 'package:restaurant_mobile/core/functions/showsnackbar.dart';
 import 'package:restaurant_mobile/core/services/services.dart';
 import 'package:restaurant_mobile/data/datasource/remote/checkout/checkout_data.dart';
 import 'package:restaurant_mobile/data/model/ordersmodel.dart';
@@ -17,7 +18,6 @@ class CheckOutController extends GetxController {
   final containerController = Get.find<ContainerController>();
   void initData() {
     order = Get.arguments["order"];
-    print(order.toJson());
   }
 
   void goToProductDetail({required ProductModel productModel}) {
@@ -38,9 +38,26 @@ class CheckOutController extends GetxController {
       token: myServices.user?.token,
     );
     statusRequest = handlingData(response);
-
-    // update(["checkoutButton"]);
-    goToHomePage();
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == true) {
+        showCustomSnackBar(
+          title: "Success",
+          message: "Your order has been placed",
+          onClosed: (p0) => goToHomePage(),
+        );
+      } else {
+        showCustomSnackBar(
+          title: "Failed",
+          message: "Failed to place order",
+        );
+      }
+    } else {
+      showCustomSnackBar(
+        title: "Failed",
+        message: "Failed to place order",
+      );
+    }
+    update(["checkoutButton"]);
   }
 
   void goToHomePage() {

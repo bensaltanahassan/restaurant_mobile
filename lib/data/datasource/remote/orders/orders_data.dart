@@ -5,18 +5,15 @@ class OrdersData {
   Crud crud;
   OrdersData(this.crud);
   getAllOrders({required String token, required String userId}) async {
-    var reponse =
-        await crud.getData(linkUrl: "${AppLinks.orders}/$userId", token: token);
+    var reponse = await crud.getData(
+        linkUrl: "${AppLinks.orders}/users/$userId", token: token);
 
     return reponse.fold((l) => l, (r) => r);
   }
 
-  getSingleOrder(
-      {required String token,
-      required String userId,
-      required String orderId}) async {
+  getOrderDetails({required String token, required String orderId}) async {
     var response = await crud.getData(
-        linkUrl: "${AppLinks.orders}/$userId/$orderId", token: token);
+        linkUrl: "${AppLinks.orders}/$orderId", token: token);
 
     return response.fold((l) => l, (r) => r);
   }

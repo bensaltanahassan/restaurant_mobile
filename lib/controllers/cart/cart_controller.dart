@@ -22,6 +22,7 @@ class CartController extends GetxController {
       return;
     }
     OrderModel order = OrderModel(
+      userId: sv.user!.id!,
       totalPrice: totalPrice,
       orderItems: carts
           .map((e) => OrderItems(
