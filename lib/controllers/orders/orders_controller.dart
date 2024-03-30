@@ -28,8 +28,8 @@ class OrdersController extends GetxController {
     if (statusRequest == StatusRequest.success) {
       getOrdersResponse = GetOrdersResponse.fromJson(response);
       if (getOrdersResponse.status == true) {
-        getOrdersResponse.orders!.sort((a, b) => DateTime.parse(a.createdAt!)
-            .compareTo(DateTime.parse(b.createdAt!)));
+        getOrdersResponse.orders!.sort((a, b) => (DateTime.parse(b.createdAt!)
+            .compareTo(DateTime.parse(a.createdAt!))));
         update();
       }
     }
