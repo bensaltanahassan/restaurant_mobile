@@ -18,11 +18,11 @@ class CustomNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageUrl == null) {
-      return const Center(
+      return Center(
         child: Icon(
           Icons.person_outline,
           color: AppColors.secondColor,
-          size: 50,
+          size: 50.r,
         ),
       );
     } else {

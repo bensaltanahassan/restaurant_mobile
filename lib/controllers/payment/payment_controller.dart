@@ -13,6 +13,7 @@ class PaymentController extends GetxController {
   PaymentMethodes paymentMethod = PaymentMethodes.creditCard;
   void changePaymentMethod(PaymentMethodes newPaymentMethod) {
     paymentMethod = newPaymentMethod;
+    order.paymentMethod = paymentMethod.toString().split('.').last;
     update(["paymentMethod"]);
   }
 
@@ -283,12 +284,13 @@ class PaymentController extends GetxController {
     );
   }
 
-  goToCheckoutPage() {
+  void goToCheckoutPage() {
     Get.toNamed(AppRoutes.checkout, arguments: {"order": order});
   }
 
-  initData() {
+  void initData() {
     order = Get.arguments["order"];
+    order.paymentMethod = paymentMethod.toString().split('.').last;
   }
 
   @override

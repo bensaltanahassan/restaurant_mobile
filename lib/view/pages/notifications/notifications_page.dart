@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/notifications/notifications_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_back_button.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
@@ -21,15 +22,7 @@ class NotificationsPage extends StatelessWidget {
             ),
           ),
         ],
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.whiteColor,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: const CustomBackButton(),
       ),
       body: ListView.separated(
         itemCount: 10,

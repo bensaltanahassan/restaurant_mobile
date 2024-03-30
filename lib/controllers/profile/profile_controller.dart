@@ -5,10 +5,12 @@ import 'package:restaurant_mobile/controllers/container/container_controller.dar
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
+import 'package:restaurant_mobile/core/services/services.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 
 class ProfileController extends GetxController {
+  final ms = Get.find<MyServices>();
   final ContainerController containerController =
       Get.find<ContainerController>();
   void goToUserSettings() => Get.toNamed(AppRoutes.userSettings);

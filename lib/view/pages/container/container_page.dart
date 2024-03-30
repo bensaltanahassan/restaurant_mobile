@@ -16,7 +16,9 @@ class ContainerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ContainerController());
+    final controller = Get.isRegistered<ContainerController>()
+        ? Get.find<ContainerController>()
+        : Get.put(ContainerController(), permanent: true);
     return Scaffold(
         bottomNavigationBar: const BottomNavBarHome(),
         appBar: AppBar(

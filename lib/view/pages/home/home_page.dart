@@ -17,7 +17,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeController());
+    if (Get.isRegistered<HomeController>() == false) {
+      Get.put(HomeController(), permanent: true);
+    } else {
+      Get.find<HomeController>().getHomeData();
+    }
     return GetBuilder<HomeController>(
         id: 'home_status',
         builder: (controller) {

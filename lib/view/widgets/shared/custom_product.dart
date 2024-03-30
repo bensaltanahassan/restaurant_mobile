@@ -103,7 +103,7 @@ class CustomProductCategory extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '\$ ${product.price}',
+                        '${product.price} DH',
                         style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,

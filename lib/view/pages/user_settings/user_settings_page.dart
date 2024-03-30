@@ -4,28 +4,21 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/user_settings/user_settings_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
 import 'package:restaurant_mobile/view/widgets/authentication/custom_text_formfield_auth.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_back_button.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class UserSettingsPage extends StatelessWidget {
   const UserSettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(UserSettingsController());
+    final controller = Get.put(UserSettingsController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Settings'),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.whiteColor,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: const CustomBackButton(),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(
@@ -59,42 +52,52 @@ class UserSettingsPage extends StatelessWidget {
                   backgroundColor: AppColors.secondColor,
                   child: CircleAvatar(
                     radius: 50.r,
-                    backgroundImage: const AssetImage(AppImageAsset.hassan),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: CircleAvatar(
-                        radius: 15.r,
-                        backgroundColor: AppColors.whiteColor,
-                        child: const Icon(Icons.camera_alt_outlined,
-                            color: AppColors.primaryColor),
-                      ),
+                    child: Stack(
+                      children: [
+                        if (controller.image == null)
+                          CustomNetworkImage(
+                            imageUrl: controller.ms.user!.image?.url,
+                          )
+                        else
+                          ClipOval(
+                            child: Image.file(
+                              controller.image!,
+                              width: 100.w,
+                              height: 100.h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: CircleAvatar(
+                            radius: 15.r,
+                            backgroundColor: AppColors.whiteColor,
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                controller.changePhoto(context);
+                              },
+                              icon: const Icon(Icons.camera_alt_outlined,
+                                  color: AppColors.primaryColor),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
               SizedBox(height: 20.h),
               Text(
-                "First Name",
+                "Full Name",
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormField(
-                hintText: "First Name",
-                initialValue: "HASSAN",
-              ),
-              SizedBox(height: 20.h),
-              Text(
-                "Last Name",
-                style: TextStyle(
-                    color: AppColors.greyColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.sp),
-              ),
-              const CustomTextFormField(
-                hintText: "Last Name",
-                initialValue: "BENSALTANA",
+              CustomTextFormField(
+                controller: controller.fullNameController,
+                hintText: "Full Name",
               ),
               SizedBox(height: 20.h),
               Text(
@@ -104,10 +107,10 @@ class UserSettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormField(
+              CustomTextFormField(
                 hintText: "Email",
                 keyboardType: TextInputType.emailAddress,
-                initialValue: "bensaltanahassan@gmail.com",
+                controller: controller.emailController,
               ),
               SizedBox(height: 20.h),
               Text(
@@ -117,10 +120,10 @@ class UserSettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
-              const CustomTextFormField(
+              CustomTextFormField(
+                controller: controller.phoneController,
                 hintText: "Phone",
                 keyboardType: TextInputType.phone,
-                initialValue: "1234567890",
               ),
               SizedBox(height: 40.h)
             ],

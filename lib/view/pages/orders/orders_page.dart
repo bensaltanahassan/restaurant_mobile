@@ -5,6 +5,7 @@ import 'package:restaurant_mobile/controllers/orders/orders_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
 import 'package:restaurant_mobile/core/constant/routes.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_back_button.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({super.key});
@@ -15,15 +16,7 @@ class OrdersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Orders'),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.whiteColor,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: const CustomBackButton(),
       ),
       body: ListView.separated(
         padding: const EdgeInsets.symmetric(

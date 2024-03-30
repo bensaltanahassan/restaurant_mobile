@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/profile/profile_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
-import 'package:restaurant_mobile/core/constant/imageassets.dart';
+import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -27,15 +27,21 @@ class ProfilePage extends StatelessWidget {
                 )),
             SizedBox(height: 20.h),
             ListTile(
-              //disable shap
               shape: const OutlineInputBorder(borderSide: BorderSide.none),
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(30.r),
-                child: Image.asset(AppImageAsset.hassan,
-                    fit: BoxFit.cover, width: 60.w, height: 60.h),
+              leading: SizedBox(
+                width: 60.w,
+                height: 60.h,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30.r),
+                  child: CustomNetworkImage(
+                    imageUrl: controller.ms.user!.image?.url,
+                    width: 60.w,
+                    height: 60.h,
+                  ),
+                ),
               ),
-              title: const Text("BENSALTANA HASSAN"),
-              subtitle: const Text("Member since 2021"),
+              title: Text(controller.ms.user!.fullName ?? ""),
+              subtitle: const Text("Member since"),
             ),
             SizedBox(height: 40.h),
             ListTile(

@@ -110,7 +110,7 @@ class CustomItemCart extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("\$${cartModel.product!.price}",
+                            Text("${cartModel.product!.price} DH",
                                 style: TextStyle(
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.bold,

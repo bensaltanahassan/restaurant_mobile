@@ -70,7 +70,7 @@ class CustomItemFavoris extends StatelessWidget {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text("\$${favoris.product!.price}",
+                          Text("${favoris.product!.price} DH",
                               style: TextStyle(
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.bold,

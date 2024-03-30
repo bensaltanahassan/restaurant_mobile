@@ -71,7 +71,7 @@ class CartPage extends StatelessWidget {
                                     id: "totalPrice",
                                     builder: (context) {
                                       return Text(
-                                        "\$${controller.totalPrice.toStringAsFixed(2)}",
+                                        "${controller.totalPrice.toStringAsFixed(2)} DH",
                                         style: TextStyle(
                                           fontSize: 20.sp,
                                           fontWeight: FontWeight.bold,

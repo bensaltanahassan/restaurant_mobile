@@ -53,7 +53,7 @@ class CustomProductHome extends StatelessWidget {
             ),
             SizedBox(height: 5.h),
             Text(
-              '\$ ${product.price}',
+              '${product.price} DH',
               style: TextStyle(
                 height: 1.5,
                 fontSize: 15.sp,

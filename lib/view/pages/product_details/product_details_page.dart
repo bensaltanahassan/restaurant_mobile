@@ -124,7 +124,7 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "\$${controller.productModel.price}",
+                    "${controller.productModel.price} DH",
                     style: TextStyle(
                       height: 1.5,
                       fontSize: 24.sp,

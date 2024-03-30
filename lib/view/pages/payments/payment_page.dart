@@ -16,9 +16,11 @@ class PaymentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(PaymentController());
     return Scaffold(
-      bottomNavigationBar: Padding(
+      bottomNavigationBar: Container(
+        height: 80.h,
         padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20).r,
         child: CustomButton(
+          height: 80.h,
           buttonColor: AppColors.secondColor,
           onPressed: controller.goToCheckoutPage,
           widget: Row(
@@ -33,7 +35,7 @@ class PaymentPage extends StatelessWidget {
                 ),
               ),
               Text(
-                "\$ ${controller.order.totalPrice}",
+                "${controller.order.totalPrice} DH",
                 style: TextStyle(
                   color: AppColors.whiteColor,
                   fontSize: 20.sp,
