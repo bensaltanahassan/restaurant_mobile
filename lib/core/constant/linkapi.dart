@@ -42,4 +42,5 @@ class AppLinks {
   static const String changePhone = "$server/settings/changephone";
   static const String changePassword = "$server/settings/changepassword";
   static const String deleteAccount = "$server/settings/deleteaccount";
+  static const String updateUser = "$server/User/updateUser";
 }

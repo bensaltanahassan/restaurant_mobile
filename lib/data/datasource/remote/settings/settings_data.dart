@@ -1,9 +1,37 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart' as dio;
 import 'package:restaurant_mobile/core/class/crud.dart';
 import 'package:restaurant_mobile/core/constant/linkapi.dart';
 
 class SettingsData {
   Crud crud;
   SettingsData(this.crud);
+
+  updateUser({
+    required String userId,
+    required String fullName,
+    required String phone,
+    required String adress,
+    File? image,
+  }) async {
+    var response = await crud.putData(
+      linkUrl: "${AppLinks.updateUser}/$userId",
+      data: dio.FormData.fromMap({
+        "fullName": fullName,
+        "phone": phone,
+        "Address": adress,
+        "file": image != null
+            ? await dio.MultipartFile.fromFile(
+                image.path,
+                filename: image.path.split("/").last,
+              )
+            : null,
+      }),
+    );
+    return response.fold((l) => l, (r) => r);
+  }
+
   changeEmail(String email, String newEmail, String password) async {
     var response = await crud.putData(linkUrl: AppLinks.changeEmail, data: {
       "user_email": email,
