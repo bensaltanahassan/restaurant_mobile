@@ -65,7 +65,9 @@ class ContainerController extends GetxController
 
   void logout() async {
     await myServices.logout();
+
     Get.offAllNamed(AppRoutes.login);
+    await myServices.deleteAllTheControllers();
   }
 
   @override

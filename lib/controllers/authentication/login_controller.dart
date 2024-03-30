@@ -36,6 +36,8 @@ class LoginController extends GetxController {
 
   void login() async {
     if (formState.currentState!.validate()) {
+      // hide the keyboard
+      FocusScope.of(Get.context!).unfocus();
       statusRequest = StatusRequest.loading;
       update(["login"]);
 

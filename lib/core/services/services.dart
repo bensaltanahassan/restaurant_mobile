@@ -1,5 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
+import 'package:restaurant_mobile/controllers/container/container_controller.dart';
+import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
+import 'package:restaurant_mobile/controllers/home/home_controller.dart';
 import 'package:restaurant_mobile/data/model/image_model.dart';
 import 'package:restaurant_mobile/data/model/user_model.dart';
 import 'package:restaurant_mobile/firebase_options.dart';
@@ -31,6 +35,7 @@ class MyServices extends GetxService {
       sharedPreferences.setString("id", user.id.toString()),
       sharedPreferences.setString("phone", user.phone!),
       sharedPreferences.setString("address", user.address!),
+      sharedPreferences.setString("createdAt", user.createdAt!),
     ]);
     if (user.image != null) {
       await sharedPreferences.setString("photo", user.image!.url!);
@@ -56,6 +61,13 @@ class MyServices extends GetxService {
       return user;
     }
     return null;
+  }
+
+  Future<void> deleteAllTheControllers() async {
+    Get.delete<ContainerController>(force: true);
+    Get.delete<HomeController>(force: true);
+    Get.delete<CartController>(force: true);
+    Get.delete<FavorisController>(force: true);
   }
 }
 

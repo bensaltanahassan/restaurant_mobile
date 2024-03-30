@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:restaurant_mobile/controllers/profile/profile_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
@@ -11,6 +12,8 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
+    DateFormat dateFormat = DateFormat("dd/MM/yyyy");
+
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20).r,
       child: SingleChildScrollView(
@@ -41,7 +44,9 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               title: Text(controller.ms.user!.fullName ?? ""),
-              subtitle: const Text("Member since"),
+              subtitle: Text(
+                "Member since ${controller.ms.user!.createdAt != null ? dateFormat.format(DateTime.parse(controller.ms.user!.createdAt!)) : ""}",
+              ),
             ),
             SizedBox(height: 40.h),
             ListTile(
