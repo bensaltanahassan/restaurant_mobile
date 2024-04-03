@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/bindings/initialebinding.dart';
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
           getPages: AppRouter.routes,
           initialBinding: InitialeBindings(),
           locale: localeController.language,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
         );
       },
     );
