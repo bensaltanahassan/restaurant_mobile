@@ -45,7 +45,7 @@ dependencies:
   flutter_polyline_points: ^2.0.0
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.0
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.10+1
   fluttericon: ^2.0.0
   font_awesome_flutter: ^10.7.0
   geocoding: ^2.1.1
@@ -79,6 +79,7 @@ flutter:
   assets:
     - assets/images/
     - assets/lotties/
+    - assets/svgs/
 
   fonts:
     - family: Cairo
