@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -26,9 +27,9 @@ class IntroductionPage extends StatelessWidget {
                   side: const BorderSide(color: AppColors.secondColor),
                 ))),
             onPressed: controller.onDone,
-            child: const Text(
-              "Done",
-              style: TextStyle(
+            child: Text(
+              AppLocalizations.of(context)!.done,
+              style: const TextStyle(
                   fontWeight: FontWeight.w600, color: AppColors.secondColor),
             ),
           ),
@@ -41,9 +42,9 @@ class IntroductionPage extends StatelessWidget {
                   side: const BorderSide(color: AppColors.secondColor),
                 ))),
             onPressed: controller.introKey.currentState?.next,
-            child: const Text(
-              "Next",
-              style: TextStyle(
+            child: Text(
+              AppLocalizations.of(context)!.next,
+              style: const TextStyle(
                   fontWeight: FontWeight.w600, color: AppColors.secondColor),
             ),
           ),
@@ -56,9 +57,9 @@ class IntroductionPage extends StatelessWidget {
                   side: const BorderSide(color: AppColors.secondColor),
                 ))),
             onPressed: controller.onSkip,
-            child: const Text(
-              "Skip",
-              style: TextStyle(
+            child: Text(
+              AppLocalizations.of(context)!.skip,
+              style: const TextStyle(
                   fontWeight: FontWeight.w600, color: AppColors.secondColor),
             ),
           ),
@@ -67,7 +68,7 @@ class IntroductionPage extends StatelessWidget {
           showSkipButton: true,
           showNextButton: true,
           curve: Curves.fastLinearToSlowEaseIn,
-          pages: StaticData.onBoardingList
+          pages: StaticData.onBoardingList(context)
               .map((e) => PageViewModel(
                     titleWidget: Text(
                       e.title,

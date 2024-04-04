@@ -37,7 +37,7 @@ class ChangeLanguagePage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: const Text("Change Language"),
+        title: Text(AppLocalizations.of(context)!.changeLanguage),
         leading: const CustomBackButton(),
       ),
       body: GetBuilder<ChangeLanguageController>(builder: (controller) {
@@ -48,14 +48,16 @@ class ChangeLanguagePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Select your language",
+                  AppLocalizations.of(context)!.selectYourLanguage,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 Text(
-                  "Select the language you want to use for the app",
+                  AppLocalizations.of(context)!.selectTheLanguage,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
@@ -63,7 +65,7 @@ class ChangeLanguagePage extends StatelessWidget {
                 ),
                 SizedBox(height: 50.h),
                 CustomLanguageChoice(
-                  language: "English",
+                  language: AppLocalizations.of(context)!.english,
                   flag: AppImageAsset.usa,
                   onTap: () {
                     controller.onLanguageSelected("en");
@@ -72,7 +74,7 @@ class ChangeLanguagePage extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
                 CustomLanguageChoice(
-                  language: "French",
+                  language: AppLocalizations.of(context)!.french,
                   flag: AppImageAsset.france,
                   onTap: () {
                     controller.onLanguageSelected("fr");
@@ -103,30 +105,39 @@ class CustomLanguageChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      tileColor: isSelected ? AppColors.secondColor : AppColors.primaryColor,
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-      leading: ClipOval(
-        child: SvgPicture.asset(
-          flag,
-          width: 50.w,
-          height: 50.h,
-        ),
-      ),
-      shape: RoundedRectangleBorder(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+      margin: EdgeInsets.symmetric(vertical: 5.h),
+      decoration: BoxDecoration(
+        color: isSelected ? AppColors.secondColor : AppColors.primaryColor,
         borderRadius: BorderRadius.circular(10.r),
-        side: BorderSide(
+        border: Border.all(
           color: isSelected ? AppColors.whiteColor : AppColors.secondColor,
           width: 2.w,
         ),
       ),
-      onTap: onTap,
-      title: Text(
-        language,
-        style: TextStyle(
-            color: AppColors.whiteColor,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.bold),
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          children: [
+            ClipOval(
+              child: SvgPicture.asset(
+                flag,
+                width: 50.w,
+                height: 50.h,
+              ),
+            ),
+            SizedBox(width: 10.w),
+            Text(
+              language,
+              style: TextStyle(
+                color: AppColors.whiteColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

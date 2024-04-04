@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/user_settings/user_settings_controller.dart';
@@ -20,12 +21,12 @@ class UserSettingsPage extends StatelessWidget {
     final controller = Get.put(UserSettingsController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Settings'),
+        title: Text(AppLocalizations.of(context)!.userSettings),
         leading: const CustomBackButton(),
       ),
       bottomNavigationBar: GetBuilder<UserSettingsController>(
           id: "updateButton",
-          builder: (context) {
+          builder: (_) {
             return Container(
               height: 80.h,
               padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20).r,
@@ -40,7 +41,7 @@ class UserSettingsPage extends StatelessWidget {
                   buttonColor: AppColors.secondColor,
                   onPressed: controller.updateUser,
                   widget: Text(
-                    "Save Changes",
+                    AppLocalizations.of(context)!.saveChanges,
                     style: TextStyle(
                       color: AppColors.whiteColor,
                       fontSize: 20.sp,
@@ -113,7 +114,7 @@ class UserSettingsPage extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               Text(
-                "Full Name",
+                AppLocalizations.of(context)!.fullName,
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
@@ -121,24 +122,24 @@ class UserSettingsPage extends StatelessWidget {
               ),
               CustomTextFormField(
                 controller: controller.fullNameController,
-                hintText: "Full Name",
+                hintText: AppLocalizations.of(context)!.fullName,
               ),
               SizedBox(height: 20.h),
               Text(
-                "Address",
+                AppLocalizations.of(context)!.adress,
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp),
               ),
               CustomTextFormField(
-                hintText: "Address",
+                hintText: AppLocalizations.of(context)!.adress,
                 keyboardType: TextInputType.text,
                 controller: controller.adressController,
               ),
               SizedBox(height: 20.h),
               Text(
-                "Phone",
+                AppLocalizations.of(context)!.phoneNum,
                 style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
@@ -146,7 +147,7 @@ class UserSettingsPage extends StatelessWidget {
               ),
               CustomTextFormField(
                 controller: controller.phoneController,
-                hintText: "Phone",
+                hintText: AppLocalizations.of(context)!.phoneNum,
                 keyboardType: TextInputType.phone,
               ),
               SizedBox(height: 40.h)

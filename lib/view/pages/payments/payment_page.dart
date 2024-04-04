@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/payment/payment_controller.dart';
@@ -27,7 +28,7 @@ class PaymentPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Continue",
+                AppLocalizations.of(context)!.continue_,
                 style: TextStyle(
                   color: AppColors.whiteColor,
                   fontSize: 20.sp,
@@ -47,7 +48,7 @@ class PaymentPage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Payment Method'),
+        title: Text(AppLocalizations.of(context)!.paymentMethod),
         leading: const CustomBackButton(),
       ),
       body: GetBuilder<PaymentController>(builder: (controller) {
@@ -57,7 +58,7 @@ class PaymentPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Adress",
+                AppLocalizations.of(context)!.adress,
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
@@ -66,16 +67,17 @@ class PaymentPage extends StatelessWidget {
               ),
               GetBuilder<PaymentController>(
                   id: "adress",
-                  builder: (context) {
+                  builder: (_) {
                     return ListTileSettings(
-                      title: controller.order.adress ?? "No address",
-                      buttonText: "Change",
+                      title: controller.order.adress ??
+                          AppLocalizations.of(context)!.noAdress,
+                      buttonText: AppLocalizations.of(context)!.change,
                       onPressed: controller.changeAddress,
                     );
                   }),
               SizedBox(height: 10.h),
               Text(
-                "Phone number",
+                AppLocalizations.of(context)!.phoneNum,
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
@@ -84,16 +86,17 @@ class PaymentPage extends StatelessWidget {
               ),
               GetBuilder<PaymentController>(
                   id: "phone",
-                  builder: (context) {
+                  builder: (_) {
                     return ListTileSettings(
-                      title: controller.order.phoneNumber ?? "No phone",
-                      buttonText: "Change",
+                      title: controller.order.phoneNumber ??
+                          AppLocalizations.of(context)!.noPhoneNum,
+                      buttonText: AppLocalizations.of(context)!.change,
                       onPressed: controller.changePhone,
                     );
                   }),
               SizedBox(height: 10.h),
               Text(
-                "Payment Method",
+                AppLocalizations.of(context)!.paymentMethod,
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
@@ -114,7 +117,7 @@ class PaymentPage extends StatelessWidget {
                                 onPressed: () => controller.changePaymentMethod(
                                     PaymentMethodes.creditCard),
                                 id: 'creditCard',
-                                title: "Credit Card",
+                                title: AppLocalizations.of(context)!.creditCard,
                                 icon: Icons.credit_card,
                                 isSelected: controller.paymentMethod ==
                                     PaymentMethodes.creditCard,
@@ -124,7 +127,7 @@ class PaymentPage extends StatelessWidget {
                                 onPressed: () => controller.changePaymentMethod(
                                     PaymentMethodes.cashOnDelivery),
                                 id: 'cash',
-                                title: "Cash",
+                                title: AppLocalizations.of(context)!.cash,
                                 icon: Icons.money,
                                 isSelected: controller.paymentMethod ==
                                     PaymentMethodes.cashOnDelivery,
@@ -151,7 +154,7 @@ class PaymentPage extends StatelessWidget {
                                     ),
                                     child: const Icon(Icons.add)),
                                 label: Text(
-                                  "Add New Card",
+                                  AppLocalizations.of(context)!.addNewCard,
                                   style: TextStyle(
                                     fontSize: 20.sp,
                                     fontWeight: FontWeight.bold,

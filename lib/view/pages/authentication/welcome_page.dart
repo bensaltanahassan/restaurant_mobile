@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/welcome_controller.dart';
@@ -33,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  'Special & Delicious Food',
+                  AppLocalizations.of(context)!.subtitle,
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
@@ -42,7 +43,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 const Spacer(),
                 CustomButton(
-                  title: 'Log In',
+                  title: AppLocalizations.of(context)!.login,
                   titleColor: AppColors.whiteColor,
                   titleSize: 20.sp,
                   buttonColor: AppColors.secondColor,
@@ -52,7 +53,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 10.h),
                 CustomButton(
-                  title: 'Sign Up',
+                  title: AppLocalizations.of(context)!.register,
                   titleColor: AppColors.secondColor,
                   titleSize: 20.sp,
                   buttonColor: AppColors.whiteColor,

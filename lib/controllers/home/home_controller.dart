@@ -52,7 +52,7 @@ class HomeController extends GetxController {
 
   Future<void> getHomeData() async {
     statusRequest = StatusRequest.loading;
-    update(["home_status"]);
+    update();
     var response = await homeData.getData(token: myServices.user!.token ?? "");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
@@ -61,7 +61,7 @@ class HomeController extends GetxController {
         homeModel = data;
       } else {}
     }
-    update(["home_status"]);
+    update();
   }
 
   @override

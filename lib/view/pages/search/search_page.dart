@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -27,7 +28,7 @@ class SearchPage extends StatelessWidget {
             children: [
               Expanded(
                 child: SearchBar(
-                  hintText: 'Search',
+                  hintText: AppLocalizations.of(context)!.search,
                   controller: controller.searchController,
                   trailing: [
                     IconButton(
@@ -47,7 +48,7 @@ class SearchPage extends StatelessWidget {
                 itemBuilder: (context) {
                   return [
                     PopupMenuItem(
-                      child: const Text('All'),
+                      child: Text(AppLocalizations.of(context)!.all),
                       onTap: () {
                         controller.categoryId = null;
                       },

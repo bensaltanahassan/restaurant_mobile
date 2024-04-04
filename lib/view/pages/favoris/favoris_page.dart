@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
@@ -24,7 +25,7 @@ class FavorisPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Favoris",
+            AppLocalizations.of(context)!.favorites,
             style: TextStyle(
               fontSize: 30.sp,
               fontWeight: FontWeight.bold,

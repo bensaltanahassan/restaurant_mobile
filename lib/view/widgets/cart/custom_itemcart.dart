@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/data/model/cart_model.dart' as cm;
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
@@ -16,6 +17,8 @@ class CustomItemCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CartController controller = Get.find<CartController>();
+    final isEnglish = Get.find<LocaleController>().isEnglish;
+
     return SizedBox(
       height: 150.h,
       width: double.maxFinite,
@@ -45,7 +48,10 @@ class CustomItemCart extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(cartModel.product!.name!,
+                        Text(
+                            isEnglish
+                                ? cartModel.product!.nameAn!
+                                : cartModel.product!.name!,
                             style: TextStyle(
                               fontSize: 20.sp,
                               height: 1,
@@ -53,7 +59,9 @@ class CustomItemCart extends StatelessWidget {
                               color: AppColors.whiteColor,
                             )),
                         Text(
-                          cartModel.product!.description!,
+                          isEnglish
+                              ? cartModel.product!.descriptionAn!
+                              : cartModel.product!.description!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(

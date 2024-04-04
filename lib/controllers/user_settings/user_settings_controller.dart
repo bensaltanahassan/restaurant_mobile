@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -70,10 +71,13 @@ class UserSettingsController extends GetxController {
         update(["image"]);
       } else {
         showCustomSnackBar(
-            title: "Error", message: "Error while picking image");
+            title: "Error",
+            message: AppLocalizations.of(Get.context!)!.errWhilePickImage);
       }
     } catch (_) {
-      showCustomSnackBar(title: "Error", message: "Error while picking image");
+      showCustomSnackBar(
+          title: "Error",
+          message: AppLocalizations.of(Get.context!)!.errWhilePickImage);
     }
   }
 
@@ -87,9 +91,9 @@ class UserSettingsController extends GetxController {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Change Photo",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.changePhoto,
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryColor),
@@ -99,7 +103,7 @@ class UserSettingsController extends GetxController {
                 textColor: AppColors.primaryColor,
                 iconColor: AppColors.primaryColor,
                 leading: const Icon(Icons.camera_alt_outlined, size: 32),
-                title: const Text("Take Photo"),
+                title: Text(AppLocalizations.of(context)!.takePhoto),
                 onTap: () {
                   pickImage(ImageSource.camera);
                 },
@@ -109,7 +113,7 @@ class UserSettingsController extends GetxController {
                 textColor: AppColors.primaryColor,
                 iconColor: AppColors.primaryColor,
                 leading: const Icon(Icons.photo, size: 32),
-                title: const Text("Choose from Gallery"),
+                title: Text(AppLocalizations.of(context)!.chooseFromLibrary),
                 onTap: () {
                   pickImage(ImageSource.gallery);
                 },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
@@ -53,9 +54,10 @@ class CustomDrawer extends StatelessWidget {
                             onPressed: () {
                               controller.onDrawerChanged(4, context);
                             },
-                            child: const Text(
-                              "View Profile",
-                              style: TextStyle(color: AppColors.secondColor),
+                            child: Text(
+                              AppLocalizations.of(context)!.viewProfile,
+                              style:
+                                  const TextStyle(color: AppColors.secondColor),
                             ))
                       ],
                     ),
@@ -87,7 +89,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   CustomDrawetItem(
-                    title: "Search",
+                    title: AppLocalizations.of(context)!.search,
                     icon: Icons.search_outlined,
                     onPressed: () {
                       controller.onDrawerChanged(2, context);
@@ -96,7 +98,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   CustomDrawetItem(
-                    title: "Favoris",
+                    title: AppLocalizations.of(context)!.favorites,
                     icon: Icons.favorite_outline,
                     onPressed: () {
                       controller.onDrawerChanged(3, context);
@@ -105,13 +107,18 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   CustomDrawetItem(
-                    title: "Contact Us",
+                    title: AppLocalizations.of(context)!.contactUs,
                     icon: Icons.phone_outlined,
                     onPressed: () {},
                   ),
                   SizedBox(height: 10.h),
                   CustomDrawetItem(
-                    title: "Book Table",
+                    title: AppLocalizations.of(context)!.changeLanguage,
+                    icon: Icons.translate_outlined,
+                    onPressed: controller.goToChangeLanguagePage,
+                  ),
+                  CustomDrawetItem(
+                    title: AppLocalizations.of(context)!.bookTable,
                     icon: Icons.table_chart_outlined,
                     onPressed: controller.goToReservationPage,
                   )
@@ -124,7 +131,7 @@ class CustomDrawer extends StatelessWidget {
               child: CustomButton(
                 radius: 30,
                 buttonColor: AppColors.secondColor,
-                title: "Log Out",
+                title: AppLocalizations.of(context)!.logout,
                 titleColor: AppColors.whiteColor,
                 onPressed: controller.logout,
               ),

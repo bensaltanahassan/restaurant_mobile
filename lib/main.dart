@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/bindings/initialebinding.dart';
 import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/core/services/services.dart';
+import 'package:restaurant_mobile/data/datasource/static/static.dart';
 import 'package:restaurant_mobile/routes.dart';
 
 void main() async {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Restaurant Mobile',
+          title: StaticData.appName,
           theme: localeController.appTheme,
           getPages: AppRouter.routes,
           initialBinding: InitialeBindings(),

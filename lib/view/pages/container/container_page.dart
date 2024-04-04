@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/data/datasource/static/static.dart';
 import 'package:restaurant_mobile/view/pages/cart/cart_page.dart';
 import 'package:restaurant_mobile/view/pages/favoris/favoris_page.dart';
 import 'package:restaurant_mobile/view/pages/home/home_page.dart';
@@ -22,7 +23,7 @@ class ContainerPage extends StatelessWidget {
     return Scaffold(
         bottomNavigationBar: const BottomNavBarHome(),
         appBar: AppBar(
-          title: const Text("Restaurant App"),
+          title: Text(StaticData.appName),
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(

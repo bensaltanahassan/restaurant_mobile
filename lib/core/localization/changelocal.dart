@@ -10,13 +10,16 @@ class LocaleController extends GetxController {
   Locale? language;
   MyServices myServices = Get.find();
 
+  String get langCode => language!.languageCode;
+  bool get isEnglish => langCode == "en";
+
   ThemeData appTheme = AppTheme.themeEnglish;
-  changeLang(String langCode) {
+  Future<void> changeLang(String langCode) async {
     Locale locale = Locale(langCode);
-    myServices.sharedPreferences.setString("lang", langCode);
+    await myServices.sharedPreferences.setString("lang", langCode);
     appTheme = langCode == "ar" ? AppTheme.themeArabic : AppTheme.themeEnglish;
-    Get.changeTheme(appTheme);
-    Get.updateLocale(locale);
+    // Get.changeTheme(appTheme); // if arabic exist
+    await Get.updateLocale(locale);
   }
 
   getPermission() async {
@@ -50,10 +53,21 @@ class LocaleController extends GetxController {
     if (lang == "ar") {
       language = const Locale("ar");
       appTheme = AppTheme.themeArabic;
+    } else if (lang == "fr") {
+      language = const Locale("fr");
+      appTheme = AppTheme.themeEnglish;
+    } else if (lang == "en") {
+      language = const Locale("en");
+      appTheme = AppTheme.themeEnglish;
     } else {
       language = Locale(Get.deviceLocale!.languageCode);
-      appTheme = AppTheme.themeEnglish;
+      if (language!.languageCode == "ar") {
+        appTheme = AppTheme.themeArabic;
+      } else {
+        appTheme = AppTheme.themeEnglish;
+      }
     }
+
     super.onInit();
   }
 }

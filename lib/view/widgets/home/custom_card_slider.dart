@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
@@ -36,7 +38,9 @@ class CustomCardSlider extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               padding: EdgeInsets.all(20.w),
               child: Text(
-                product.name!,
+                Get.find<LocaleController>().isEnglish
+                    ? product.nameAn!
+                    : product.name!,
                 style: TextStyle(
                   fontSize: 28.sp,
                   fontWeight: FontWeight.bold,

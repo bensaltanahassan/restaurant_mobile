@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/container/container_controller.dart';
@@ -25,7 +26,7 @@ class ProfileController extends GetxController {
             child: Column(
               children: [
                 Text(
-                  "Change Password",
+                  AppLocalizations.of(context)!.changePassword,
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
@@ -33,14 +34,14 @@ class ProfileController extends GetxController {
                   ),
                 ),
                 SizedBox(height: 20.h),
-                const CustomTextFormField(
-                  hintText: "New Password",
+                CustomTextFormField(
+                  hintText: AppLocalizations.of(context)!.newPassword,
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),
                 SizedBox(height: 20.h),
-                const CustomTextFormField(
-                  hintText: "Confirm Password",
+                CustomTextFormField(
+                  hintText: AppLocalizations.of(context)!.confirmPassword,
                   prefixIcon: Icons.lock,
                   isPassword: true,
                 ),
@@ -48,9 +49,11 @@ class ProfileController extends GetxController {
                 CustomButton(
                   width: double.maxFinite,
                   buttonColor: AppColors.secondColor,
-                  title: "Save",
+                  title: AppLocalizations.of(context)!.save,
                   titleColor: AppColors.whiteColor,
                   onPressed: () {},
+                  titleSize: 20.sp,
+                  fontWeight: FontWeight.bold,
                 )
               ],
             ),

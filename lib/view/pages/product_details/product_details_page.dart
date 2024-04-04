@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
@@ -7,6 +8,7 @@ import 'package:restaurant_mobile/controllers/product_details/product_details_co
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 import 'package:restaurant_mobile/core/constant/constants.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_back_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
@@ -16,12 +18,16 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductDetailsController controller =
-        Get.put(ProductDetailsController());
+    final controller = Get.put(ProductDetailsController());
+    final isEnglish = Get.find<LocaleController>().isEnglish;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.productModel.name!),
+        title: Text(
+          isEnglish
+              ? controller.productModel.nameAn!
+              : controller.productModel.name!,
+        ),
         leading: const CustomBackButton(),
       ),
       bottomNavigationBar: Padding(
@@ -44,7 +50,7 @@ class ProductDetailsPage extends StatelessWidget {
                             : CustomButton(
                                 width: double.maxFinite,
                                 buttonColor: AppColors.secondColor,
-                                title: "Add to Cart",
+                                title: AppLocalizations.of(context)!.addCart,
                                 titleColor: AppColors.whiteColor,
                                 titleSize: 20.sp,
                                 fontWeight: FontWeight.bold,
@@ -113,7 +119,9 @@ class ProductDetailsPage extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.only(right: 10).r,
                       child: Text(
-                        controller.productModel.name!,
+                        isEnglish
+                            ? controller.productModel.nameAn!
+                            : controller.productModel.name!,
                         style: TextStyle(
                           height: 1.5,
                           fontSize: 24.sp,
@@ -136,7 +144,7 @@ class ProductDetailsPage extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               Text(
-                'Description',
+                AppLocalizations.of(context)!.description,
                 style: TextStyle(
                   height: 1.5,
                   fontSize: 20.sp,
@@ -145,7 +153,9 @@ class ProductDetailsPage extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               Text(
-                controller.productModel.description!,
+                isEnglish
+                    ? controller.productModel.descriptionAn!
+                    : controller.productModel.description!,
                 style: TextStyle(
                   height: 1.5,
                   fontSize: 16.sp,
@@ -153,7 +163,7 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.h),
-              Text("Quantity",
+              Text(AppLocalizations.of(context)!.quantity,
                   style: TextStyle(
                     height: 1.5,
                     fontSize: 20.sp,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
 
@@ -39,7 +40,7 @@ class CustomCategoryWithDivider extends StatelessWidget {
               const EdgeInsets.all(0),
             ),
           ),
-          child: Text('View All',
+          child: Text(AppLocalizations.of(context)!.viewAll,
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,

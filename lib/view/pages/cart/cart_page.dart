@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
@@ -19,13 +20,14 @@ class CartPage extends StatelessWidget {
     } else {
       Get.find<CartController>();
     }
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 25, left: 20, right: 20).r,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Order",
+            AppLocalizations.of(context)!.cart,
             style: TextStyle(
               fontSize: 30.sp,
               fontWeight: FontWeight.bold,
@@ -60,7 +62,7 @@ class CartPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Total price",
+                                  AppLocalizations.of(context)!.totalPrice,
                                   style: TextStyle(
                                     fontSize: 20.sp,
                                     fontWeight: FontWeight.bold,
@@ -84,7 +86,7 @@ class CartPage extends StatelessWidget {
                             SizedBox(height: 10.h),
                             CustomButton(
                               width: double.maxFinite,
-                              title: "Order",
+                              title: AppLocalizations.of(context)!.order,
                               titleColor: AppColors.whiteColor,
                               buttonColor: AppColors.secondColor,
                               fontWeight: FontWeight.bold,

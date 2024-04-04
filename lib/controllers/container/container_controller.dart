@@ -31,6 +31,10 @@ class ContainerController extends GetxController
     update();
   }
 
+  goToChangeLanguagePage() {
+    Get.toNamed(AppRoutes.changeLanguage);
+  }
+
   void goToReservationPage() {
     Get.toNamed(AppRoutes.reservation);
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +22,7 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Profile",
+            Text(AppLocalizations.of(context)!.profile,
                 style: TextStyle(
                   fontSize: 30.sp,
                   height: 1,
@@ -45,12 +46,13 @@ class ProfilePage extends StatelessWidget {
               ),
               title: Text(controller.ms.user!.fullName ?? ""),
               subtitle: Text(
-                "Member since ${controller.ms.user!.createdAt != null ? dateFormat.format(DateTime.parse(controller.ms.user!.createdAt!)) : ""}",
+                AppLocalizations.of(context)!.memberSince(
+                    " ${controller.ms.user!.createdAt != null ? dateFormat.format(DateTime.parse(controller.ms.user!.createdAt!)) : ""}"),
               ),
             ),
             SizedBox(height: 40.h),
             ListTile(
-              title: const Text("User Settings"),
+              title: Text(AppLocalizations.of(context)!.userSettings),
               leading: const Icon(Icons.settings),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToUserSettings(),
@@ -58,27 +60,27 @@ class ProfilePage extends StatelessWidget {
             SizedBox(height: 20.h),
             ListTile(
               leading: const Icon(Icons.lock),
-              title: const Text("Change Password"),
+              title: Text(AppLocalizations.of(context)!.changePassword),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToChangePassword(),
             ),
             SizedBox(height: 20.h),
             ListTile(
               leading: const Icon(Icons.favorite),
-              title: const Text("Favorite"),
+              title: Text(AppLocalizations.of(context)!.favorites),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToFavorite(),
             ),
             SizedBox(height: 20.h),
             ListTile(
-              title: const Text("Recent Orders"),
+              title: Text(AppLocalizations.of(context)!.recentOrders),
               leading: const Icon(Icons.shopping_cart),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToRecentOrders(),
             ),
             SizedBox(height: 20.h),
             ListTile(
-              title: const Text("Notifications"),
+              title: Text(AppLocalizations.of(context)!.notifications),
               leading: const Icon(Icons.notifications),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: () => controller.goToNotifications(),
@@ -86,7 +88,7 @@ class ProfilePage extends StatelessWidget {
             SizedBox(height: 20.h),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text("Logout"),
+              title: Text(AppLocalizations.of(context)!.logout),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
               onTap: controller.logout,
             ),

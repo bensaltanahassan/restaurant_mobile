@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/cart/cart_controller.dart';
 import 'package:restaurant_mobile/controllers/favoris/favoris_controller.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_animated_switcher.dart';
@@ -22,6 +23,8 @@ class CustomProductCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isEnglish = Get.find<LocaleController>().isEnglish;
+
     return SizedBox(
       height: 180.h,
       child: GestureDetector(
@@ -50,7 +53,7 @@ class CustomProductCategory extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            product.name!,
+                            isEnglish ? product.nameAn! : product.name!,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -92,7 +95,7 @@ class CustomProductCategory extends StatelessWidget {
                   ),
                   Expanded(
                       child: Text(
-                    product.description!,
+                    isEnglish ? product.descriptionAn! : product.description!,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

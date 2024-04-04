@@ -25,7 +25,7 @@ class ChoicePaymentMethode extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         padding: const EdgeInsets.all(20).r,
         height: 150.h,
-        width: 150.w,
+        width: 170.w,
         decoration: BoxDecoration(
             color: isSelected ? AppColors.secondColor : AppColors.greyColor,
             borderRadius: BorderRadius.circular(10).r),

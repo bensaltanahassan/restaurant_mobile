@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:restaurant_mobile/controllers/products_category/products_category_controller.dart';
 import 'package:restaurant_mobile/core/class/handlingdataview.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/pages/products_category/products_category_loading.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
@@ -15,6 +16,7 @@ class ProductsCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProductsCategoryController());
+    final bool isEnglish = Get.find<LocaleController>().isEnglish;
     return Scaffold(
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
@@ -25,7 +27,9 @@ class ProductsCategoryPage extends StatelessWidget {
               floating: true,
               leading: const SizedBox(),
               flexibleSpace: FlexibleSpaceBar(
-                title: Text(controller.category.name!),
+                title: Text(isEnglish
+                    ? controller.category.nameAn!
+                    : controller.category.name!),
                 background: CustomNetworkImage(
                     imageUrl: controller.category.image?.url),
               ),

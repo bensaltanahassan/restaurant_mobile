@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/login_controller.dart';
@@ -27,7 +28,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Don\'t have an account?',
+                AppLocalizations.of(context)!.dontHaveAccount,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16.sp,
@@ -37,7 +38,7 @@ class LoginPage extends StatelessWidget {
               TextButton(
                   onPressed: controller.goToRegisterPage,
                   child: Text(
-                    'Sign Up',
+                    AppLocalizations.of(context)!.register,
                     style: TextStyle(
                       color: AppColors.secondColor,
                       fontSize: 16.sp,
@@ -66,7 +67,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            'Welcome Back!',
+                            AppLocalizations.of(context)!.welcomeBack,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 24.sp,
@@ -94,8 +95,8 @@ class LoginPage extends StatelessWidget {
                               controller: controller.passwordController,
                               validator: (p0) =>
                                   AppValidation.validInput(val: p0 ?? ""),
-                              hintText: 'Password',
-                              labelText: 'Password',
+                              hintText: AppLocalizations.of(context)!.password,
+                              labelText: AppLocalizations.of(context)!.password,
                               prefixIcon: Icons.lock,
                               isPassword: !controller.showPassword,
                               suffixIcon: IconButton(
@@ -123,13 +124,13 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(height: 20),
                     GetBuilder<LoginController>(
                         id: 'login',
-                        builder: (context) {
+                        builder: (_) {
                           return CustomAnimatedSwitcher(
                             condition: controller.statusRequest ==
                                 StatusRequest.loading,
                             firstChild: const CustomLoadingButton(),
                             secondChild: CustomButton(
-                              title: "Login",
+                              title: AppLocalizations.of(context)!.login,
                               titleSize: 20.sp,
                               titleColor: Colors.white,
                               buttonColor: AppColors.secondColor,
@@ -145,7 +146,7 @@ class LoginPage extends StatelessWidget {
                       child: TextButton(
                         onPressed: controller.goToForgetPasswordPage,
                         child: Text(
-                          'Forgot Password?',
+                          AppLocalizations.of(context)!.forgotPassword,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.sp,

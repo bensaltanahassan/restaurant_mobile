@@ -29,7 +29,7 @@ class OrderModel {
   OrderModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['userId'];
-    totalPrice = json['totalPrice'];
+    totalPrice = double.parse(json['totalPrice'].toString());
     adress = json['adress'];
     phoneNumber = json['phoneNumber'];
     paymentMethod = json['paymentMethod'];

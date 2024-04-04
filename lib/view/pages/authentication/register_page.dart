@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/authentication/register_controller.dart';
@@ -43,7 +44,7 @@ class RegisterPage extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Text(
-                                  'Welcome!',
+                                  AppLocalizations.of(context)!.welcome,
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24.sp,
@@ -56,8 +57,8 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: 20.h),
                           CustomTextFormField(
                             controller: controller.firstNameController,
-                            hintText: 'First Name',
-                            labelText: 'First Name',
+                            hintText: AppLocalizations.of(context)!.firstName,
+                            labelText: AppLocalizations.of(context)!.firstName,
                             prefixIcon: Icons.person,
                             validator: (p0) => AppValidation.validInput(
                               val: p0 ?? "",
@@ -68,8 +69,8 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: 20.h),
                           CustomTextFormField(
                             controller: controller.lastNameController,
-                            hintText: 'Last Name',
-                            labelText: 'Last Name',
+                            hintText: AppLocalizations.of(context)!.lastName,
+                            labelText: AppLocalizations.of(context)!.lastName,
                             prefixIcon: Icons.person,
                             validator: (p0) => AppValidation.validInput(
                               val: p0 ?? "",
@@ -80,8 +81,8 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: 20.h),
                           CustomTextFormField(
                               controller: controller.emailController,
-                              hintText: 'Email',
-                              labelText: 'Email',
+                              hintText: AppLocalizations.of(context)!.email,
+                              labelText: AppLocalizations.of(context)!.email,
                               prefixIcon: Icons.email,
                               keyboardType: TextInputType.emailAddress,
                               validator: (p0) => AppValidation.validInput(
@@ -89,8 +90,8 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: 20.h),
                           CustomTextFormField(
                             controller: controller.passwordController,
-                            hintText: 'Password',
-                            labelText: 'Password',
+                            hintText: AppLocalizations.of(context)!.password,
+                            labelText: AppLocalizations.of(context)!.password,
                             prefixIcon: Icons.lock,
                             isPassword: true,
                             validator: (p0) => AppValidation.validInput(
@@ -105,12 +106,15 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: 20.h),
                           CustomTextFormField(
                             controller: controller.confirmPasswordController,
-                            hintText: 'Confirm Password',
-                            labelText: 'Confirm Password',
+                            hintText:
+                                AppLocalizations.of(context)!.confirmPassword,
+                            labelText:
+                                AppLocalizations.of(context)!.confirmPassword,
                             prefixIcon: Icons.lock,
                             validator: (p0) {
                               if (p0 != controller.passwordController.text) {
-                                return "Password not match";
+                                return AppLocalizations.of(context)!
+                                    .passwordsNotMatch;
                               }
                               return null;
                             },
@@ -119,13 +123,14 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: 20.h),
                           GetBuilder<RegisterController>(
                               id: "register",
-                              builder: (context) {
+                              builder: (_) {
                                 return CustomAnimatedSwitcher(
                                   condition: controller.statusRequest ==
                                       StatusRequest.loading,
                                   firstChild: const CustomLoadingButton(),
                                   secondChild: CustomButton(
-                                    title: "Register",
+                                    title:
+                                        AppLocalizations.of(context)!.register,
                                     titleSize: 20.sp,
                                     titleColor: Colors.white,
                                     buttonColor: AppColors.secondColor,
@@ -145,7 +150,7 @@ class RegisterPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already have an account?',
+                        AppLocalizations.of(context)!.alreadyHaveAccount,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.sp,
@@ -155,7 +160,7 @@ class RegisterPage extends StatelessWidget {
                       TextButton(
                           onPressed: controller.goToLoginPage,
                           child: Text(
-                            'Login',
+                            AppLocalizations.of(context)!.login,
                             style: TextStyle(
                               color: AppColors.secondColor,
                               fontSize: 16.sp,

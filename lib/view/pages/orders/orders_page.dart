@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -17,15 +18,13 @@ class OrdersPage extends StatelessWidget {
     Get.put(OrdersController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Orders'),
+        title: Text(AppLocalizations.of(context)!.myOrders),
         leading: const CustomBackButton(),
       ),
       body: GetBuilder<OrdersController>(builder: (controller) {
         return HandlingDataView(
           statusRequest: controller.statusRequest,
-          loadingWidget: const Center(
-            child: CircularProgressIndicator(),
-          ),
+          loadingWidget: const Center(child: CircularProgressIndicator()),
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(
                     horizontal: AppDimensions.mainPadding,
@@ -69,8 +68,10 @@ class CustomOrder extends StatelessWidget {
     final DateTime orderDate = DateTime.parse(order.createdAt!);
     final String formattedDate = dateFormat.format(orderDate);
     return ListTile(
-      title: Text('Order #${order.id}'),
-      subtitle: Text('Order Date: $formattedDate'),
+      title: Text(AppLocalizations.of(context)!.orderWithId(order.id!)),
+      subtitle: Text(
+        AppLocalizations.of(context)!.orderDate(formattedDate),
+      ),
       trailing: Text('Total: ${order.totalPrice} DH'),
       onTap: onTap,
     );

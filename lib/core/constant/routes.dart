@@ -51,4 +51,7 @@ class AppRoutes {
   static const String searchPage = "/searchPage";
   static const String reservation = "/reservation";
   static const String checkout = "/checkout";
+
+  // ChangeLanguage
+  static const String changeLanguage = "/changeLanguage";
 }

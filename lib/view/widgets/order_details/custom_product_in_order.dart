@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/data/model/ordersmodel.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_network_image.dart';
 
@@ -16,6 +18,8 @@ class CustomProductInOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isEnglish = Get.find<LocaleController>().isEnglish;
+
     return ListTile(
       onTap: onTap,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10).r),
@@ -33,7 +37,7 @@ class CustomProductInOrder extends StatelessWidget {
             )),
       ),
       title: Text(
-        orderItem.product!.name!,
+        isEnglish ? orderItem.product!.nameAn! : orderItem.product!.name!,
         maxLines: 1,
       ),
       subtitle: Text("${orderItem.product!.price!.toStringAsFixed(2)} DH",

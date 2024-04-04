@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/home/home_controller.dart';
 import 'package:restaurant_mobile/core/class/statusrequest.dart';
 import 'package:restaurant_mobile/core/constant/colors.dart';
+import 'package:restaurant_mobile/core/localization/changelocal.dart';
 import 'package:restaurant_mobile/data/model/product_model.dart';
 import 'package:restaurant_mobile/view/widgets/buttons/custom_button.dart';
 import 'package:restaurant_mobile/view/widgets/shared/custom_animated_switcher.dart';
@@ -23,6 +24,7 @@ class CustomProductHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<HomeController>();
+    final bool isEnglish = Get.find<LocaleController>().isEnglish;
     return SizedBox(
       width: 150.w,
       child: GestureDetector(
@@ -43,7 +45,7 @@ class CustomProductHome extends StatelessWidget {
             ),
             SizedBox(height: 5.h),
             Text(
-              product.name!,
+              isEnglish ? product.nameAn! : product.name!,
               style: TextStyle(
                 height: 1.5,
                 fontSize: 20.sp,

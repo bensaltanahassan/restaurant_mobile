@@ -1,6 +1,7 @@
 class AppImageAsset {
   static const String rootImages = "assets/images";
   static const String rootLotties = "assets/lotties";
+  static const String rootSvgs = "assets/svgs";
   //onBoarding
   static const String onBoardingImageOne = "$rootImages/onboarding1.png";
   static const String onBoardingImageTwo = "$rootImages/onboarding2.png";
@@ -32,4 +33,7 @@ class AppImageAsset {
 
   //test
   static const String hassan = "$rootImages/hassan.jpg";
+  //countries
+  static const String usa = "$rootSvgs/us.svg";
+  static const String france = "$rootSvgs/fr.svg";
 }

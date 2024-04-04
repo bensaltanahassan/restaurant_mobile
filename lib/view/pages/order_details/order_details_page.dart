@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -20,7 +21,8 @@ class OrderDetailsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('ORDER #${controller.orderArg.id}'),
+        title: Text(
+            AppLocalizations.of(context)!.orderWithId(controller.orderArg.id!)),
         leading: const CustomBackButton(),
       ),
       body: GetBuilder<OrderDetailsController>(builder: (controller) {
@@ -40,13 +42,13 @@ class OrderDetailsPage extends StatelessWidget {
                     ? []
                     : [
                         CustomListTileOrderDetails(
-                          title: "Status",
+                          title: AppLocalizations.of(context)!.status,
                           subtitle: controller
                               .getOrderDetailsResponse.order!.orderStatus!,
                         ),
                         SizedBox(height: (AppDimensions.mainSpacing / 2).h),
                         CustomListTileOrderDetails(
-                          title: "Address",
+                          title: AppLocalizations.of(context)!.adress,
                           subtitle:
                               controller.getOrderDetailsResponse.order!.adress!,
                         ),
@@ -55,7 +57,7 @@ class OrderDetailsPage extends StatelessWidget {
                           children: [
                             Expanded(
                               child: CustomListTileOrderDetails(
-                                title: "Phone",
+                                title: AppLocalizations.of(context)!.phoneNum,
                                 subtitle: controller.getOrderDetailsResponse
                                     .order!.phoneNumber!,
                               ),
@@ -63,7 +65,7 @@ class OrderDetailsPage extends StatelessWidget {
                             SizedBox(width: (AppDimensions.mainSpacing / 2).w),
                             Expanded(
                               child: CustomListTileOrderDetails(
-                                title: "Date",
+                                title: AppLocalizations.of(context)!.date,
                                 subtitle: dateFormat.format(DateTime.parse(
                                     controller.getOrderDetailsResponse.order!
                                         .createdAt!)),
@@ -73,7 +75,7 @@ class OrderDetailsPage extends StatelessWidget {
                         ),
                         SizedBox(height: (AppDimensions.mainSpacing / 2).h),
                         CustomListTileOrderDetails(
-                          title: "Payment Method",
+                          title: AppLocalizations.of(context)!.paymentMethod,
                           subtitle: controller
                               .getOrderDetailsResponse.order!.paymentMethod!,
                         ),
@@ -101,7 +103,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        "Products in order",
+                                        AppLocalizations.of(context)!
+                                            .productsInOrder,
                                         style: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.bold,
@@ -155,7 +158,7 @@ class OrderDetailsPage extends StatelessWidget {
                                         ListTile(
                                           textColor: AppColors.primaryColor,
                                           title: Text(
-                                            "Total",
+                                            AppLocalizations.of(context)!.total,
                                             style: TextStyle(
                                               fontSize: 16.sp,
                                               fontWeight: FontWeight.bold,

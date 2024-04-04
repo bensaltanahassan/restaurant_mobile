@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_mobile/controllers/checkout/checkout_controller.dart';
@@ -18,12 +19,12 @@ class CheckoutPage extends StatelessWidget {
     final controller = Get.put(CheckOutController());
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Checkout'),
+          title: Text(AppLocalizations.of(context)!.checkout),
           leading: const CustomBackButton(),
         ),
         bottomNavigationBar: GetBuilder<CheckOutController>(
             id: "checkoutButton",
-            builder: (context) {
+            builder: (_) {
               return Container(
                 height: 80.h,
                 padding:
@@ -39,7 +40,7 @@ class CheckoutPage extends StatelessWidget {
                     buttonColor: AppColors.secondColor,
                     onPressed: controller.onCheckout,
                     widget: Text(
-                      "Confirm",
+                      AppLocalizations.of(context)!.checkout,
                       style: TextStyle(
                         color: AppColors.whiteColor,
                         fontSize: 20.sp,
@@ -55,7 +56,7 @@ class CheckoutPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20).r,
           children: [
             Text(
-              "Shopping Cart",
+              AppLocalizations.of(context)!.shoppingCart,
               style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class CheckoutPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Total",
+                  AppLocalizations.of(context)!.total,
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
