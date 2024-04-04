@@ -54,6 +54,7 @@ class HomeController extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await homeData.getData(token: myServices.user!.token ?? "");
+    print("============== GET DATA ==============");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       HomeModel data = HomeModel.fromJson(response);
@@ -67,7 +68,6 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     getHomeData();
-
     super.onInit();
   }
 }

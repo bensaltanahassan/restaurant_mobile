@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
     if (!Get.isRegistered<HomeController>()) {
       Get.put(HomeController(), permanent: true);
     } else {
-      Get.find<HomeController>().getHomeData();
+      Get.find<HomeController>();
     }
     return GetBuilder<HomeController>(builder: (controller) {
       return HandlingDataView(
