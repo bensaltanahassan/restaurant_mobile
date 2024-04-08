@@ -5,6 +5,7 @@ class AppRoutes {
   static const String welcome = "/welcome";
   static const String login = "/login";
   static const String signUp = "/signUp";
+  static const String verifyEmail = "/verifyEmail";
   static const String verifycodeSignUp = "/verifycodesignup";
   static const String successSignUp = "/successSignUp";
   //forgetpassword

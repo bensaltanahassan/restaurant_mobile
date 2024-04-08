@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
     super.key,
     this.title,
     this.titleColor,
-    required this.buttonColor,
+    this.buttonColor,
     this.width,
     this.height,
     this.radius,
@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
   });
   final String? title;
   final Color? titleColor;
-  final Color buttonColor;
+  final Color? buttonColor;
   final double? width;
   final double? height;
   final double? radius;

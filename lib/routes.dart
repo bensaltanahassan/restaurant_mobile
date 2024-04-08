@@ -7,6 +7,7 @@ import 'package:restaurant_mobile/view/pages/authentication/forget_password_page
 import 'package:restaurant_mobile/view/pages/authentication/login_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/register_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/verify_code_page.dart';
+import 'package:restaurant_mobile/view/pages/authentication/verify_email_page.dart';
 import 'package:restaurant_mobile/view/pages/authentication/welcome_page.dart';
 import 'package:restaurant_mobile/view/pages/booking/booking_page.dart';
 import 'package:restaurant_mobile/view/pages/container/container_page.dart';
@@ -31,6 +32,7 @@ class AppRouter {
     GetPage(name: AppRoutes.welcome, page: () => const WelcomePage()),
     GetPage(name: AppRoutes.login, page: () => const LoginPage()),
     GetPage(name: AppRoutes.signUp, page: () => const RegisterPage()),
+    GetPage(name: AppRoutes.verifyEmail, page: () => const VerifyEmailPage()),
     GetPage(
         name: AppRoutes.forgetPassword, page: () => const ForgetPasswordPage()),
     GetPage(

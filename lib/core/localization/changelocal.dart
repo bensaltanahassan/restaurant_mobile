@@ -12,14 +12,18 @@ class LocaleController extends GetxController {
 
   String get langCode => language!.languageCode;
   bool get isEnglish => langCode == "en";
+  set isEnglish(bool value) => value;
 
   ThemeData appTheme = AppTheme.themeEnglish;
   Future<void> changeLang(String langCode) async {
     Locale locale = Locale(langCode);
     await myServices.sharedPreferences.setString("lang", langCode);
     appTheme = langCode == "ar" ? AppTheme.themeArabic : AppTheme.themeEnglish;
+    //TODO
+    language = locale;
     // Get.changeTheme(appTheme); // if arabic exist
     await Get.updateLocale(locale);
+    Get.appUpdate();
   }
 
   getPermission() async {

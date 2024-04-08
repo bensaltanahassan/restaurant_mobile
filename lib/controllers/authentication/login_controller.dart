@@ -47,6 +47,7 @@ class LoginController extends GetxController {
       if (statusRequest == StatusRequest.success) {
         Map<String, dynamic> responseMap = response as Map<String, dynamic>;
         LoginModel loginModel = LoginModel.fromJson(responseMap);
+
         if (loginModel.status == true) {
           UserModel userModel = loginModel.data!.user!;
           userModel.token = loginModel.data!.token;
@@ -57,6 +58,12 @@ class LoginController extends GetxController {
 
           Get.offAllNamed(AppRoutes.containerPage);
         } else {
+          if (loginModel.message!
+              .toLowerCase()
+              .trim()
+              .contains("Email is not verified!".toLowerCase())) {
+            goToVerifyEmailPage();
+          }
           String message =
               loginException.handleException(message: loginModel.message!);
           showCustomSnackBar(
@@ -92,5 +99,10 @@ class LoginController extends GetxController {
     //     ));
     // await myServices.saveUser(userModel);
     // Get.offAllNamed(AppRoutes.containerPage);
+  }
+
+  goToVerifyEmailPage() {
+    Get.toNamed(AppRoutes.verifyEmail,
+        arguments: {'email': emailController.text});
   }
 }

@@ -28,7 +28,19 @@ class RegisterController extends GetxController {
     if (formState.currentState!.validate() &&
         statusRequest != StatusRequest.loading) {
       statusRequest = StatusRequest.loading;
+      await Future.delayed(const Duration(seconds: 1));
       update(['register']);
+      statusRequest = StatusRequest.success;
+      update(['register']);
+
+      return showCustomSnackBar(
+        title: 'Success',
+        message:
+            'An email has been sent to your email address, please verify your email address to login',
+        duration: const Duration(seconds: 3),
+        onClosed: (p0) => goToVerifyEmailPage(),
+      );
+
       var response = await rd.postData(
         firstName: firstNameController.text,
         lastName: lastNameController.text,
@@ -38,14 +50,13 @@ class RegisterController extends GetxController {
       );
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
-        // TODO
         if (response["status"] == true) {
           showCustomSnackBar(
             title: 'Success',
             message:
                 'An email has been sent to your email address, please verify your email address to login',
             duration: const Duration(seconds: 3),
-            onClosed: (p0) => goToLoginPage(),
+            onClosed: (p0) => goToVerifyEmailPage(),
           );
         } else {
           String message =
@@ -71,5 +82,10 @@ class RegisterController extends GetxController {
     firstNameController.dispose();
     lastNameController.dispose();
     super.onClose();
+  }
+
+  goToVerifyEmailPage() {
+    Get.toNamed(AppRoutes.verifyEmail,
+        arguments: {'email': emailController.text});
   }
 }
