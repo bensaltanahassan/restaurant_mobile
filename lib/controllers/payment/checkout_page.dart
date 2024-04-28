@@ -78,28 +78,55 @@ class CheckoutPage extends StatelessWidget {
               },
             ),
             const Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.total,
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.whiteColor,
-                  ),
-                ),
-                Text(
-                  "${controller.order.totalPrice} DH",
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.whiteColor,
-                  ),
-                ),
-              ],
+            CustomRowCheckout(
+              title: AppLocalizations.of(context)!.total,
+              value: "${controller.order.totalPrice} DH",
+            ),
+            CustomRowCheckout(
+              title: AppLocalizations.of(context)!.adress,
+              value: "${controller.order.adress}",
+            ),
+            CustomRowCheckout(
+              title: AppLocalizations.of(context)!.phoneNum,
+              value: "${controller.order.phoneNumber}",
             ),
           ],
         ));
+  }
+}
+
+class CustomRowCheckout extends StatelessWidget {
+  const CustomRowCheckout({
+    super.key,
+    required this.title,
+    required this.value,
+  });
+
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: AppColors.whiteColor,
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: AppColors.whiteColor,
+          ),
+        ),
+      ],
+    );
   }
 }
