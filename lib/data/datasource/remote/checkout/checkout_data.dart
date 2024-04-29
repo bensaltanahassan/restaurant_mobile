@@ -14,9 +14,8 @@ class CheckoutData {
       required String orderStatus,
       String? token}) async {
     var response = await crud.postData(
-      linkUrl: AppLinks.checkout,
+      linkUrl: "${AppLinks.checkout}/$userId",
       data: {
-        "userId": userId,
         "totalPrice": totalPrice,
         "adress": adress,
         "phoneNumber": phoneNumber,
