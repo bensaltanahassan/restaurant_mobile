@@ -41,6 +41,7 @@
   "@_CARTPAGE": {},
   "order": "Order",
   "totalPrice": "Total Price",
+  "yourCartIsEmpty": "Votre panier est vide, commandons de la nourriture",
   "@_PAYMENTPAGE": {},
   "adress": "Adress",
   "noAdress": "No Adress",

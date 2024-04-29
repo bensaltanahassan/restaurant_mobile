@@ -117,6 +117,7 @@ class CustomDrawer extends StatelessWidget {
                     icon: Icons.translate_outlined,
                     onPressed: controller.goToChangeLanguagePage,
                   ),
+                  SizedBox(height: 10.h),
                   CustomDrawetItem(
                     title: AppLocalizations.of(context)!.bookTable,
                     icon: Icons.table_chart_outlined,
