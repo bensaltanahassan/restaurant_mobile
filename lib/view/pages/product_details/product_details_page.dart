@@ -107,6 +107,7 @@ class ProductDetailsPage extends StatelessWidget {
                             child: CustomNetworkImage(
                               imageUrl: e.image!.url!,
                               height: 250.h,
+                              width: double.maxFinite.w,
                             ),
                           ),
                         ))
