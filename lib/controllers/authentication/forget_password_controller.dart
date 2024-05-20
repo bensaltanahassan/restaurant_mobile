@@ -13,7 +13,8 @@ class ForgetPasswordController extends GetxController {
   }
 
   void goToVerifyCodePage() {
-    Get.toNamed(AppRoutes.verifyCodeForgetPassword);
+    Get.toNamed(AppRoutes.verifyCodeForgetPassword,
+        arguments: {"email": emailController.text});
   }
 
   @override

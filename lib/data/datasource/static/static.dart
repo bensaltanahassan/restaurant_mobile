@@ -5,7 +5,7 @@ import 'package:restaurant_mobile/data/model/chooselanguagemodel.dart';
 import 'package:restaurant_mobile/data/model/onboardingmodel.dart';
 
 class StaticData {
-  static String get appName => "Restaurant Mobile";
+  static String get appName => "Trio Taste";
   static List<OnboardingModel> onBoardingList(BuildContext context) => [
         OnboardingModel(
             title: AppLocalizations.of(context)!.title1,

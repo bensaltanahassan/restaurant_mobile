@@ -9,7 +9,7 @@ class ChangePasswordController extends GetxController {
       TextEditingController();
 
   void changePassword() {
-    if (formState.currentState!.validate()) {
+    if (!formState.currentState!.validate()) {
       print('change password');
       goToLoginPage();
     }

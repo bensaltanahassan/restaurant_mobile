@@ -43,8 +43,7 @@ class ChoicePaymentMethode extends StatelessWidget {
               ),
               child: Icon(
                 icon,
-                color:
-                    isSelected ? AppColors.primaryColor : AppColors.secondColor,
+                color: AppColors.primaryColor,
                 size: 40.r,
               ),
             ),
@@ -54,8 +53,7 @@ class ChoicePaymentMethode extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
-                color:
-                    isSelected ? AppColors.primaryColor : AppColors.secondColor,
+                color: AppColors.primaryColor,
               ),
             ),
           ],

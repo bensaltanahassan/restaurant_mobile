@@ -60,6 +60,7 @@ class ForgetPasswordPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   CustomTextFormField(
+                    controller: controller.emailController,
                     hintText: 'Email',
                     labelText: 'Email',
                     prefixIcon: Icons.email,

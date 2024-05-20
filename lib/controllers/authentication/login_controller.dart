@@ -41,7 +41,7 @@ class LoginController extends GetxController {
       statusRequest = StatusRequest.loading;
       update(["login"]);
 
-      var response = await ld.postData(
+      var response = await ld.login(
           email: emailController.text, password: passwordController.text);
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {

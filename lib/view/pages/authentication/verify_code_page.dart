@@ -47,7 +47,7 @@ class VerifyCodePage extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Enter the code sent to your email xxxx@yyyy.com',
+                    'Enter the code sent to your email ${controller.email}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.sp,

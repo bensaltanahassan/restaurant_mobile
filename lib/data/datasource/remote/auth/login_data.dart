@@ -4,7 +4,7 @@ import 'package:restaurant_mobile/core/constant/linkapi.dart';
 class LoginData {
   Crud crud;
   LoginData(this.crud);
-  postData({required String email, required String password}) async {
+  login({required String email, required String password}) async {
     var response = await crud.postData(linkUrl: AppLinks.login, data: {
       "email": email,
       "password": password,

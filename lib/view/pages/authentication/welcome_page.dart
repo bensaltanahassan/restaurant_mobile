@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
               children: [
                 Image.asset(AppImageAsset.logo, width: 200.w, height: 200.h),
                 Text(
-                  'Restaurant Akhawayn',
+                  'Trio Taste',
                   style: TextStyle(
                       fontSize: 25.sp,
                       fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class WelcomePage extends StatelessWidget {
                 SizedBox(height: 10.h),
                 CustomButton(
                   title: AppLocalizations.of(context)!.register,
-                  titleColor: AppColors.secondColor,
+                  titleColor: AppColors.primaryColor,
                   titleSize: 20.sp,
                   buttonColor: AppColors.whiteColor,
                   width: double.infinity,

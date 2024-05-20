@@ -43,7 +43,7 @@ class UserSettingsPage extends StatelessWidget {
                   widget: Text(
                     AppLocalizations.of(context)!.saveChanges,
                     style: TextStyle(
-                      color: AppColors.whiteColor,
+                      color: AppColors.primaryColor,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -66,7 +66,7 @@ class UserSettingsPage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: CircleAvatar(
                   radius: 53.r,
-                  backgroundColor: AppColors.secondColor,
+                  backgroundColor: AppColors.primaryColor,
                   child: CircleAvatar(
                     radius: 50.r,
                     child: GetBuilder<UserSettingsController>(
