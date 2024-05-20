@@ -42,6 +42,7 @@ dependencies:
     sdk: flutter
   flutter_local_notifications: ^16.3.2
   flutter_localization: ^0.2.0
+  flutter_native_splash: ^2.4.0
   flutter_polyline_points: ^2.0.0
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.0
@@ -66,9 +67,16 @@ dependencies:
   shimmer: ^3.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21 # default is 20
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

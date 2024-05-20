@@ -81,24 +81,6 @@ class LoginController extends GetxController {
       }
       update(['login']);
     }
-
-    // await myServices.sharedPreferences.setBool("login", true);
-    // UserModel userModel = UserModel(
-    //     id: 9,
-    //     email: "test@gmail.com",
-    //     fullName: "FullName Test",
-    //     phone: "0677777777",
-    //     address: "Address Test",
-    //     createdAt: "2024-03-24T20:23:46.5916166Z",
-    //     updatedAt: "2024-03-24T20:23:46.5916171Z",
-    //     image: ImageModel(
-    //       id: 23,
-    //       publicId: "gkh62kktemvvy6hexesi",
-    //       url:
-    //           "https://res.cloudinary.com/dciymidzk/image/upload/v1711107569/gkh62kktemvvy6hexesi.png",
-    //     ));
-    // await myServices.saveUser(userModel);
-    // Get.offAllNamed(AppRoutes.containerPage);
   }
 
   goToVerifyEmailPage() {

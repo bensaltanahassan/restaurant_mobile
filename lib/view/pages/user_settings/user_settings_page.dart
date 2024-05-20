@@ -77,8 +77,8 @@ class UserSettingsPage extends StatelessWidget {
                               if (controller.image == null)
                                 ClipOval(
                                   child: CustomNetworkImage(
-                                    width: 100.w,
-                                    height: 100.h,
+                                    width: double.maxFinite.w,
+                                    height: double.maxFinite.h,
                                     imageUrl: controller.ms.user!.image?.url,
                                   ),
                                 )
